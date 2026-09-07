@@ -1,0 +1,205 @@
+{
+  "name": "projects/1064615886751355617",
+  "title": "Bheral Systems UI/UX Design",
+  "visibility": "PRIVATE",
+  "createTime": "2026-09-07T21:37:14.749139Z",
+  "updateTime": "2026-09-07T21:47:50.074003Z",
+  "projectType": "TEXT_TO_UI_PRO",
+  "thumbnailScreenshot": {
+    "name": "projects/1064615886751355617/screens/af0e7953b5dabff89c0984711936f30364ea3419119889a9b9ca8d7f82f9f2c5/fileEntries/screenshot",
+    "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XtpEiAGwXiX4haGwn85vmSVT4_HgQleMjvIe74FWSRqWwoTe66zYI4q3ixYTBsVIs-wrzb2daiJtugGY3vM_4F5sUJbdPAfzIkVj1AVHJLAvSwngKMBqbY8FM5iImkcpQqsyKUJmbMQmFStEn4SSvx8HAP2IjpK3Uidn9Z2Pky3dhzmSB_KLf6MOUF5QR_h4lkC9oKvSzrF7p-VpdqoCjR8cB5nE80lDM1x_ylhw7fw7WMXw5pGI3MHhE"
+  },
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "LIGHT",
+    "font": "PLUS_JAKARTA_SANS",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#2563eb",
+    "headlineFont": "PLUS_JAKARTA_SANS",
+    "bodyFont": "INTER",
+    "labelFont": "JETBRAINS_MONO",
+    "namedColors": {
+      "error_container": "#ffdad6",
+      "on_error": "#ffffff",
+      "secondary_container": "#dae2fd",
+      "on_primary": "#ffffff",
+      "outline": "#737686",
+      "inverse_surface": "#213145",
+      "tertiary_fixed_dim": "#4edea3",
+      "surface_container_low": "#eff4ff",
+      "tertiary": "#006242",
+      "outline_variant": "#c3c6d7",
+      "tertiary_container": "#007d55",
+      "surface": "#f8f9ff",
+      "primary": "#004ac6",
+      "surface_tint": "#0053db",
+      "primary_fixed": "#dbe1ff",
+      "on_primary_container": "#eeefff",
+      "on_tertiary": "#ffffff",
+      "surface_bright": "#f8f9ff",
+      "on_tertiary_fixed": "#002113",
+      "on_background": "#0b1c30",
+      "background": "#f8f9ff",
+      "on_secondary_fixed_variant": "#3f465c",
+      "on_primary_fixed": "#00174b",
+      "surface_container": "#e5eeff",
+      "surface_container_high": "#dce9ff",
+      "inverse_primary": "#b4c5ff",
+      "primary_fixed_dim": "#b4c5ff",
+      "on_secondary_container": "#5c647a",
+      "secondary": "#565e74",
+      "on_tertiary_fixed_variant": "#005236",
+      "secondary_fixed": "#dae2fd",
+      "tertiary_fixed": "#6ffbbe",
+      "on_surface_variant": "#434655",
+      "on_tertiary_container": "#bdffdb",
+      "inverse_on_surface": "#eaf1ff",
+      "on_secondary": "#ffffff",
+      "secondary_fixed_dim": "#bec6e0",
+      "on_primary_fixed_variant": "#003ea8",
+      "surface_container_highest": "#d3e4fe",
+      "on_secondary_fixed": "#131b2e",
+      "surface_container_lowest": "#ffffff",
+      "error": "#ba1a1a",
+      "surface_dim": "#cbdbf5",
+      "surface_variant": "#d3e4fe",
+      "primary_container": "#2563eb",
+      "on_error_container": "#93000a",
+      "on_surface": "#0b1c30"
+    },
+    "designMd": "---\nname: Modern Re-Commerce & Tech Services\ncolors:\n  surface: '#f8f9ff'\n  surface-dim: '#cbdbf5'\n  surface-bright: '#f8f9ff'\n  surface-container-lowest: '#ffffff'\n  surface-container-low: '#eff4ff'\n  surface-container: '#e5eeff'\n  surface-container-high: '#dce9ff'\n  surface-container-highest: '#d3e4fe'\n  on-surface: '#0b1c30'\n  on-surface-variant: '#434655'\n  inverse-surface: '#213145'\n  inverse-on-surface: '#eaf1ff'\n  outline: '#737686'\n  outline-variant: '#c3c6d7'\n  surface-tint: '#0053db'\n  primary: '#004ac6'\n  on-primary: '#ffffff'\n  primary-container: '#2563eb'\n  on-primary-container: '#eeefff'\n  inverse-primary: '#b4c5ff'\n  secondary: '#565e74'\n  on-secondary: '#ffffff'\n  secondary-container: '#dae2fd'\n  on-secondary-container: '#5c647a'\n  tertiary: '#006242'\n  on-tertiary: '#ffffff'\n  tertiary-container: '#007d55'\n  on-tertiary-container: '#bdffdb'\n  error: '#ba1a1a'\n  on-error: '#ffffff'\n  error-container: '#ffdad6'\n  on-error-container: '#93000a'\n  primary-fixed: '#dbe1ff'\n  primary-fixed-dim: '#b4c5ff'\n  on-primary-fixed: '#00174b'\n  on-primary-fixed-variant: '#003ea8'\n  secondary-fixed: '#dae2fd'\n  secondary-fixed-dim: '#bec6e0'\n  on-secondary-fixed: '#131b2e'\n  on-secondary-fixed-variant: '#3f465c'\n  tertiary-fixed: '#6ffbbe'\n  tertiary-fixed-dim: '#4edea3'\n  on-tertiary-fixed: '#002113'\n  on-tertiary-fixed-variant: '#005236'\n  background: '#f8f9ff'\n  on-background: '#0b1c30'\n  surface-variant: '#d3e4fe'\ntypography:\n  headline-hero:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 48px\n    fontWeight: '800'\n    lineHeight: 56px\n  headline-hero-mobile:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 32px\n    fontWeight: '800'\n    lineHeight: 40px\n  headline-lg:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 32px\n    fontWeight: '700'\n    lineHeight: 40px\n  headline-lg-mobile:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 24px\n    fontWeight: '700'\n    lineHeight: 32px\n  headline-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 24px\n    fontWeight: '600'\n    lineHeight: 32px\n  headline-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 18px\n    fontWeight: '600'\n    lineHeight: 24px\n  body-lg:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: 26px\n  body-md:\n    fontFamily: Inter\n    fontSize: 14px\n    fontWeight: '400'\n    lineHeight: 22px\n  body-sm:\n    fontFamily: Inter\n    fontSize: 12px\n    fontWeight: '400'\n    lineHeight: 18px\n  spec-code:\n    fontFamily: JetBrains Mono\n    fontSize: 12px\n    fontWeight: '500'\n    lineHeight: 16px\n  badge-label:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 11px\n    fontWeight: '700'\n    lineHeight: 14px\n  price-lg:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 22px\n    fontWeight: '800'\n    lineHeight: 26px\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\nspacing:\n  gutter-mobile: 1rem\n  gutter-tablet: 1.5rem\n  gutter-desktop: 2rem\n  margin-mobile: 1rem\n  margin-desktop: 2.5rem\n  max-width-content: 1280px\n  grid-gap: 1.5rem\n  spec-chip-gap: 0.375rem\n---\n\n## Brand & Style\nThe design system addresses the unique psychological needs of refurbished technology consumers and enterprise clients in India: resolving trust deficits around pre-owned electronics while projecting speed, technical competence, and cost-efficiency.\n\nThe visual style combines **Corporate / Modern** with **High-Contrast Precision**. It leverages stark, surgical contrast\u2014pure white canvas layers anchored by dense midnight navy, electrified by royal blue and vivid emerald trust cues. The interface evokes a clean-room hardware laboratory rather than a cluttered electronics bazaar: crisp hairline grid borders, high-density spec tags, tangible warranty assurances, and persistent low-friction channels (including native WhatsApp support).\n\nPrimary audience tiers:\n1. **Value-conscious tech professionals & students** buying tested, certified corporate laptops (ThinkPad, Dell Latitude, MacBook Pro).\n2. **Device owners seeking repair / diagnostics** demanding transparent turnaround, doorstep pickup, and genuine OEM parts.\n3. **Enterprises & bulk sellers** looking to liquidate IT assets or procure workplace fleets with warranty guarantees.\n\n## Colors\nThe palette balances institutional stability with energetic retail triggers:\n\n- **Primary (`#2563EB`)**: Electric Royal Blue powers the core interactive state\u2014buy buttons, active filters, search actions, and progress indicators. On dark headers or banners, `#3B82F6` ensures legible luminance.\n- **Secondary (`#0F172A`)**: Deep Midnight Navy acts as the anchor tone for top navigation bars, promotional discount matrices, and high-tier enterprise sections. It establishes technical weight and contrast.\n- **Tertiary (`#10B981`)**: Refurbished Grade Badges, \"Tested & Certified\" seals, instant WhatsApp communication CTA accents, and discount percentages. Supported by Emerald `#059669` for hover states.\n- **Surface & Backgrounds**: Base background is pure `#FFFFFF`, complemented by `#F8FAFC` (Slate 50) for container wells and card backgrounds.\n- **Neutral Outlines & Text**: Hairline borders rely strictly on `#E2E8F0` (Slate 200) to keep multi-item product grids legible. Body text leverages `#334155` (Slate 700) with primary titles in `#0F172A` (Slate 900).\n- **Functional Accents**: `#F59E0B` for diagnostic warnings and star rating aggregates; `#EF4444` for limited flash stock alerts.\n\n## Typography\nTypography reflects high-grade engineering clarity:\n\n- **Headlines (`Plus Jakarta Sans`)**: Delivers geometric warmth with contemporary authority. Bold display scales emphasize value statements, pricing slashes, and refurbished grading guarantees.\n- **Body & Controls (`Inter`)**: Serves dense e-commerce UI specs, tabular repair quote estimators, review threads, and checkout workflows with neutral legibility.\n- **Spec Badges & Technical IDs (`JetBrains Mono`)**: Applied to processor generations (e.g., `i7-1185G7`), RAM/Storage configurations (`16GB | 512GB NVMe`), testing checkpoints (`40-Point QC Pass`), and Delhi NCR pin-code validators.\n\n## Layout & Spacing\nThe layout follows a 12-column responsive fluid grid pinned to a maximum container width of `1280px`.\n\n- **Desktop (>= 1024px)**: 12 columns with `24px` gutters and `40px` outer margins. Product matrices display 4-across; comparison lists and diagnosis flow engines deploy 3-column structures.\n- **Tablet (768px - 1023px)**: 8 columns with `16px` gutters. Product cards condense to 2 or 3-across grids with horizontally scrollable brand taxonomy reels.\n- **Mobile (< 768px)**: 4 columns with `16px` gutters and `16px` margins. Category and spec selectors convert into compact swipe rails. Sticky bottom bars house critical action switches: Buy Now, Instant Value Quote, and Direct WhatsApp Repair Concierge.\n\n## Elevation & Depth\nDepth is created through structured white-on-slate containment rather than heavy drop shadows:\n\n- **Level 0 (Flat)**: Backgrounds (`#FFFFFF` and `#F8FAFC`) with structural `#E2E8F0` borders for standard card grids, spec tables, and footer panels.\n- **Level 1 (Card Hover / Floating Badges)**: Soft ambient shadow `0 4px 14px -2px rgba(15, 23, 42, 0.06)`, subtle border shift from `#E2E8F0` to `#CBD5E1`.\n- **Level 2 (Popovers, Sticky Header, Cart Drawer)**: Diffused medium shadow `0 12px 28px -4px rgba(15, 23, 42, 0.12)`, anchored by a hairline bottom border `#E2E8F0`.\n- **Level 3 (Modal Dialogs & Quote Calculators)**: High-altitude isolation `0 24px 48px -8px rgba(15, 23, 42, 0.20)` over a 50% opacity slate scrim (`rgba(15, 23, 42, 0.5)`).\n- **Banner Illumination**: Dark hero spaces (Navy `#0F172A`) employ vibrant radial gradient glows (`radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.35) 0%, transparent 70%)`) to stage hardware photography.\n\n## Shapes\nRoundedness level `2` sets standard corner radiuses to `0.5rem` (8px), card and modal boundaries to `rounded-xl` (`1.5rem` / 24px), and micro-spec items to `rounded-lg` (`1rem` / 16px).\n\n- **Product & Category Cards**: `rounded-2xl` (16px\u201320px) to balance modern tech sleekness with crisp inner imagery.\n- **Action Buttons & Form Controls**: `rounded-xl` (12px) for high tactile tap conversion.\n- **Spec Pills, Grade Seals, and Discount Badges**: Pill-shaped (`rounded-full`) to contrast against rectangular screen displays and motherboard technical blueprints.\n\n## Components\n\n### Buttons\n- **Primary Action**: Solid Electric Blue (`#2563EB`) text in `#FFFFFF`, `rounded-xl`, bold font weight. Subtle scale transition (`scale-[1.01]`) and `#1D4ED8` on hover.\n- **Secondary Action**: Border button with `#E2E8F0`, slate hover background `#F8FAFC`, dark navy text (`#0F172A`).\n- **Direct WhatsApp Conversion Action**: Vivid emerald background (`#10B981` / `#059669`), white bold typography, embedded WhatsApp chat icon, explicitly routing to customer support (`+91 96547 79949`).\n- **Micro Quick Actions**: Circular icon buttons with `#F1F5F9` background and `#0F172A` iconography for wishlists, spec comparisons, and cart add triggers.\n\n### Product & Service Cards\n- **Refurbished Device Card**: Pure white surface, `1px` border in `#E2E8F0`, `rounded-2xl` padding of `16px`. Features a top badge row with \"Refurbished Certified\" and \"Grade A+\", a centered product frame with crisp transparent cutout, hardware spec rail (`i5 / 16GB / 512GB SSD`), current price with strike-through MRP, and a persistent \"Add to Cart\" or \"Book Diagnostic\" button.\n- **Service & Repair Card**: Structured around issue diagnoses (e.g., \"Screen Replacement\", \"Motherboard Repair\", \"Battery Swap\"). Includes turnaround timeframe (\"Same Day / 24h\") and doorstep technician availability tag.\n\n### Chips & Badges\n- **Refurbished Grade Tag**: Monospaced typography, emerald-tinted surface (`#ECFDF5`), emerald text (`#047857`), micro border (`#A7F3D0`).\n- **Hardware Spec Chips**: Compact slate capsules (`bg-[#F1F5F9]`, `text-[#334155]`) rendered in `JetBrains Mono` to cleanly outline RAM, SSD, and screen size without visual noise.\n\n### Search & Category Navigation\n- **Primary Search Bar**: Global persistent search with integrated category dropdown (\"All Laptops\", \"Gaming Rigs\", \"Spare Parts\", \"Repairs\"). Navy input stroke focus `#2563EB` with `0 0 0 3px rgba(37, 99, 235, 0.15)`.\n- **Top Utility Header**: Dark Navy (`#0B132B` / `#0F172A`) strip carrying address badges (Delhi NCR Store), helpline (+91 96547 79949), warranty lookup, and B2B procurement links.\n\n### Input Fields & Selectors\n- Background `#FFFFFF`, border `1.5px` solid `#E2E8F0`, placeholder `#94A3B8`. Focus state invokes `#2563EB` border and active outline ring. Includes support for Delhi pincode lookup with auto-validation for doorstep device pickup.",
+    "colorVariant": "FIDELITY",
+    "overridePrimaryColor": "#2563eb",
+    "overrideSecondaryColor": "#0f172a",
+    "overrideTertiaryColor": "#10b981",
+    "overrideNeutralColor": "#64748b",
+    "spacingScale": 2,
+    "typography": {
+      "body-lg": {
+        "fontFamily": "Inter",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "26px"
+      },
+      "headline-lg-mobile": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "lineHeight": "32px"
+      },
+      "spec-code": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "lineHeight": "16px"
+      },
+      "price-lg": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "22px",
+        "fontWeight": "800",
+        "lineHeight": "26px"
+      },
+      "headline-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "lineHeight": "32px"
+      },
+      "body-sm": {
+        "fontFamily": "Inter",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px"
+      },
+      "headline-lg": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "32px",
+        "fontWeight": "700",
+        "lineHeight": "40px"
+      },
+      "headline-hero": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "48px",
+        "fontWeight": "800",
+        "lineHeight": "56px"
+      },
+      "body-md": {
+        "fontFamily": "Inter",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22px"
+      },
+      "headline-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "lineHeight": "24px"
+      },
+      "headline-hero-mobile": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "32px",
+        "fontWeight": "800",
+        "lineHeight": "40px"
+      },
+      "badge-label": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "lineHeight": "14px"
+      }
+    },
+    "spacing": {
+      "margin-desktop": "2.5rem",
+      "spec-chip-gap": "0.375rem",
+      "grid-gap": "1.5rem",
+      "gutter-tablet": "1.5rem",
+      "margin-mobile": "1rem",
+      "gutter-desktop": "2rem",
+      "gutter-mobile": "1rem",
+      "max-width-content": "1280px"
+    },
+    "headlineFontFamily": "Plus Jakarta Sans",
+    "bodyFontFamily": "Inter",
+    "labelFontFamily": "JetBrains Mono"
+  },
+  "screenInstances": [
+    {
+      "id": "8a749df911ea4bac81e01696339321da",
+      "sourceScreen": "projects/1064615886751355617/screens/8a749df911ea4bac81e01696339321da",
+      "x": 1972,
+      "y": -309,
+      "width": 1280,
+      "height": 7561
+    },
+    {
+      "id": "assets_e7d925e9099a4632ad30d5fb14b46144",
+      "x": 948,
+      "y": -309,
+      "width": 960,
+      "height": 540,
+      "sourceAsset": "assets/e7d925e9099a4632ad30d5fb14b46144",
+      "type": "DESIGN_SYSTEM_INSTANCE"
+    },
+    {
+      "id": "b3499675-2192-46fb-b2fd-1b3829b37a37",
+      "sourceScreen": "projects/1064615886751355617/screens/6061212631689145195",
+      "x": 178,
+      "y": -445,
+      "width": 512,
+      "height": 768,
+      "type": "SCREEN_INSTANCE"
+    },
+    {
+      "id": "feaa73a652f34210af376c65b2947904",
+      "sourceScreen": "projects/1064615886751355617/screens/feaa73a652f34210af376c65b2947904",
+      "x": 1149,
+      "y": -215,
+      "width": 260,
+      "height": 60
+    }
+  ],
+  "metadata": {
+    "userRole": "OWNER"
+  }
+}

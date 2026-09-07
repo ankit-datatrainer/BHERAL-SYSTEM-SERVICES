@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Bheral Systems & Services | Nehru Place Delhi</title>
+  <meta name="description" content="Reach our Delhi tech facility for sales inquiries, old device selling, doorstep computer repair, or corporate bulk deals. Call or WhatsApp +91 96547 79949.">
+  <meta property="og:title" content="Contact Bheral Systems & Services Delhi">
+  <meta property="og:description" content="Direct hardware sales, repair booking, and IT buyback support in Delhi NCR.">
+  <link rel="icon" href="assets/images/bheral-logo.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/search.js"></script>
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+
+  <main class="page" id="app">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a> <span>/</span> <span>Contact Us</span></div>
+        <h1>Contact Bheral Systems & Services</h1>
+        <p>Talk directly with our Delhi team about a refurbished computer purchase, device liquidation, or hardware repair.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <!-- Contact Information Panel -->
+        <aside class="contact-panel">
+          <span class="eyebrow green">Direct Support & Laboratory</span>
+          <h2>Bheral Systems & Services</h2>
+          <p style="color:var(--on-surface-variant);font-size:14px;margin-bottom:1.5rem;">
+            Also commercially known as <strong>Bheral Infotech Systems</strong>. Registered enterprise IT re-commerce and precision electronics engineering facility.
+          </p>
+
+          <div class="contact-item">
+            <span class="icon" style="color:var(--primary);">location_on</span>
+            <div>
+              <strong>Nehru Place Hub, New Delhi, India</strong>
+              <p>Primary hardware testing lab & corporate dispatch hub. Doorstep pickup operates across all eligible Delhi NCR zones.</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon" style="color:var(--emerald-text);">call</span>
+            <div>
+              <strong>+91 96547 79949</strong>
+              <p>Direct telephone helpline for inventory queries, technician dispatch, and order support.</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon" style="color:var(--emerald-text);">chat</span>
+            <div>
+              <strong>WhatsApp Business Support</strong>
+              <p>+91 96547 79949 (Instant replies for photos, quotes, and tracking updates).</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="icon" style="color:var(--navy);">schedule</span>
+            <div>
+              <strong>Operating Hours</strong>
+              <p>Monday to Saturday: 10:00 AM – 08:30 PM (Sunday Closed for bench maintenance).</p>
+            </div>
+          </div>
+
+          <div class="hero-actions" style="margin-top:1.5rem;">
+            <a class="btn btn-primary" href="tel:+919654779949">
+              <span class="icon">call</span> Call Now
+            </a>
+            <a class="btn btn-green" href="https://wa.me/919654779949?text=${encodeURIComponent('Hi Bheral Systems, I have a general enquiry about your services.')}" target="_blank" rel="noopener">
+              <span class="icon">chat</span> WhatsApp Us
+            </a>
+            <a class="btn btn-secondary" href="sell.html">
+              <span class="icon">currency_rupee</span> Sell Device
+            </a>
+            <a class="btn btn-secondary" href="repair.html">
+              <span class="icon">handyman</span> Book Repair
+            </a>
+          </div>
+        </aside>
+
+        <!-- Functional Contact & Enquiry Form -->
+        <form class="form-card" id="contact-page-form" novalidate>
+          <h2 style="font-size:1.5rem;margin-bottom:0.5rem;">Send a Direct Message</h2>
+          <p style="color:var(--on-surface-variant);font-size:13px;margin-bottom:1.5rem;">
+            Fill out your details below. This front-end prototype validates your inquiry and creates a ready-to-send WhatsApp or phone message.
+          </p>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Full Name *</span>
+              <input type="text" id="contact-name" required placeholder="e.g. Alok Kashyap">
+            </label>
+
+            <label class="field">
+              <span>Mobile Phone * (10 Digits)</span>
+              <input type="tel" id="contact-phone" required placeholder="9876543210" maxlength="10" inputmode="numeric">
+            </label>
+
+            <label class="field full">
+              <span>Email Address *</span>
+              <input type="email" id="contact-email" required placeholder="alok@example.com">
+            </label>
+
+            <label class="field full">
+              <span>Nature of Enquiry *</span>
+              <select id="contact-type">
+                <option value="Buy Refurbished Laptop / PC">Buy Refurbished Laptop / PC</option>
+                <option value="Sell Used Laptop / Hardware">Sell Used Laptop / Hardware</option>
+                <option value="Book Computer Hardware Repair">Book Computer Hardware Repair</option>
+                <option value="Corporate Bulk Procurement / GST Invoicing">Corporate Bulk Procurement / GST Invoicing</option>
+                <option value="Data Recovery Consultation">Data Recovery Consultation</option>
+                <option value="Other Assistance">Other Assistance</option>
+              </select>
+            </label>
+
+            <label class="field full">
+              <span>Your Message / Device Details *</span>
+              <textarea id="contact-message" required rows="5" placeholder="Share laptop model, required RAM/storage upgrade, or specific problem description..."></textarea>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:1.5rem;">
+            <span class="icon">send</span> Submit Enquiry
+          </button>
+
+          <div id="contact-form-feedback" style="margin-top:1.25rem;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-page-form');
+      const feedback = document.getElementById('contact-form-feedback');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('contact-name').value.trim();
+        const phone = document.getElementById('contact-phone').value.trim().replace(/\D/g, '');
+        const email = document.getElementById('contact-email').value.trim();
+        const type = document.getElementById('contact-type').value;
+        const msg = document.getElementById('contact-message').value.trim();
+
+        if (!name) {
+          window.BSS.toast('Please enter your full name', 'error');
+          document.getElementById('contact-name').focus();
+          return;
+        }
+
+        if (!/^\d{10}$/.test(phone)) {
+          window.BSS.toast('Please enter a valid 10-digit phone number', 'error');
+          document.getElementById('contact-phone').focus();
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          window.BSS.toast('Please enter a valid email address', 'error');
+          document.getElementById('contact-email').focus();
+          return;
+        }
+
+        if (!msg) {
+          window.BSS.toast('Please write a message', 'error');
+          document.getElementById('contact-message').focus();
+          return;
+        }
+
+        const waText = encodeURIComponent(`Hi Bheral Systems,\nName: ${name}\nPhone: ${phone}\nEnquiry: ${type}\nMessage: ${msg}`);
+
+        feedback.innerHTML = `
+          <div style="background:var(--emerald-soft);border:1px solid var(--emerald-border);border-radius:var(--radius-DEFAULT);padding:1rem;font-size:13px;color:var(--tertiary);">
+            <strong style="display:flex;align-items:center;gap:0.35rem;margin-bottom:0.25rem;">
+              <span class="icon" style="font-size:18px;">check_circle</span> Enquiry Validated Successfully!
+            </strong>
+            <p style="margin:0.25rem 0 0.75rem;">Your message has been verified. To send it immediately to our on-duty technician via WhatsApp, click below:</p>
+            <a class="btn btn-green btn-small" href="https://wa.me/919654779949?text=${waText}" target="_blank" rel="noopener">
+              <span class="icon" style="font-size:16px;">chat</span> Forward to WhatsApp Helpline
+            </a>
+          </div>
+        `;
+
+        window.BSS.toast('Enquiry validated! You can also chat on WhatsApp.', 'success');
+      });
+    });
+  </script>
+</body>
+</html>

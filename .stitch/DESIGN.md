@@ -1,0 +1,201 @@
+---
+name: Modern Re-Commerce & Tech Services
+colors:
+  surface: '#f8f9ff'
+  surface-dim: '#cbdbf5'
+  surface-bright: '#f8f9ff'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#eff4ff'
+  surface-container: '#e5eeff'
+  surface-container-high: '#dce9ff'
+  surface-container-highest: '#d3e4fe'
+  on-surface: '#0b1c30'
+  on-surface-variant: '#434655'
+  inverse-surface: '#213145'
+  inverse-on-surface: '#eaf1ff'
+  outline: '#737686'
+  outline-variant: '#c3c6d7'
+  surface-tint: '#0053db'
+  primary: '#004ac6'
+  on-primary: '#ffffff'
+  primary-container: '#2563eb'
+  on-primary-container: '#eeefff'
+  inverse-primary: '#b4c5ff'
+  secondary: '#565e74'
+  on-secondary: '#ffffff'
+  secondary-container: '#dae2fd'
+  on-secondary-container: '#5c647a'
+  tertiary: '#006242'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#007d55'
+  on-tertiary-container: '#bdffdb'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#dbe1ff'
+  primary-fixed-dim: '#b4c5ff'
+  on-primary-fixed: '#00174b'
+  on-primary-fixed-variant: '#003ea8'
+  secondary-fixed: '#dae2fd'
+  secondary-fixed-dim: '#bec6e0'
+  on-secondary-fixed: '#131b2e'
+  on-secondary-fixed-variant: '#3f465c'
+  tertiary-fixed: '#6ffbbe'
+  tertiary-fixed-dim: '#4edea3'
+  on-tertiary-fixed: '#002113'
+  on-tertiary-fixed-variant: '#005236'
+  background: '#f8f9ff'
+  on-background: '#0b1c30'
+  surface-variant: '#d3e4fe'
+typography:
+  headline-hero:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 48px
+    fontWeight: '800'
+    lineHeight: 56px
+  headline-hero-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: '800'
+    lineHeight: 40px
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: 40px
+  headline-lg-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: '700'
+    lineHeight: 32px
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: '600'
+    lineHeight: 32px
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 24px
+  body-lg:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 26px
+  body-md:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 22px
+  body-sm:
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: '400'
+    lineHeight: 18px
+  spec-code:
+    fontFamily: JetBrains Mono
+    fontSize: 12px
+    fontWeight: '500'
+    lineHeight: 16px
+  badge-label:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 11px
+    fontWeight: '700'
+    lineHeight: 14px
+  price-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 22px
+    fontWeight: '800'
+    lineHeight: 26px
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter-mobile: 1rem
+  gutter-tablet: 1.5rem
+  gutter-desktop: 2rem
+  margin-mobile: 1rem
+  margin-desktop: 2.5rem
+  max-width-content: 1280px
+  grid-gap: 1.5rem
+  spec-chip-gap: 0.375rem
+---
+
+## Brand & Style
+The design system addresses the unique psychological needs of refurbished technology consumers and enterprise clients in India: resolving trust deficits around pre-owned electronics while projecting speed, technical competence, and cost-efficiency.
+
+The visual style combines **Corporate / Modern** with **High-Contrast Precision**. It leverages stark, surgical contrast—pure white canvas layers anchored by dense midnight navy, electrified by royal blue and vivid emerald trust cues. The interface evokes a clean-room hardware laboratory rather than a cluttered electronics bazaar: crisp hairline grid borders, high-density spec tags, tangible warranty assurances, and persistent low-friction channels (including native WhatsApp support).
+
+Primary audience tiers:
+1. **Value-conscious tech professionals & students** buying tested, certified corporate laptops (ThinkPad, Dell Latitude, MacBook Pro).
+2. **Device owners seeking repair / diagnostics** demanding transparent turnaround, doorstep pickup, and genuine OEM parts.
+3. **Enterprises & bulk sellers** looking to liquidate IT assets or procure workplace fleets with warranty guarantees.
+
+## Colors
+The palette balances institutional stability with energetic retail triggers:
+
+- **Primary (`#2563EB`)**: Electric Royal Blue powers the core interactive state—buy buttons, active filters, search actions, and progress indicators. On dark headers or banners, `#3B82F6` ensures legible luminance.
+- **Secondary (`#0F172A`)**: Deep Midnight Navy acts as the anchor tone for top navigation bars, promotional discount matrices, and high-tier enterprise sections. It establishes technical weight and contrast.
+- **Tertiary (`#10B981`)**: Refurbished Grade Badges, "Tested & Certified" seals, instant WhatsApp communication CTA accents, and discount percentages. Supported by Emerald `#059669` for hover states.
+- **Surface & Backgrounds**: Base background is pure `#FFFFFF`, complemented by `#F8FAFC` (Slate 50) for container wells and card backgrounds.
+- **Neutral Outlines & Text**: Hairline borders rely strictly on `#E2E8F0` (Slate 200) to keep multi-item product grids legible. Body text leverages `#334155` (Slate 700) with primary titles in `#0F172A` (Slate 900).
+- **Functional Accents**: `#F59E0B` for diagnostic warnings and star rating aggregates; `#EF4444` for limited flash stock alerts.
+
+## Typography
+Typography reflects high-grade engineering clarity:
+
+- **Headlines (`Plus Jakarta Sans`)**: Delivers geometric warmth with contemporary authority. Bold display scales emphasize value statements, pricing slashes, and refurbished grading guarantees.
+- **Body & Controls (`Inter`)**: Serves dense e-commerce UI specs, tabular repair quote estimators, review threads, and checkout workflows with neutral legibility.
+- **Spec Badges & Technical IDs (`JetBrains Mono`)**: Applied to processor generations (e.g., `i7-1185G7`), RAM/Storage configurations (`16GB | 512GB NVMe`), testing checkpoints (`40-Point QC Pass`), and Delhi NCR pin-code validators.
+
+## Layout & Spacing
+The layout follows a 12-column responsive fluid grid pinned to a maximum container width of `1280px`.
+
+- **Desktop (>= 1024px)**: 12 columns with `24px` gutters and `40px` outer margins. Product matrices display 4-across; comparison lists and diagnosis flow engines deploy 3-column structures.
+- **Tablet (768px - 1023px)**: 8 columns with `16px` gutters. Product cards condense to 2 or 3-across grids with horizontally scrollable brand taxonomy reels.
+- **Mobile (< 768px)**: 4 columns with `16px` gutters and `16px` margins. Category and spec selectors convert into compact swipe rails. Sticky bottom bars house critical action switches: Buy Now, Instant Value Quote, and Direct WhatsApp Repair Concierge.
+
+## Elevation & Depth
+Depth is created through structured white-on-slate containment rather than heavy drop shadows:
+
+- **Level 0 (Flat)**: Backgrounds (`#FFFFFF` and `#F8FAFC`) with structural `#E2E8F0` borders for standard card grids, spec tables, and footer panels.
+- **Level 1 (Card Hover / Floating Badges)**: Soft ambient shadow `0 4px 14px -2px rgba(15, 23, 42, 0.06)`, subtle border shift from `#E2E8F0` to `#CBD5E1`.
+- **Level 2 (Popovers, Sticky Header, Cart Drawer)**: Diffused medium shadow `0 12px 28px -4px rgba(15, 23, 42, 0.12)`, anchored by a hairline bottom border `#E2E8F0`.
+- **Level 3 (Modal Dialogs & Quote Calculators)**: High-altitude isolation `0 24px 48px -8px rgba(15, 23, 42, 0.20)` over a 50% opacity slate scrim (`rgba(15, 23, 42, 0.5)`).
+- **Banner Illumination**: Dark hero spaces (Navy `#0F172A`) employ vibrant radial gradient glows (`radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.35) 0%, transparent 70%)`) to stage hardware photography.
+
+## Shapes
+Roundedness level `2` sets standard corner radiuses to `0.5rem` (8px), card and modal boundaries to `rounded-xl` (`1.5rem` / 24px), and micro-spec items to `rounded-lg` (`1rem` / 16px).
+
+- **Product & Category Cards**: `rounded-2xl` (16px–20px) to balance modern tech sleekness with crisp inner imagery.
+- **Action Buttons & Form Controls**: `rounded-xl` (12px) for high tactile tap conversion.
+- **Spec Pills, Grade Seals, and Discount Badges**: Pill-shaped (`rounded-full`) to contrast against rectangular screen displays and motherboard technical blueprints.
+
+## Components
+
+### Buttons
+- **Primary Action**: Solid Electric Blue (`#2563EB`) text in `#FFFFFF`, `rounded-xl`, bold font weight. Subtle scale transition (`scale-[1.01]`) and `#1D4ED8` on hover.
+- **Secondary Action**: Border button with `#E2E8F0`, slate hover background `#F8FAFC`, dark navy text (`#0F172A`).
+- **Direct WhatsApp Conversion Action**: Vivid emerald background (`#10B981` / `#059669`), white bold typography, embedded WhatsApp chat icon, explicitly routing to customer support (`+91 96547 79949`).
+- **Micro Quick Actions**: Circular icon buttons with `#F1F5F9` background and `#0F172A` iconography for wishlists, spec comparisons, and cart add triggers.
+
+### Product & Service Cards
+- **Refurbished Device Card**: Pure white surface, `1px` border in `#E2E8F0`, `rounded-2xl` padding of `16px`. Features a top badge row with "Refurbished Certified" and "Grade A+", a centered product frame with crisp transparent cutout, hardware spec rail (`i5 / 16GB / 512GB SSD`), current price with strike-through MRP, and a persistent "Add to Cart" or "Book Diagnostic" button.
+- **Service & Repair Card**: Structured around issue diagnoses (e.g., "Screen Replacement", "Motherboard Repair", "Battery Swap"). Includes turnaround timeframe ("Same Day / 24h") and doorstep technician availability tag.
+
+### Chips & Badges
+- **Refurbished Grade Tag**: Monospaced typography, emerald-tinted surface (`#ECFDF5`), emerald text (`#047857`), micro border (`#A7F3D0`).
+- **Hardware Spec Chips**: Compact slate capsules (`bg-[#F1F5F9]`, `text-[#334155]`) rendered in `JetBrains Mono` to cleanly outline RAM, SSD, and screen size without visual noise.
+
+### Search & Category Navigation
+- **Primary Search Bar**: Global persistent search with integrated category dropdown ("All Laptops", "Gaming Rigs", "Spare Parts", "Repairs"). Navy input stroke focus `#2563EB` with `0 0 0 3px rgba(37, 99, 235, 0.15)`.
+- **Top Utility Header**: Dark Navy (`#0B132B` / `#0F172A`) strip carrying address badges (Delhi NCR Store), helpline (+91 96547 79949), warranty lookup, and B2B procurement links.
+
+### Input Fields & Selectors
+- Background `#FFFFFF`, border `1.5px` solid `#E2E8F0`, placeholder `#94A3B8`. Focus state invokes `#2563EB` border and active outline ring. Includes support for Delhi pincode lookup with auto-validation for doorstep device pickup.

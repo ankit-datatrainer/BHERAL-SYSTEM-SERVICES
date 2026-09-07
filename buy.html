@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buy Refurbished Laptops in Delhi NCR | Bheral Systems & Services</title>
+  <meta name="description" content="Shop certified pre-owned business laptops in Delhi NCR. 50-point hardware audited ThinkPads, MacBooks, and Dell Latitudes with 6-month replacement warranty and free doorstep delivery.">
+  <meta property="og:title" content="Buy Refurbished Laptops in Delhi NCR | Bheral Systems">
+  <meta property="og:description" content="Explore tested Grade-A corporate laptops with genuine Windows 11 Pro, NVMe SSDs, and 6-month warranty.">
+  <link rel="icon" href="assets/images/bheral-logo.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/products.js"></script>
+</head>
+<body data-page="buy">
+  <div id="site-header"></div>
+
+  <main class="page" id="app">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>/</span> <span>Buy Refurbished Laptops</span>
+        </div>
+        <h1>Certified Refurbished Business Laptops</h1>
+        <p>50-point hardware inspected corporate machines with guaranteed battery health, genuine OS, and 6-month warranty.</p>
+      </div>
+    </section>
+
+    <!-- Catalog Content -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="catalog-layout">
+          <!-- Filter Sidebar (Desktop & Mobile Drawer) -->
+          <aside class="filter-panel" id="filter-sidebar" aria-label="Product Filters">
+            <div class="filter-head">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span class="icon" style="color:var(--primary);">tune</span>
+                <h2>Filters</h2>
+              </div>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <button type="button" class="btn btn-secondary btn-small" id="clear-filters-btn">Clear All</button>
+                <button type="button" class="icon-btn mobile-only" id="mobile-filter-close" aria-label="Close filters">
+                  <span class="icon">close</span>
+                </button>
+              </div>
+            </div>
+
+            <form id="filters-form">
+              <!-- Price Slider -->
+              <div class="filter-group">
+                <h3>Maximum Price</h3>
+                <input id="price-slider" type="range" min="15000" max="80000" value="80000" step="1000" aria-label="Filter by maximum price">
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--on-surface-variant);margin-top:0.25rem;">
+                  <span>₹15,000</span>
+                  <strong id="price-slider-val" style="color:var(--primary);font-weight:700;">Up to ₹80,000</strong>
+                </div>
+              </div>
+
+              <!-- Category -->
+              <div class="filter-group">
+                <h3>Device Category</h3>
+                <label class="check"><input type="checkbox" name="category" value="Laptop" checked> Laptops</label>
+                <label class="check"><input type="checkbox" name="category" value="Desktop"> Desktops / PCs</label>
+                <label class="check"><input type="checkbox" name="category" value="Monitor"> Monitors</label>
+                <label class="check"><input type="checkbox" name="category" value="Printer"> Printers</label>
+              </div>
+
+              <!-- Brand -->
+              <div class="filter-group">
+                <h3>Brand</h3>
+                <label class="check"><input type="checkbox" name="brand" value="Apple"> Apple</label>
+                <label class="check"><input type="checkbox" name="brand" value="Lenovo"> Lenovo ThinkPad</label>
+                <label class="check"><input type="checkbox" name="brand" value="Dell"> Dell Latitude / Precision</label>
+                <label class="check"><input type="checkbox" name="brand" value="HP"> HP EliteBook / ProBook</label>
+                <label class="check"><input type="checkbox" name="brand" value="ASUS"> ASUS ROG / ZenBook</label>
+                <label class="check"><input type="checkbox" name="brand" value="Acer"> Acer</label>
+              </div>
+
+              <!-- Processor -->
+              <div class="filter-group">
+                <h3>Processor Family</h3>
+                <label class="check"><input type="checkbox" name="processor" value="Apple M"> Apple Silicon (M1/M2)</label>
+                <label class="check"><input type="checkbox" name="processor" value="Core i7"> Intel Core i7</label>
+                <label class="check"><input type="checkbox" name="processor" value="Core i5"> Intel Core i5</label>
+                <label class="check"><input type="checkbox" name="processor" value="Ryzen 7"> AMD Ryzen 7</label>
+                <label class="check"><input type="checkbox" name="processor" value="Ryzen 5"> AMD Ryzen 5</label>
+              </div>
+
+              <!-- Installed RAM -->
+              <div class="filter-group">
+                <h3>RAM Memory</h3>
+                <label class="check"><input type="checkbox" name="ram" value="8"> 8GB RAM</label>
+                <label class="check"><input type="checkbox" name="ram" value="16"> 16GB High-Speed RAM</label>
+                <label class="check"><input type="checkbox" name="ram" value="32"> 32GB Workstation RAM</label>
+              </div>
+
+              <!-- Storage Drive -->
+              <div class="filter-group">
+                <h3>Storage Capacity</h3>
+                <label class="check"><input type="checkbox" name="storage" value="256"> 256GB</label>
+                <label class="check"><input type="checkbox" name="storage" value="512"> 512GB Ultra-Fast</label>
+                <label class="check"><input type="checkbox" name="storage" value="1000"> 1TB (1000GB) Storage</label>
+              </div>
+
+              <!-- Storage Drive Type -->
+              <div class="filter-group">
+                <h3>Storage Technology</h3>
+                <label class="check"><input type="checkbox" name="storageType" value="NVMe SSD"> NVMe PCIe SSD</label>
+                <label class="check"><input type="checkbox" name="storageType" value="SSD"> Solid State Drive (SSD)</label>
+                <label class="check"><input type="checkbox" name="storageType" value="HDD"> Hard Disk Drive (HDD)</label>
+              </div>
+
+              <!-- Screen Size -->
+              <div class="filter-group">
+                <h3>Display Size</h3>
+                <label class="check"><input type="checkbox" name="screenSize" value="13.3"> 13.3-inch Ultraportable</label>
+                <label class="check"><input type="checkbox" name="screenSize" value="14"> 14.0-inch Corporate Standard</label>
+                <label class="check"><input type="checkbox" name="screenSize" value="15.6"> 15.6-inch Full Size</label>
+              </div>
+
+              <!-- Graphics / GPU -->
+              <div class="filter-group">
+                <h3>Graphics Card</h3>
+                <label class="check"><input type="checkbox" name="gpu" value="Dedicated"> Dedicated GPU (NVIDIA / Quadro)</label>
+                <label class="check"><input type="checkbox" name="gpu" value="Integrated"> Integrated Graphics (Iris Xe / UHD)</label>
+              </div>
+
+              <!-- Operating System -->
+              <div class="filter-group">
+                <h3>Operating System</h3>
+                <label class="check"><input type="checkbox" name="operatingSystem" value="Windows 11 Pro"> Windows 11 Pro Genuine</label>
+                <label class="check"><input type="checkbox" name="operatingSystem" value="Windows 11"> Windows 11 Home</label>
+                <label class="check"><input type="checkbox" name="operatingSystem" value="macOS"> macOS Updated</label>
+              </div>
+
+              <!-- Cosmetic Condition -->
+              <div class="filter-group">
+                <h3>Condition Grade</h3>
+                <label class="check"><input type="checkbox" name="condition" value="Excellent"> Grade A+ (Flawless / Like-New)</label>
+                <label class="check"><input type="checkbox" name="condition" value="Good"> Grade A (Clean Business Use)</label>
+                <label class="check"><input type="checkbox" name="condition" value="New"> Brand New OEM</label>
+              </div>
+
+              <!-- Rating -->
+              <div class="filter-group">
+                <h3>Customer Rating</h3>
+                <label class="check"><input type="checkbox" name="rating" value="4.8"> 4.8★ & Above</label>
+                <label class="check"><input type="checkbox" name="rating" value="4.6"> 4.6★ & Above</label>
+              </div>
+
+              <!-- Availability -->
+              <div class="filter-group">
+                <h3>Availability</h3>
+                <label class="check"><input type="checkbox" name="availability" value="inStock" checked> In Stock Only</label>
+              </div>
+            </form>
+
+            <button type="button" class="btn btn-primary btn-block mobile-only" id="mobile-filter-apply" style="margin-top:1.5rem;">
+              Show Filtered Results
+            </button>
+          </aside>
+
+          <!-- Main Listing Results Area -->
+          <main>
+            <!-- Listing Toolbar -->
+            <div class="listing-tools">
+              <div>
+                <strong id="result-count" style="font-size:1.1rem;color:var(--navy);">Loading products...</strong>
+                <div class="active-filters" id="active-filter-chips"></div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button type="button" class="btn btn-secondary mobile-filter" id="mobile-filter-trigger">
+                  <span class="icon">tune</span> Filters
+                </button>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <label for="sort-select" style="font-size:13px;color:var(--on-surface-variant);font-weight:600;white-space:nowrap;">Sort By:</label>
+                  <select id="sort-select" aria-label="Sort products">
+                    <option value="recommended">Recommended</option>
+                    <option value="newest">Newest Additions</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="rating">Best Rated (★)</option>
+                    <option value="discount">Biggest Discount (%)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-listing-grid"></div>
+
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+              <span class="icon" style="font-size:48px;color:var(--primary);">search_off</span>
+              <h2>No Matching Computers Found</h2>
+              <p>Try clearing some filters or widening your price range to see more results.</p>
+              <button type="button" class="btn btn-primary" id="empty-clear-btn">Clear All Filters</button>
+            </div>
+
+            <!-- Pagination / Load More -->
+            <div style="text-align:center;margin-top:2.5rem;" id="load-more-wrap">
+              <button type="button" class="btn btn-secondary btn-lg" id="load-more-btn" style="min-width:200px;">
+                Load More Laptops <span class="icon">expand_more</span>
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

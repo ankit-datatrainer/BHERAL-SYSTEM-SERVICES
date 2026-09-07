@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computer Parts, SSD, RAM & Spares Delhi | Bheral Systems & Services</title>
+  <meta name="description" content="Shop genuine OEM laptop and desktop computer parts in Delhi NCR. High-speed NVMe SSDs, DDR4/DDR5 RAM, batteries, chargers, graphics cards, and motherboards with warranty.">
+  <meta property="og:title" content="Computer Parts & Upgrades Delhi | Bheral Systems">
+  <meta property="og:description" content="Tested NVMe SSDs, DDR4 memory sticks, laptop batteries, chargers, and workstation parts.">
+  <link rel="icon" href="assets/images/bheral-logo.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/products.js"></script>
+</head>
+<body data-page="parts">
+  <div id="site-header"></div>
+
+  <main class="page" id="app">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>/</span> <span>Computer Parts & Upgrades</span>
+        </div>
+        <h1>Computer Parts, Upgrades & Genuine Spares</h1>
+        <p>Nehru Place direct wholesale and retail computer spares. Fast NVMe drives, RAM upgrades, OEM batteries, and chargers.</p>
+      </div>
+    </section>
+
+    <!-- Catalog Content -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="catalog-layout">
+          <!-- Filter Sidebar -->
+          <aside class="filter-panel" id="filter-sidebar" aria-label="Part Filters">
+            <div class="filter-head">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span class="icon" style="color:var(--primary);">tune</span>
+                <h2>Filter Spares</h2>
+              </div>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <button type="button" class="btn btn-secondary btn-small" id="clear-filters-btn">Clear All</button>
+                <button type="button" class="icon-btn mobile-only" id="mobile-filter-close" aria-label="Close filters">
+                  <span class="icon">close</span>
+                </button>
+              </div>
+            </div>
+
+            <form id="filters-form">
+              <!-- Price Slider -->
+              <div class="filter-group">
+                <h3>Maximum Price</h3>
+                <input id="price-slider" type="range" min="1000" max="60000" value="60000" step="500" aria-label="Filter by maximum price">
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--on-surface-variant);margin-top:0.25rem;">
+                  <span>₹1,000</span>
+                  <strong id="price-slider-val" style="color:var(--primary);font-weight:700;">Up to ₹60,000</strong>
+                </div>
+              </div>
+
+              <!-- Component Category -->
+              <div class="filter-group">
+                <h3>Component Type</h3>
+                <label class="check"><input type="checkbox" name="category" value="SSD"> Solid State Drives (SSD)</label>
+                <label class="check"><input type="checkbox" name="category" value="RAM"> RAM Memory Sticks</label>
+                <label class="check"><input type="checkbox" name="category" value="Battery"> Laptop OEM Batteries</label>
+                <label class="check"><input type="checkbox" name="category" value="Charger"> Adapters & Chargers</label>
+                <label class="check"><input type="checkbox" name="category" value="Graphics Card"> Dedicated GPUs</label>
+                <label class="check"><input type="checkbox" name="category" value="Accessories"> Cables & Networking</label>
+              </div>
+
+              <!-- Brand -->
+              <div class="filter-group">
+                <h3>Brand</h3>
+                <label class="check"><input type="checkbox" name="brand" value="Samsung"> Samsung</label>
+                <label class="check"><input type="checkbox" name="brand" value="Crucial"> Crucial / Micron</label>
+                <label class="check"><input type="checkbox" name="brand" value="Kingston"> Kingston</label>
+                <label class="check"><input type="checkbox" name="brand" value="Western Digital"> Western Digital</label>
+                <label class="check"><input type="checkbox" name="brand" value="Dell"> Dell OEM</label>
+                <label class="check"><input type="checkbox" name="brand" value="Lenovo"> Lenovo OEM</label>
+                <label class="check"><input type="checkbox" name="brand" value="HP"> HP OEM</label>
+              </div>
+
+              <!-- Condition -->
+              <div class="filter-group">
+                <h3>Condition</h3>
+                <label class="check"><input type="checkbox" name="condition" value="New"> Brand New OEM</label>
+                <label class="check"><input type="checkbox" name="condition" value="Excellent"> Tested Pull (Grade A+)</label>
+              </div>
+
+              <!-- Availability -->
+              <div class="filter-group">
+                <h3>Availability</h3>
+                <label class="check"><input type="checkbox" name="availability" value="inStock" checked> In Stock Only</label>
+              </div>
+            </form>
+
+            <button type="button" class="btn btn-primary btn-block mobile-only" id="mobile-filter-apply" style="margin-top:1.5rem;">
+              Show Filtered Spares
+            </button>
+          </aside>
+
+          <!-- Main Results -->
+          <main>
+            <div class="listing-tools">
+              <div>
+                <strong id="result-count" style="font-size:1.1rem;color:var(--navy);">Loading components...</strong>
+                <div class="active-filters" id="active-filter-chips"></div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button type="button" class="btn btn-secondary mobile-filter" id="mobile-filter-trigger">
+                  <span class="icon">tune</span> Filters
+                </button>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <label for="sort-select" style="font-size:13px;color:var(--on-surface-variant);font-weight:600;white-space:nowrap;">Sort By:</label>
+                  <select id="sort-select" aria-label="Sort parts">
+                    <option value="recommended">Recommended</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="rating">Best Rated (★)</option>
+                    <option value="discount">Biggest Discount (%)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-grid" id="product-listing-grid"></div>
+
+            <div class="empty-state hidden" id="empty-state">
+              <span class="icon" style="font-size:48px;color:var(--primary);">memory</span>
+              <h2>No Matching Components Found</h2>
+              <p>Try clearing some filters or widening your price selection.</p>
+              <button type="button" class="btn btn-primary" id="empty-clear-btn">Clear Filters</button>
+            </div>
+
+            <div style="text-align:center;margin-top:2.5rem;" id="load-more-wrap">
+              <button type="button" class="btn btn-secondary btn-lg" id="load-more-btn" style="min-width:200px;">
+                Load More Spares <span class="icon">expand_more</span>
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
