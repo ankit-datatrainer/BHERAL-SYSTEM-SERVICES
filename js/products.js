@@ -300,7 +300,7 @@
                 <strong>${product.rating}</strong>
                 <span class="muted">(${product.reviewCount} customer reviews)</span>
                 <span style="opacity:0.4;">•</span>
-                <span style="color:var(--emerald-text);font-weight:600;">Verified Nehru Place Stock</span>
+                <span style="color:var(--emerald-text);font-weight:600;">Verified Rohini Stock</span>
               </div>
 
               <div class="price-box" style="margin-bottom:1.5rem;">
@@ -434,7 +434,7 @@
           <div class="tab-content-panel" id="tab-qc" role="tabpanel">
             <h2>50-Point Diagnostic Checkpoints</h2>
             <p style="color:var(--on-surface-variant);margin-bottom:1.5rem;">
-              Before listing for dispatch, our hardware engineering team in Nehru Place certifies every device through a strict 50-point diagnostic audit:
+              Before listing for dispatch, our hardware engineering team in Rohini certifies every device through a strict 50-point diagnostic audit:
             </p>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
               <div style="background:var(--surface-container-low);padding:1rem;border-radius:var(--radius-md);">
@@ -466,7 +466,7 @@
             <p style="line-height:1.7;color:var(--on-surface-variant);font-size:14px;">
               - <strong>Delhi NCR Express</strong>: Orders confirmed before 2:00 PM qualify for same-day delivery across Delhi, Noida, and Gurugram.<br>
               - <strong>Pan-India Insured Shipping</strong>: Safe air dispatch via Blue Dart & DTDC with full transit insurance (2–4 days).<br>
-              - <strong>Nehru Place Store Collection</strong>: In-person hands-on verification and pickup available at our central lab.
+              - <strong>Rohini Store Collection</strong>: In-person hands-on verification and pickup available at our Sector 11 facility.
             </p>
           </div>
 

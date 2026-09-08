@@ -138,7 +138,7 @@
                         <input type="radio" name="deliveryMethod" value="Free Doorstep Delivery" checked>
                         <div>
                           <strong>Free Doorstep Delivery (Delhi NCR)</strong>
-                          <p style="margin:0;font-size:12px;color:var(--on-surface-variant);">1–2 Business Days. Dispatched from Nehru Place Hub.</p>
+                          <p style="margin:0;font-size:12px;color:var(--on-surface-variant);">1–2 Business Days. Dispatched from our Rohini facility.</p>
                         </div>
                       </label>
                       <label class="choice">
@@ -151,7 +151,7 @@
                       <label class="choice">
                         <input type="radio" name="deliveryMethod" value="Store Pickup">
                         <div>
-                          <strong>Store Pickup (Nehru Place Hub)</strong>
+                          <strong>Store Pickup (Sector 11, Rohini)</strong>
                           <p style="margin:0;font-size:12px;color:var(--on-surface-variant);">Collect today after 2:00 PM. Hands-on testing available.</p>
                         </div>
                       </label>

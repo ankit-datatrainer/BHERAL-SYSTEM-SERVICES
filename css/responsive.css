@@ -63,6 +63,15 @@
     max-width: 480px;
   }
 
+  .header-actions {
+    gap: 0.85rem;
+  }
+
+  .header-action-item:first-child,
+  .header-action-item:last-child {
+    display: none;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -351,6 +360,10 @@
     font-size: 1rem;
   }
 
+  .brand-title {
+    font-size: 0.82rem;
+  }
+
   .logo-text small {
     display: none;
   }
@@ -378,6 +391,22 @@
   }
 
   .header-actions .icon-btn.wishlist-link {
+    display: none;
+  }
+
+  .header-actions .header-action-item {
+    display: none;
+  }
+
+  .header-actions .header-action-item:nth-child(3) {
+    display: flex;
+  }
+
+  .header-actions {
+    gap: 0;
+  }
+
+  .action-label {
     display: none;
   }
 
@@ -682,4 +711,3 @@
     font-size: 0.85rem;
   }
 }
-

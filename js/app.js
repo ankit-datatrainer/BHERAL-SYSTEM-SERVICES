@@ -265,22 +265,21 @@ window.BSS = (() => {
   function renderHeader() {
     return `
       <header class="site-header">
-        <!-- Top Dark Utility Bar -->
+        <!-- Top Dark Utility Bar / Ticker -->
         <div class="utility">
           <div class="container">
             <div class="utility-left">
-              <span class="utility-badge"><span class="icon" style="font-size:16px;">bolt</span> Free Doorstep Pickup & Drop</span>
-              <span style="opacity:0.4;">•</span>
-              <span>Available for eligible Delhi NCR locations</span>
-              <span style="opacity:0.4;">•</span>
-              <span>6-Month Replacement Warranty</span>
+              <span class="utility-item"><span class="icon" style="font-size:15px;">location_on</span> Sector 11, Rohini, New Delhi 110085</span>
+            </div>
+            <div class="utility-center">
+              <span class="utility-item"><span class="icon" style="font-size:16px;">local_shipping</span> Doorstep Pickup &amp; Delivery across Delhi NCR</span>
             </div>
             <div class="utility-right">
-              <a href="tel:+919654779949" class="utility-badge"><span class="icon" style="font-size:16px;">call</span> +91 96547 79949</a>
-              <span style="opacity:0.4;">•</span>
-              <a href="track.html"><span class="icon" style="font-size:15px;margin-right:2px;">local_shipping</span> Track Request</a>
-              <span style="opacity:0.4;">•</span>
-              <a href="contact.html">Help Center</a>
+              <a href="tel:+919654779949" class="utility-item"><span class="icon" style="font-size:15px;">call</span> +91 96547 79949</a>
+              <span class="utility-sep">|</span>
+              <a href="track.html" class="utility-item">Track Order</a>
+              <span class="utility-sep">|</span>
+              <a href="contact.html" class="utility-item">Help Center</a>
             </div>
           </div>
         </div>
@@ -292,24 +291,37 @@ window.BSS = (() => {
           </button>
 
           <a class="logo" href="index.html">
-            <img src="assets/images/bheral-logo.svg" alt="Bheral Systems & Services logo">
+            <div class="logo-icon-wrap">
+              <svg width="34" height="28" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="2" width="26" height="18" rx="2" stroke="#111827" stroke-width="2.5"/>
+                <rect x="6" y="5" width="20" height="12" fill="#EBF3FF"/>
+                <path d="M1 22C1 20.8954 1.89543 20 3 20H29C30.1046 20 31 20.8954 31 22V23C31 23.5523 30.5523 24 30 24H2C1.44772 24 1 23.5523 1 23V22Z" fill="#111827"/>
+                <path d="M12 21H20" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
             <div class="logo-text">
-              <strong>BHERAL SYSTEMS</strong>
-              <small>Tech Re-Commerce & Repair</small>
+              <span class="brand-title">BHERAL SYSTEM <span class="text-primary">&amp; SERVICES</span></span>
+              <small class="brand-sub">Tech Re-Commerce &amp; Repair</small>
             </div>
           </a>
 
           <!-- Global Searchbar -->
           <div class="search-wrap">
             <div class="searchbar">
-              <select class="search-category-select" id="search-cat-scope" aria-label="Filter search category">
-                <option value="all">All Categories</option>
-                <option value="Laptop">Laptops</option>
-                <option value="Desktop">Desktops</option>
-                <option value="Parts">Computer Parts</option>
-                <option value="Repair">Repairs</option>
-              </select>
-              <input id="global-search" type="search" placeholder="Search refurbished laptops, parts (e.g. ThinkPad, 16GB RAM, Dell Battery)..." autocomplete="off" aria-label="Search site products and services">
+              <input id="global-search" type="search" placeholder="Search laptops, brands, categories..." autocomplete="off" aria-label="Search site products and services">
+              <div class="search-category-wrap">
+                <select class="search-category-select" id="search-cat-scope" aria-label="Filter search category">
+                  <option value="all">All Categories</option>
+                  <option value="Ultrabook">Ultrabooks</option>
+                  <option value="Gaming">Gaming Laptops</option>
+                  <option value="Business">Business Laptops</option>
+                  <option value="2in1">2-in-1 Laptops</option>
+                  <option value="Student">Student Laptops</option>
+                  <option value="Workstation">Workstations</option>
+                  <option value="Parts">Computer Parts</option>
+                  <option value="Repair">Repairs</option>
+                </select>
+              </div>
               <button id="global-search-btn" type="button" aria-label="Execute search">
                 <span class="icon">search</span>
               </button>
@@ -319,101 +331,105 @@ window.BSS = (() => {
 
           <!-- Header Actions -->
           <div class="header-actions">
-            <div class="location-chip">
-              <span class="icon" style="color:var(--primary);font-size:18px;">pin_drop</span>
-              <span>Delhi NCR</span>
-            </div>
-            <a class="icon-btn wishlist-link" href="wishlist.html" aria-label="Wishlist" title="View wishlist">
-              <span class="icon">favorite</span>
-              <span class="count wishlist-count">0</span>
+            <a class="header-action-item" href="buy.html?view=compare" title="Compare devices">
+              <div class="action-icon-wrap">
+                <span class="icon">swap_horiz</span>
+              </div>
+              <span class="action-label">Compare</span>
             </a>
-            <a class="icon-btn" href="cart.html" aria-label="Shopping Cart" title="View cart">
-              <span class="icon">shopping_bag</span>
-              <span class="count cart-count">0</span>
+            <a class="header-action-item wishlist-link" href="wishlist.html" title="View wishlist">
+              <div class="action-icon-wrap">
+                <span class="icon">favorite_border</span>
+                <span class="count wishlist-count">0</span>
+              </div>
+              <span class="action-label">Wishlist</span>
             </a>
-            <a class="icon-btn" href="contact.html" aria-label="Account" title="Account & Support">
-              <span class="icon">person</span>
+            <a class="header-action-item" href="cart.html" title="View cart">
+              <div class="action-icon-wrap">
+                <span class="icon">shopping_cart</span>
+                <span class="count cart-count">0</span>
+              </div>
+              <span class="action-label">Cart</span>
+            </a>
+            <a class="header-action-item" href="contact.html?action=signin" title="Sign In">
+              <div class="action-icon-wrap">
+                <span class="icon">person_outline</span>
+              </div>
+              <span class="action-label">Sign In</span>
             </a>
           </div>
-
-          <a class="btn btn-primary desktop-only" href="sell.html">
-            <span class="icon">currency_rupee</span> Sell Your Laptop
-          </a>
         </div>
 
-        <!-- Subnavigation & Mega Menus -->
+        <!-- Subnavigation Row -->
         <div class="nav-row">
           <div class="container">
-            <nav class="desktop-nav" aria-label="Main Store Navigation">
-              <a class="nav-link" href="index.html">Home</a>
-
-              <!-- BUY Mega Menu -->
-              <div class="nav-item">
-                <a class="nav-link" href="buy.html">Buy Refurbished <span class="icon" style="font-size:16px;">expand_more</span></a>
-                <div class="mega-menu">
-                  <a class="mega-item" href="buy.html?category=Laptop"><span class="icon">laptop</span>Refurbished Laptop</a>
-                  <a class="mega-item" href="buy.html?category=Desktop"><span class="icon">desktop_windows</span>Desktop</a>
-                  <a class="mega-item" href="buy.html?category=Monitor"><span class="icon">tv</span>Monitor</a>
-                  <a class="mega-item" href="buy.html?category=Printer"><span class="icon">print</span>Printer</a>
-                  <a class="mega-item" href="buy.html?category=SSD"><span class="icon">hard_drive</span>SSD</a>
-                  <a class="mega-item" href="buy.html?category=HDD"><span class="icon">album</span>HDD</a>
-                  <a class="mega-item" href="buy.html?category=RAM"><span class="icon">developer_board</span>RAM</a>
-                  <a class="mega-item" href="buy.html?category=Graphics%20Card"><span class="icon">memory</span>Graphics Card</a>
-                  <a class="mega-item" href="buy.html?category=Processor"><span class="icon">stream_apps</span>Processor</a>
-                  <a class="mega-item" href="buy.html?category=Motherboard"><span class="icon">check_indeterminate_small</span>Motherboard</a>
-                  <a class="mega-item" href="buy.html?category=Battery"><span class="icon">battery_full</span>Battery</a>
-                  <a class="mega-item" href="buy.html?category=Charger"><span class="icon">power</span>Charger</a>
-                  <a class="mega-item" href="buy.html?category=Accessories"><span class="icon">extension</span>Accessories</a>
+            <div class="nav-row-inner">
+              <!-- Dark SHOP BY CATEGORY Button with dropdown -->
+              <div class="shop-category-wrapper">
+                <button class="btn-shop-category" id="btn-shop-category" aria-expanded="false" type="button">
+                  <span class="icon">menu</span>
+                  <span>SHOP BY CATEGORY</span>
+                </button>
+                <div class="shop-category-dropdown" id="shop-category-dropdown">
+                  <a href="buy.html?category=Ultrabook" class="cat-drop-item"><span class="icon">laptop_mac</span> Ultrabooks</a>
+                  <a href="buy.html?category=Gaming" class="cat-drop-item"><span class="icon">sports_esports</span> Gaming Laptops</a>
+                  <a href="buy.html?category=Business" class="cat-drop-item"><span class="icon">business_center</span> Business Laptops</a>
+                  <a href="buy.html?category=2in1" class="cat-drop-item"><span class="icon">screen_rotation</span> 2-in-1 Laptops</a>
+                  <a href="buy.html?category=Student" class="cat-drop-item"><span class="icon">school</span> Student Laptops</a>
+                  <a href="buy.html?category=Workstation" class="cat-drop-item"><span class="icon">desktop_windows</span> Workstations</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="parts.html" class="cat-drop-item"><span class="icon">memory</span> Computer Parts</a>
+                  <a href="repair.html" class="cat-drop-item"><span class="icon">handyman</span> Repair Services</a>
                 </div>
               </div>
 
-              <!-- SELL Mega Menu -->
-              <div class="nav-item">
-                <a class="nav-link" href="sell.html">Sell Device <span class="icon" style="font-size:16px;">expand_more</span></a>
-                <div class="mega-menu">
-                  <a class="mega-item" href="sell.html?category=Laptop"><span class="icon">laptop</span>Sell Laptop</a>
-                  <a class="mega-item" href="sell.html?category=Desktop"><span class="icon">desktop_windows</span>Sell Desktop</a>
-                  <a class="mega-item" href="sell.html?category=Monitor"><span class="icon">tv</span>Sell Monitor</a>
-                  <a class="mega-item" href="sell.html?category=Printer"><span class="icon">print</span>Sell Printer</a>
-                  <a class="mega-item" href="sell.html?category=SSD"><span class="icon">hard_drive</span>Sell SSD</a>
-                  <a class="mega-item" href="sell.html?category=HDD"><span class="icon">album</span>Sell HDD</a>
-                  <a class="mega-item" href="sell.html?category=RAM"><span class="icon">developer_board</span>Sell RAM</a>
-                  <a class="mega-item" href="sell.html?category=GPU"><span class="icon">memory</span>Sell GPU</a>
-                  <a class="mega-item" href="sell.html?category=Processor"><span class="icon">stream_apps</span>Sell Processor</a>
-                  <a class="mega-item" href="sell.html?category=Motherboard"><span class="icon">check_indeterminate_small</span>Sell Motherboard</a>
+              <!-- Main Desktop Nav Links -->
+              <nav class="desktop-nav" aria-label="Main Store Navigation">
+                <a class="nav-link active" href="index.html">HOME</a>
+
+                <!-- LAPTOPS Mega Menu -->
+                <div class="nav-item">
+                  <a class="nav-link" href="buy.html">LAPTOPS <span class="icon nav-chevron">expand_more</span></a>
+                  <div class="mega-menu">
+                    <a class="mega-item" href="buy.html?category=Ultrabook"><span class="icon">laptop</span>Ultrabooks</a>
+                    <a class="mega-item" href="buy.html?category=Gaming"><span class="icon">sports_esports</span>Gaming Laptops</a>
+                    <a class="mega-item" href="buy.html?category=Business"><span class="icon">business_center</span>Business Laptops</a>
+                    <a class="mega-item" href="buy.html?category=2in1"><span class="icon">screen_rotation</span>2-in-1 Laptops</a>
+                    <a class="mega-item" href="buy.html?category=Student"><span class="icon">school</span>Student Laptops</a>
+                    <a class="mega-item" href="buy.html"><span class="icon">verified</span>All Laptops</a>
+                  </div>
                 </div>
-              </div>
 
-              <!-- REPAIR Mega Menu -->
-              <div class="nav-item">
-                <a class="nav-link" href="repair.html">Repair Services <span class="icon" style="font-size:16px;">expand_more</span></a>
-                <div class="mega-menu">
-                  <a class="mega-item" href="repair.html?service=Laptop%20Repair"><span class="icon">laptop</span>Laptop Repair</a>
-                  <a class="mega-item" href="repair.html?service=Desktop%20Repair"><span class="icon">desktop_windows</span>Desktop Repair</a>
-                  <a class="mega-item" href="repair.html?service=Printer%20Repair"><span class="icon">print</span>Printer Repair</a>
-                  <a class="mega-item" href="repair.html?service=Screen%20Replacement"><span class="icon">monitor</span>Screen Repair</a>
-                  <a class="mega-item" href="repair.html?service=Keyboard%20Repair"><span class="icon">keyboard</span>Keyboard Repair</a>
-                  <a class="mega-item" href="repair.html?service=Battery%20Replacement"><span class="icon">battery_full</span>Battery Repair</a>
-                  <a class="mega-item" href="repair.html?service=Charging%20Port%20Repair"><span class="icon">power</span>Charging Port Repair</a>
-                  <a class="mega-item" href="repair.html?service=Motherboard%20Repair"><span class="icon">memory</span>Motherboard Repair</a>
-                  <a class="mega-item" href="repair.html?service=Hard%20Drive%20Repair"><span class="icon">hard_disk</span>HDD / SSD Repair</a>
-                  <a class="mega-item" href="repair.html?service=Data%20Recovery"><span class="icon">cloud_download</span>Data Recovery</a>
-                  <a class="mega-item" href="repair.html?service=RAM%20Upgrade"><span class="icon">developer_board</span>RAM Upgrade</a>
-                  <a class="mega-item" href="repair.html?service=SSD%20Upgrade"><span class="icon">hard_drive</span>SSD Upgrade</a>
-                  <a class="mega-item" href="repair.html?service=Software%20Troubleshooting"><span class="icon">terminal</span>Software Repair</a>
-                  <a class="mega-item" href="repair.html?service=LAN%20%2F%20Networking"><span class="icon">lan</span>Networking Support</a>
+                <!-- BRANDS Mega Menu -->
+                <div class="nav-item">
+                  <a class="nav-link" href="buy.html">BRANDS <span class="icon nav-chevron">expand_more</span></a>
+                  <div class="mega-menu">
+                    <a class="mega-item" href="buy.html?brand=Apple"><span class="icon">laptop_mac</span>Apple</a>
+                    <a class="mega-item" href="buy.html?brand=Lenovo"><span class="icon">laptop</span>Lenovo ThinkPad</a>
+                    <a class="mega-item" href="buy.html?brand=Dell"><span class="icon">laptop</span>Dell Latitude & XPS</a>
+                    <a class="mega-item" href="buy.html?brand=HP"><span class="icon">laptop</span>HP EliteBook</a>
+                    <a class="mega-item" href="buy.html?brand=Asus"><span class="icon">sports_esports</span>Asus ROG</a>
+                  </div>
                 </div>
-              </div>
 
-              <a class="nav-link" href="parts.html">Computer Parts</a>
-              <a class="nav-link" href="contact.html?type=corporate">Corporate Bulk Deals</a>
-              <a class="nav-link" href="track.html">Track Request</a>
-              <a class="nav-link" href="contact.html">Contact</a>
-            </nav>
+                <!-- ACCESSORIES Mega Menu -->
+                <div class="nav-item">
+                  <a class="nav-link" href="parts.html">ACCESSORIES <span class="icon nav-chevron">expand_more</span></a>
+                  <div class="mega-menu">
+                    <a class="mega-item" href="parts.html?cat=Charger"><span class="icon">power</span>Chargers & Adapters</a>
+                    <a class="mega-item" href="parts.html?cat=RAM"><span class="icon">developer_board</span>RAM Memory</a>
+                    <a class="mega-item" href="parts.html?cat=SSD"><span class="icon">hard_drive</span>SSDs</a>
+                    <a class="mega-item" href="parts.html?cat=Battery"><span class="icon">battery_full</span>Batteries</a>
+                    <a class="mega-item" href="parts.html"><span class="icon">extension</span>All Accessories</a>
+                  </div>
+                </div>
 
-            <a class="btn btn-green btn-small" href="https://wa.me/919654779949" target="_blank" rel="noopener">
-              <span class="icon" style="font-size:16px;">chat</span> WhatsApp: +91 96547 79949
-            </a>
+                <a class="nav-link" href="buy.html?filter=deals">DEALS</a>
+                <a class="nav-link" href="contact.html?type=corporate">BUSINESS STORE</a>
+                <a class="nav-link" href="warranty.html">ABOUT US</a>
+                <a class="nav-link" href="contact.html">CONTACT US</a>
+              </nav>
+            </div>
           </div>
         </div>
       </header>
@@ -425,8 +441,8 @@ window.BSS = (() => {
           <a class="logo" href="index.html">
             <img src="assets/images/bheral-logo.svg" alt="Bheral Systems Logo">
             <div class="logo-text">
-              <strong>BHERAL SYSTEMS</strong>
-              <small>Re-Commerce & Repair</small>
+              <strong>BHERAL SYSTEM &amp; SERVICES</strong>
+              <small>Tech Re-Commerce &amp; Repair</small>
             </div>
           </a>
           <button class="icon-btn drawer-close" aria-label="Close navigation drawer">
@@ -470,11 +486,11 @@ window.BSS = (() => {
         <div class="container">
           <div class="footer-grid">
             <div class="footer-brand">
-              <div class="footer-brand-title">BHERAL SYSTEMS & SERVICES</div>
+              <div class="footer-brand-title">BHERAL SYSTEM &amp; SERVICES</div>
               <p>Delhi NCR's premier tech re-commerce, certified pre-owned IT infrastructure provider, and precision chip-level hardware repair laboratory.</p>
               <div class="footer-meta-item">
                 <span class="icon">location_on</span>
-                <span>Tech Zone, Nehru Place / NCR Central Hub, New Delhi, India</span>
+                <span>1st Floor, Landmark Veera Devi Jain Charitable Trust Hospital, D-3/6, Pocket 3, Sector 11, Rohini, New Delhi, Delhi 110085</span>
               </div>
               <div class="footer-meta-item">
                 <span class="icon">call</span>
@@ -634,6 +650,19 @@ window.BSS = (() => {
         const box = accBtn.parentElement;
         const isOpen = box.classList.toggle('open');
         accBtn.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      // Shop by Category toggle button
+      const shopCatBtn = e.target.closest('#btn-shop-category');
+      const shopCatWrap = e.target.closest('.shop-category-wrapper');
+      if (shopCatBtn) {
+        e.preventDefault();
+        const wrap = shopCatBtn.closest('.shop-category-wrapper');
+        const isOpen = wrap.classList.toggle('open');
+        shopCatBtn.setAttribute('aria-expanded', String(isOpen));
+      } else if (!shopCatWrap) {
+        qs('.shop-category-wrapper')?.classList.remove('open');
+        qs('#btn-shop-category')?.setAttribute('aria-expanded', 'false');
       }
     });
   }

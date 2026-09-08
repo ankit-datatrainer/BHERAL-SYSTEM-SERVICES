@@ -71,7 +71,7 @@
           <div class="container">
             <div class="section-head">
               <div>
-                <span class="eyebrow">Nehru Place Hardware Laboratory</span>
+                <span class="eyebrow">Rohini Hardware Laboratory</span>
                 <h2>Explore Repair Services</h2>
                 <p>Transparent turnaround times, genuine OEM spare parts, and written service warranties.</p>
               </div>
@@ -308,11 +308,11 @@
                 </div>
               </label>
 
-              <label class="choice ${wizardState.serviceMethod === 'Visit Service Center (Nehru Place Hub)' ? 'selected' : ''}">
-                <input type="radio" name="wizMethod" value="Visit Service Center (Nehru Place Hub)" ${wizardState.serviceMethod === 'Visit Service Center (Nehru Place Hub)' ? 'checked' : ''}>
+              <label class="choice ${wizardState.serviceMethod === 'Visit Service Center (Sector 11, Rohini)' ? 'selected' : ''}">
+                <input type="radio" name="wizMethod" value="Visit Service Center (Sector 11, Rohini)" ${wizardState.serviceMethod === 'Visit Service Center (Sector 11, Rohini)' ? 'checked' : ''}>
                 <div>
-                  <strong>Visit Service Center (Nehru Place Hub)</strong>
-                  <p style="margin:0;font-size:12px;color:var(--on-surface-variant);">Walk into our lab in Nehru Place for direct bench diagnosis by a chip-level master technician.</p>
+                  <strong>Visit Service Center (Sector 11, Rohini)</strong>
+                  <p style="margin:0;font-size:12px;color:var(--on-surface-variant);">Visit our Sector 11, Rohini facility for direct bench diagnosis by a chip-level master technician.</p>
                 </div>
               </label>
 
@@ -432,7 +432,7 @@
           <span class="badge badge-green" style="font-size:12px;padding:0.35rem 0.75rem;margin-bottom:0.75rem;">Repair Booking Registered</span>
           <h2 style="font-size:2rem;margin-bottom:0.5rem;">Service Request Confirmed!</h2>
           <p style="color:var(--on-surface-variant);max-width:520px;margin:0 auto 1.5rem;">
-            Your computer repair request has been logged. Our Nehru Place coordinator will call <strong>+91 ${s.customer.phone}</strong> to confirm technician dispatch.
+            Your computer repair request has been logged. Our Rohini coordinator will call <strong>+91 ${s.customer.phone}</strong> to confirm technician dispatch.
           </p>
 
           <div style="background:var(--surface-container-low);border:1.5px dashed var(--primary);border-radius:var(--radius-lg);padding:1.5rem;max-width:480px;margin:0 auto 2rem;text-align:left;">
