@@ -31,6 +31,17 @@ const DEVICE_CATEGORIES = [
 const LAPTOP_BRANDS = ['Apple', 'Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Other'];
 const PART_BRANDS = ['Samsung', 'Crucial', 'Kingston', 'Western Digital', 'Seagate', 'Corsair', 'Intel', 'AMD', 'ASUS', 'HP', 'Dell', 'Other'];
 
+const BRAND_LOGOS_MAP: Record<string, { src: string; height: number }> = {
+  Apple: { src: '/assets/images/brands/apple.svg', height: 26 },
+  Dell: { src: '/assets/images/brands/dell.svg', height: 28 },
+  HP: { src: '/assets/images/brands/hp.svg', height: 26 },
+  Lenovo: { src: '/assets/images/brands/lenovo.svg', height: 18 },
+  ASUS: { src: '/assets/images/brands/asus.svg', height: 16 },
+  Acer: { src: '/assets/images/brands/acer.svg', height: 18 },
+  MSI: { src: '/assets/images/brands/msi.svg', height: 16 },
+  Samsung: { src: '/assets/images/brands/samsung.svg', height: 15 },
+};
+
 const PROCESSORS = ['Apple M-series (M1/M2/M3)', 'Core i7 / Ryzen 7 (High End)', 'Core i5 / Ryzen 5 (Mainstream)', 'Core i3 / Ryzen 3 (Entry)', 'Intel Core i9 / Ryzen 9', 'Intel Xeon / Workstation', 'Other / Older Dual-Core'];
 const RAMS = ['4GB', '8GB', '16GB', '32GB+'];
 const STORAGES = ['128GB', '256GB', '512GB', '1TB+'];
@@ -342,12 +353,31 @@ export function SellWizard() {
                 </div>
                 <h3 style={{ fontSize: 14, textTransform: 'uppercase', color: 'var(--on-surface-variant)', marginBottom: '0.75rem' }}>Brand</h3>
                 <div className="option-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))' }}>
-                  {brands.map((b) => (
-                    <label className={`option${state.brand === b ? ' selected' : ''}`} key={b}>
-                      <input type="radio" name="sellBrand" checked={state.brand === b} onChange={() => set('brand', b)} />
-                      <strong>{b}</strong>
-                    </label>
-                  ))}
+                  {brands.map((b) => {
+                    const brandLogo = BRAND_LOGOS_MAP[b];
+                    return (
+                      <label className={`option${state.brand === b ? ' selected' : ''}`} key={b} style={{ minHeight: 74, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '0.75rem 0.5rem' }}>
+                        <input type="radio" name="sellBrand" checked={state.brand === b} onChange={() => set('brand', b)} />
+                        {brandLogo ? (
+                          <>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={brandLogo.src}
+                              alt={b}
+                              style={{ height: brandLogo.height, maxWidth: 85, objectFit: 'contain' }}
+                              loading="lazy"
+                            />
+                            <strong style={{ fontSize: 12, color: 'var(--on-surface-variant)' }}>{b}</strong>
+                          </>
+                        ) : (
+                          <>
+                            <span className="icon" style={{ fontSize: 24, color: 'var(--primary)' }}>devices</span>
+                            <strong>{b}</strong>
+                          </>
+                        )}
+                      </label>
+                    );
+                  })}
                 </div>
               </>
             )}

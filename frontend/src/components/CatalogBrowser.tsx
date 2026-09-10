@@ -320,6 +320,17 @@ export function CatalogBrowser({ lockedCategories, pageSize = 12 }: Props) {
   );
 }
 
+const BRAND_LOGOS_MAP: Record<string, string> = {
+  Apple: '/assets/images/brands/apple.svg',
+  Dell: '/assets/images/brands/dell.svg',
+  HP: '/assets/images/brands/hp.svg',
+  Lenovo: '/assets/images/brands/lenovo.svg',
+  ASUS: '/assets/images/brands/asus.svg',
+  Acer: '/assets/images/brands/acer.svg',
+  MSI: '/assets/images/brands/msi.svg',
+  Samsung: '/assets/images/brands/samsung.svg',
+};
+
 function FilterGroup({
   title,
   options,
@@ -336,12 +347,24 @@ function FilterGroup({
   return (
     <div className="filter-group">
       <h3>{title}</h3>
-      {options.map((opt, i) => (
-        <label className="check-label" key={opt}>
-          <input type="checkbox" checked={selected.includes(opt)} onChange={() => onToggle(opt)} />
-          {labels?.[i] ?? opt}
-        </label>
-      ))}
+      {options.map((opt, i) => {
+        const logo = title === 'Brand' ? BRAND_LOGOS_MAP[opt] : undefined;
+        return (
+          <label className="check-label" key={opt} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <input type="checkbox" checked={selected.includes(opt)} onChange={() => onToggle(opt)} />
+            {logo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={logo}
+                alt=""
+                style={{ height: 14, width: 'auto', maxWidth: 36, objectFit: 'contain', opacity: 0.85 }}
+                loading="lazy"
+              />
+            )}
+            <span>{labels?.[i] ?? opt}</span>
+          </label>
+        );
+      })}
     </div>
   );
 }

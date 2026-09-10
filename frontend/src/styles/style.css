@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..700,0..1,-50..200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..700,0..1,-50..200&display=swap');
 
 /* ==========================================================================
    BHERAL SYSTEMS & SERVICES - DESIGN SYSTEM TOKENS (FROM GOOGLE STITCH)
@@ -66,8 +66,8 @@
   --red-soft: #ffdad6;
 
   /* Typography Scales */
-  --font-headline: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-headline: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Border Radiuses */
@@ -104,6 +104,18 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+}
+
+html, body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, a, label {
+  font-family: var(--font-body);
+}
+
+.icon, .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: var(--font-mono) !important;
 }
 
 body {
@@ -3392,6 +3404,28 @@ p {
   transition: color var(--transition);
 }
 
+.brand-rail-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(100%) opacity(0.65);
+  text-decoration: none;
+}
+
+.brand-rail-item:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.brand-rail-item img {
+  object-fit: contain;
+  max-width: 140px;
+  width: auto;
+  display: block;
+}
+
 /* --- Promo Banner (Corporate deals) --- */
 .promo {
   background-color: var(--navy);
@@ -4011,6 +4045,42 @@ p {
   transform: scale(1.02);
 }
 
+.hero-discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px dashed #2563eb;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-discount-badge small {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-discount-badge strong {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1.1;
+  margin: 1px 0;
+}
+
 /* ==========================================================================
    SHOP BY CATEGORY SECTION (MOCKUP REPLICA)
    ========================================================================== */
@@ -4070,10 +4140,11 @@ p {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.category-card:hover {
+.category-card:hover,
+.category-card.active {
   transform: translateY(-5px);
-  border-color: #93c5fd;
-  box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.12);
+  border-color: #2563eb;
+  box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.16);
 }
 
 .cat-img-box {
@@ -4096,7 +4167,8 @@ p {
   transition: transform 0.35s ease;
 }
 
-.category-card:hover .cat-img-box img {
+.category-card:hover .cat-img-box img,
+.category-card.active .cat-img-box img {
   transform: scale(1.08);
 }
 
@@ -4109,7 +4181,8 @@ p {
   transition: color var(--transition);
 }
 
-.category-card:hover .cat-name {
+.category-card:hover .cat-name,
+.category-card.active .cat-name {
   color: #2563eb;
 }
 

@@ -15,7 +15,8 @@ import { useStore } from './StoreProvider';
 
 interface MegaLink {
   href: string;
-  icon: string;
+  icon?: string;
+  logo?: string;
   label: string;
 }
 
@@ -24,7 +25,7 @@ const SHOP_CATEGORIES: Array<MegaLink | 'divider'> = [
   { href: '/buy?category=Desktop', icon: 'desktop_windows', label: 'Desktops & Workstations' },
   { href: '/buy?category=Monitor', icon: 'tv', label: 'Monitors' },
   { href: '/buy?category=Printer', icon: 'print', label: 'Printers' },
-  { href: '/buy?brand=Apple', icon: 'laptop_mac', label: 'Apple MacBooks' },
+  { href: '/buy?brand=Apple', logo: '/assets/images/brands/apple.svg', label: 'Apple MacBooks' },
   { href: '/buy?condition=New', icon: 'new_releases', label: 'Brand New Stock' },
   'divider',
   { href: '/marketplace', icon: 'storefront', label: 'Marketplace (Private Sellers)' },
@@ -45,11 +46,14 @@ const LAPTOP_MENU: MegaLink[] = [
 ];
 
 const BRANDS_MENU: MegaLink[] = [
-  { href: '/buy?brand=Apple', icon: 'laptop_mac', label: 'Apple' },
-  { href: '/buy?brand=Lenovo', icon: 'laptop', label: 'Lenovo ThinkPad' },
-  { href: '/buy?brand=Dell', icon: 'laptop', label: 'Dell Latitude & XPS' },
-  { href: '/buy?brand=HP', icon: 'laptop', label: 'HP EliteBook' },
-  { href: '/buy?brand=ASUS', icon: 'sports_esports', label: 'ASUS ROG' },
+  { href: '/buy?brand=Apple', logo: '/assets/images/brands/apple.svg', label: 'Apple' },
+  { href: '/buy?brand=Lenovo', logo: '/assets/images/brands/lenovo.svg', label: 'Lenovo ThinkPad' },
+  { href: '/buy?brand=Dell', logo: '/assets/images/brands/dell.svg', label: 'Dell Latitude & XPS' },
+  { href: '/buy?brand=HP', logo: '/assets/images/brands/hp.svg', label: 'HP EliteBook' },
+  { href: '/buy?brand=ASUS', logo: '/assets/images/brands/asus.svg', label: 'ASUS ROG' },
+  { href: '/buy?brand=Acer', logo: '/assets/images/brands/acer.svg', label: 'Acer' },
+  { href: '/buy?brand=MSI', logo: '/assets/images/brands/msi.svg', label: 'MSI Gaming' },
+  { href: '/buy?brand=Samsung', logo: '/assets/images/brands/samsung.svg', label: 'Samsung' },
 ];
 
 const ACCESSORIES_MENU: MegaLink[] = [
@@ -110,7 +114,16 @@ function MegaMenu({ title, href, links }: { title: string; href: string; links: 
       <div className="mega-menu">
         {links.map((l) => (
           <Link key={l.href + l.label} className="mega-item" href={l.href}>
-            <span className="icon">{l.icon}</span>
+            {l.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={l.logo}
+                alt={l.label}
+                style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0, marginRight: 8 }}
+              />
+            ) : l.icon ? (
+              <span className="icon">{l.icon}</span>
+            ) : null}
             {l.label}
           </Link>
         ))}
@@ -385,7 +398,17 @@ export function SiteHeader() {
                       <div className="dropdown-divider" key={`div-${i}`} />
                     ) : (
                       <Link href={item.href} className="cat-drop-item" key={item.href + item.label}>
-                        <span className="icon">{item.icon}</span> {item.label}
+                        {item.logo ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={item.logo}
+                            alt={item.label}
+                            style={{ width: 18, height: 18, objectFit: 'contain', flexShrink: 0, marginRight: 8 }}
+                          />
+                        ) : (
+                          <span className="icon">{item.icon}</span>
+                        )}
+                        {item.label}
                       </Link>
                     ),
                   )}

@@ -404,11 +404,14 @@ window.BSS = (() => {
                 <div class="nav-item">
                   <a class="nav-link" href="buy.html">BRANDS <span class="icon nav-chevron">expand_more</span></a>
                   <div class="mega-menu">
-                    <a class="mega-item" href="buy.html?brand=Apple"><span class="icon">laptop_mac</span>Apple</a>
-                    <a class="mega-item" href="buy.html?brand=Lenovo"><span class="icon">laptop</span>Lenovo ThinkPad</a>
-                    <a class="mega-item" href="buy.html?brand=Dell"><span class="icon">laptop</span>Dell Latitude & XPS</a>
-                    <a class="mega-item" href="buy.html?brand=HP"><span class="icon">laptop</span>HP EliteBook</a>
-                    <a class="mega-item" href="buy.html?brand=Asus"><span class="icon">sports_esports</span>Asus ROG</a>
+                    <a class="mega-item" href="buy.html?brand=Apple"><img src="assets/images/brands/apple.svg" alt="Apple" style="height:20px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> Apple</a>
+                    <a class="mega-item" href="buy.html?brand=Lenovo"><img src="assets/images/brands/lenovo.svg" alt="Lenovo" style="height:16px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> Lenovo ThinkPad</a>
+                    <a class="mega-item" href="buy.html?brand=Dell"><img src="assets/images/brands/dell.svg" alt="Dell" style="height:20px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> Dell Latitude & XPS</a>
+                    <a class="mega-item" href="buy.html?brand=HP"><img src="assets/images/brands/hp.svg" alt="HP" style="height:20px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> HP EliteBook</a>
+                    <a class="mega-item" href="buy.html?brand=ASUS"><img src="assets/images/brands/asus.svg" alt="ASUS" style="height:14px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> ASUS ROG</a>
+                    <a class="mega-item" href="buy.html?brand=Acer"><img src="assets/images/brands/acer.svg" alt="Acer" style="height:16px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> Acer</a>
+                    <a class="mega-item" href="buy.html?brand=MSI"><img src="assets/images/brands/msi.svg" alt="MSI" style="height:15px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> MSI Gaming</a>
+                    <a class="mega-item" href="buy.html?brand=Samsung"><img src="assets/images/brands/samsung.svg" alt="Samsung" style="height:14px;width:auto;margin-right:10px;vertical-align:middle;object-fit:contain;"> Samsung Galaxy Book</a>
                   </div>
                 </div>
 

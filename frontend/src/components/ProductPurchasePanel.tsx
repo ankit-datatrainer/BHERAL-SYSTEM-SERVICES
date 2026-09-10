@@ -7,6 +7,17 @@ import { imageUrl, money, whatsappUrl } from '@/lib/format';
 import type { Product } from '@/lib/types';
 import { useStore } from './StoreProvider';
 
+const BRAND_LOGOS_MAP: Record<string, { src: string; height: number }> = {
+  Apple: { src: '/assets/images/brands/apple.svg', height: 20 },
+  Dell: { src: '/assets/images/brands/dell.svg', height: 22 },
+  HP: { src: '/assets/images/brands/hp.svg', height: 20 },
+  Lenovo: { src: '/assets/images/brands/lenovo.svg', height: 16 },
+  ASUS: { src: '/assets/images/brands/asus.svg', height: 14 },
+  Acer: { src: '/assets/images/brands/acer.svg', height: 16 },
+  MSI: { src: '/assets/images/brands/msi.svg', height: 14 },
+  Samsung: { src: '/assets/images/brands/samsung.svg', height: 14 },
+};
+
 export function ProductPurchasePanel({ product }: { product: Product }) {
   const { addToCart, toggleWishlist, isWished, hydrated } = useStore();
   const [activeImage, setActiveImage] = useState(0);
@@ -16,6 +27,7 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
   const wished = hydrated && isWished(product.id);
   const inStock = product.stock > 0;
   const maxQty = Math.min(10, Math.max(1, product.stock));
+  const brandLogo = product.brand ? BRAND_LOGOS_MAP[product.brand] : undefined;
 
   return (
     <>
@@ -43,7 +55,17 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
       </div>
 
       <div className="detail-summary">
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '0.75rem' }}>
+          {brandLogo && (
+            <span className="badge" style={{ background: 'var(--surface-container-low)', border: '1px solid var(--border)', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0.2rem 0.6rem' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={brandLogo.src}
+                alt={product.brand}
+                style={{ height: brandLogo.height, width: 'auto', maxWidth: 65, objectFit: 'contain' }}
+              />
+            </span>
+          )}
           <span className="badge badge-green">
             <span className="icon" style={{ fontSize: 14 }}>fact_check</span> 50-Point Audit Passed
           </span>

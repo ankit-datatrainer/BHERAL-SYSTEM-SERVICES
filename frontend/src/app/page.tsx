@@ -7,6 +7,7 @@ import { api } from '@/lib/api';
 import { money, whatsappUrl, PHONE_DISPLAY, imageUrl } from '@/lib/format';
 import { ProductCard } from '@/components/ProductCard';
 import { HeroSection } from '@/components/home/HeroSection';
+import { ShopByCategory } from '@/components/home/ShopByCategory';
 import { FaqAccordion } from '@/components/home/FaqAccordion';
 import type { Product, RepairService } from '@/lib/types';
 
@@ -21,6 +22,17 @@ const JOURNEY_CARDS = [
   { href: '/repair?service=Printer%20Repair', icon: 'print', badge: 'HP • CANON • EPSON', badgeClass: 'badge-blue', title: 'Printer & Scanner Service', body: 'Cartridge head unclogging, paper jam mechanical fixes, logic board repair, and toner refills.', cta: 'Fix My Printer →' },
   { href: '/repair?service=Data%20Recovery', icon: 'cloud_download', badge: 'CLEAN-ROOM LAB', badgeClass: 'badge-blue', title: 'Clean-Room Data Recovery', body: 'Specialist recovery from formatted drives, dropped clicking disks, ransomware encryptions, and dead SSDs.', cta: 'Request Evaluation →' },
   { href: '/contact', icon: 'electric_moped', badge: 'FREE SERVICE', badgeClass: 'badge-green', title: 'Free 2-Hour Pickup', body: 'Quick doorstep pickup for evaluation and repairs in eligible Delhi NCR pincodes with live trackable receipts.', cta: 'Check Availability →', green: true, highlight: true },
+];
+
+const BRAND_LOGOS = [
+  { name: 'Apple', logo: 'assets/images/brands/apple.svg', href: '/buy?brand=Apple', height: 32 },
+  { name: 'Dell', logo: 'assets/images/brands/dell.svg', href: '/buy?brand=Dell', height: 38 },
+  { name: 'HP', logo: 'assets/images/brands/hp.svg', href: '/buy?brand=HP', height: 36 },
+  { name: 'Lenovo', logo: 'assets/images/brands/lenovo.svg', href: '/buy?brand=Lenovo', height: 26 },
+  { name: 'ASUS', logo: 'assets/images/brands/asus.svg', href: '/buy?brand=ASUS', height: 24 },
+  { name: 'Acer', logo: 'assets/images/brands/acer.svg', href: '/buy?brand=Acer', height: 26 },
+  { name: 'MSI', logo: 'assets/images/brands/msi.svg', href: '/buy?brand=MSI', height: 24 },
+  { name: 'Samsung', logo: 'assets/images/brands/samsung.svg', href: '/buy?brand=Samsung', height: 22 },
 ];
 
 const SELL_CATEGORIES = [
@@ -85,14 +97,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="container" style={{ marginTop: '-0.5rem', marginBottom: '1.5rem' }}>
-        <div className="trust-ribbon">
-          <span><i className="icon">verified</i> Verified Delhi NCR Re-Commerce Lab</span>
-          <span><i className="icon">fact_check</i> 50-Point Hardware Audit</span>
-          <span><i className="icon">local_shipping</i> 2-Hour Doorstep Pickup Across Delhi NCR</span>
-          <span className="desktop-only"><i className="icon">currency_rupee</i> Instant UPI on Spot</span>
-        </div>
-      </div>
 
       {offline && (
         <div className="container" style={{ marginBottom: '1.5rem' }}>
@@ -103,6 +107,7 @@ export default async function HomePage() {
       )}
 
       <HeroSection />
+      <ShopByCategory />
 
       {/* 2. Bento action categories */}
       <section className="section-sm">
@@ -159,7 +164,17 @@ export default async function HomePage() {
       <section className="section-sm">
         <div className="container">
           <div className="brand-rail">
-            {['Apple', 'DELL', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'].map((b) => <span key={b}>{b}</span>)}
+            {BRAND_LOGOS.map((b) => (
+              <Link key={b.name} href={b.href} className="brand-rail-item" title={b.name}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imageUrl(b.logo)}
+                  alt={`${b.name} logo`}
+                  style={{ height: b.height, width: 'auto', maxHeight: 38, objectFit: 'contain' }}
+                  loading="lazy"
+                />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

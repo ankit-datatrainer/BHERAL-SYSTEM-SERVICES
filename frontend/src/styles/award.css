@@ -932,22 +932,25 @@ body.aw-nav-hidden .site-header {
   animation-play-state: paused;
 }
 
-.aw-marquee-track > span {
+.aw-marquee-track > span,
+.aw-marquee-track > a,
+.aw-marquee-track .brand-rail-item {
   flex: 0 0 auto;
-  font-family: var(--font-headline);
-  font-weight: 800;
-  font-size: clamp(1.1rem, 2.6vw, 1.9rem);
-  letter-spacing: -0.03em;
-  color: var(--on-surface);
-  opacity: 0.28;
-  filter: grayscale(1);
-  transition: opacity 0.4s ease, color 0.4s ease, transform 0.4s var(--ease-spring);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1rem;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.aw-marquee-track > span:hover {
+.aw-marquee-track > span:hover,
+.aw-marquee-track > a:hover,
+.aw-marquee-track .brand-rail-item:hover {
   opacity: 1;
-  color: var(--primary);
-  transform: translateY(-4px) scale(1.05);
+  filter: grayscale(0%);
+  transform: translateY(-2px) scale(1.08);
 }
 
 @keyframes aw-marquee {

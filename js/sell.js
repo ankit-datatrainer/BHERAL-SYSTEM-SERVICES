@@ -278,12 +278,24 @@
 
         <h3 style="font-size:14px;text-transform:uppercase;color:var(--on-surface-variant);margin-bottom:0.75rem;">Select Laptop Brand</h3>
         <div class="option-grid" style="grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));">
-          ${brands.map(brand => `
-            <label class="option ${state.brand === brand ? 'selected' : ''}">
+          ${brands.map(brand => {
+            const logoMap = {
+              'Apple': { src: 'assets/images/brands/apple.svg', h: 26 },
+              'Dell': { src: 'assets/images/brands/dell.svg', h: 28 },
+              'HP': { src: 'assets/images/brands/hp.svg', h: 26 },
+              'Lenovo': { src: 'assets/images/brands/lenovo.svg', h: 18 },
+              'ASUS': { src: 'assets/images/brands/asus.svg', h: 16 },
+              'Acer': { src: 'assets/images/brands/acer.svg', h: 18 },
+              'MSI': { src: 'assets/images/brands/msi.svg', h: 16 },
+              'Samsung': { src: 'assets/images/brands/samsung.svg', h: 15 },
+            };
+            const item = logoMap[brand];
+            return `
+            <label class="option ${state.brand === brand ? 'selected' : ''}" style="min-height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0.75rem 0.5rem;">
               <input type="radio" name="sellBrand" value="${brand}" ${state.brand === brand ? 'checked' : ''}>
-              <strong>${brand}</strong>
+              ${item ? `<img src="${item.src}" alt="${brand}" style="height:${item.h}px;max-width:85px;object-fit:contain;"><strong style="font-size:12px;color:var(--on-surface-variant);">${brand}</strong>` : `<span class="icon" style="font-size:24px;color:var(--primary);">devices</span><strong>${brand}</strong>`}
             </label>
-          `).join('')}
+          `;}).join('')}
         </div>
       `;
     }
@@ -469,12 +481,22 @@
 
         <h3 style="font-size:14px;text-transform:uppercase;color:var(--on-surface-variant);margin-bottom:0.75rem;">Manufacturer Brand</h3>
         <div class="option-grid" style="grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));">
-          ${brands.map(brand => `
-            <label class="option ${state.brand === brand ? 'selected' : ''}">
+          ${brands.map(brand => {
+            const logoMap = {
+              'Samsung': { src: 'assets/images/brands/samsung.svg', h: 15 },
+              'ASUS': { src: 'assets/images/brands/asus.svg', h: 16 },
+              'HP': { src: 'assets/images/brands/hp.svg', h: 26 },
+              'Dell': { src: 'assets/images/brands/dell.svg', h: 28 },
+              'Apple': { src: 'assets/images/brands/apple.svg', h: 26 },
+              'Lenovo': { src: 'assets/images/brands/lenovo.svg', h: 18 },
+            };
+            const item = logoMap[brand];
+            return `
+            <label class="option ${state.brand === brand ? 'selected' : ''}" style="min-height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0.75rem 0.5rem;">
               <input type="radio" name="sellBrand" value="${brand}" ${state.brand === brand ? 'checked' : ''}>
-              <strong>${brand}</strong>
+              ${item ? `<img src="${item.src}" alt="${brand}" style="height:${item.h}px;max-width:85px;object-fit:contain;"><strong style="font-size:12px;color:var(--on-surface-variant);">${brand}</strong>` : `<span class="icon" style="font-size:24px;color:var(--primary);">memory</span><strong>${brand}</strong>`}
             </label>
-          `).join('')}
+          `;}).join('')}
         </div>
       `;
     }
