@@ -294,7 +294,7 @@ is all it takes for it to appear — no approval step, no copy step.
 # backend
 npm run dev        # tsx watch
 npm run build      # tsc -> dist/
-npm start          # node dist/index.js
+npm start          # node dist/src/index.js
 npm run seed       # upsert catalogue into Supabase
 npm run typecheck
 

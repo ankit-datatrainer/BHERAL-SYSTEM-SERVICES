@@ -18,7 +18,7 @@ module.exports = {
     {
       name: 'bheral-api',
       cwd: path.join(__dirname, 'backend'),
-      script: 'dist/index.js',
+      script: 'dist/src/index.js',
       exec_mode: 'fork',
       instances: 1,
       // The rest of the config (Supabase URL and keys, CORS) lives in
