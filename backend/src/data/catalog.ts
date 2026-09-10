@@ -1,0 +1,1046 @@
+/**
+ * Catalogue seed data — extracted verbatim from the original static site
+ * (js/data.js) so the API serves exactly the same 18 products, 24 repair
+ * services and valuation multipliers the HTML version used.
+ *
+ * This module is the source of truth for `npm run seed`, which pushes it
+ * into Supabase. At runtime the API reads from the database, not from here.
+ */
+import type { Product, RepairService, ValuationConfig } from '../types.js';
+
+export const products: Product[] = [
+  {
+    "id": "lenovo-t14-g2",
+    "name": "Lenovo ThinkPad T14 Gen 2 (Core i7)",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "image": "assets/images/lenovo-t14.jpg",
+    "images": [
+      "assets/images/lenovo-t14.jpg",
+      "assets/images/hero-laptop.jpg",
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 34999,
+    "originalPrice": 62999,
+    "processor": "Intel Core i7-1185G7",
+    "ram": 16,
+    "storage": 512,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel Iris Xe Graphics",
+    "screenSize": 14,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Excellent",
+    "rating": 4.9,
+    "reviewCount": 94,
+    "stock": 7,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "Tested Grade-A+ enterprise business laptop with legendary ThinkPad durability. Features a crisp FHD IPS anti-glare display, spill-resistant backlit keyboard, fingerprint scanner, and rapid charging support.",
+    "specifications": {
+      "Brand & Model": "Lenovo ThinkPad T14 Gen 2",
+      "Processor": "Intel Core i7-1185G7 (4 Cores, 8 Threads, up to 4.80 GHz)",
+      "Installed Memory": "16GB DDR4 3200MHz (Upgradeable to 40GB)",
+      "Storage Drive": "512GB PCIe M.2 NVMe SSD",
+      "Graphics": "Integrated Intel Iris Xe Graphics",
+      "Display Panel": "14.0-inch FHD (1920 x 1080) IPS Anti-glare, 300 nits",
+      "Operating System": "Windows 11 Pro Genuine 64-Bit",
+      "Port Selection": "2x USB 3.2, 2x Thunderbolt 4 / Type-C, 1x HDMI 2.0, RJ45, Audio Jack",
+      "Battery Health": "88% Capacity (Up to 7 hours backup)",
+      "Cosmetic Condition": "Grade A+ (No dents, pristine screen)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 44
+  },
+  {
+    "id": "macbook-air-m1",
+    "name": "Apple MacBook Air M1 (Space Grey)",
+    "brand": "Apple",
+    "category": "Laptop",
+    "image": "assets/images/macbook-air.jpg",
+    "images": [
+      "assets/images/macbook-air.jpg",
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 49999,
+    "originalPrice": 79900,
+    "processor": "Apple M1 Chip (8-Core CPU)",
+    "ram": 8,
+    "storage": 256,
+    "storageType": "SSD",
+    "gpu": "Apple 7-Core GPU",
+    "screenSize": 13.3,
+    "operatingSystem": "macOS Sonoma",
+    "condition": "Excellent",
+    "rating": 4.9,
+    "reviewCount": 142,
+    "stock": 4,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "Fanless, razor-thin powerhouse with Apple M1 silicon delivering remarkable battery endurance and fluid creative workflows. Features a razor-sharp Retina display and Touch ID.",
+    "specifications": {
+      "Brand & Model": "Apple MacBook Air (M1, 2020)",
+      "Processor": "Apple M1 Chip with 8-Core CPU and 16-Core Neural Engine",
+      "Installed Memory": "8GB Unified Architecture Memory",
+      "Storage Drive": "256GB Ultra-fast Solid State Drive",
+      "Graphics": "Apple 7-Core Integrated GPU",
+      "Display Panel": "13.3-inch Retina Display (2560 x 1600) with True Tone",
+      "Operating System": "macOS Sonoma Updated & Activated",
+      "Port Selection": "2x Thunderbolt / USB 4 ports, 3.5mm Headphone Jack",
+      "Battery Health": "91% Capacity (Under 150 Battery Cycles)",
+      "Cosmetic Condition": "Grade A (Pristine anodised aluminium chassis)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 37
+  },
+  {
+    "id": "dell-latitude-7400",
+    "name": "Dell Latitude 7400 Business Ultrabook",
+    "brand": "Dell",
+    "category": "Laptop",
+    "image": "assets/images/dell-latitude.jpg",
+    "images": [
+      "assets/images/dell-latitude.jpg",
+      "assets/images/hero-laptop.jpg"
+    ],
+    "price": 22499,
+    "originalPrice": 47999,
+    "processor": "Intel Core i5-8365U",
+    "ram": 16,
+    "storage": 512,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel UHD Graphics 620",
+    "screenSize": 14,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Good",
+    "rating": 4.7,
+    "reviewCount": 68,
+    "stock": 12,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "Compact corporate workhorse built with carbon-fibre and machined aluminium. Features Dell ExpressSign-in sensor, fast NVMe read speeds, and exceptional battery life.",
+    "specifications": {
+      "Brand & Model": "Dell Latitude 7400 Ultrabook",
+      "Processor": "Intel Core i5-8365U (Quad Core, 8 Threads, up to 4.10 GHz)",
+      "Installed Memory": "16GB DDR4 High Speed RAM",
+      "Storage Drive": "512GB M.2 NVMe SSD",
+      "Graphics": "Intel UHD Graphics 620",
+      "Display Panel": "14.0-inch FHD (1920 x 1080) Carbon-Fibre Lid IPS",
+      "Operating System": "Windows 11 Pro Genuine",
+      "Port Selection": "2x USB 3.1, 1x Thunderbolt 3, 1x HDMI 1.4, MicroSD slot",
+      "Battery Health": "85% Capacity (Tested 5+ hours backup)",
+      "Cosmetic Condition": "Grade A (Minor surface signs of previous corporate usage)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 53
+  },
+  {
+    "id": "hp-elitebook-840-g6",
+    "name": "HP EliteBook 840 G6 Aluminum Laptop",
+    "brand": "HP",
+    "category": "Laptop",
+    "image": "assets/images/hp-elitebook.jpg",
+    "images": [
+      "assets/images/hp-elitebook.jpg",
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 21999,
+    "originalPrice": 45999,
+    "processor": "Intel Core i5-8265U",
+    "ram": 16,
+    "storage": 256,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel UHD Graphics 620",
+    "screenSize": 14,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Good",
+    "rating": 4.6,
+    "reviewCount": 52,
+    "stock": 9,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "All-metal unibody business laptop with Bang & Olufsen tuned stereo audio, HP Sure View privacy guard, and ultra-quiet dual heat-pipe thermal management.",
+    "specifications": {
+      "Brand & Model": "HP EliteBook 840 G6 Silver",
+      "Processor": "Intel Core i5-8265U (Quad Core, up to 3.90 GHz)",
+      "Installed Memory": "16GB DDR4 Dual-Channel RAM",
+      "Storage Drive": "256GB PCIe NVMe SSD (M.2)",
+      "Graphics": "Intel UHD Graphics 620",
+      "Display Panel": "14.0-inch FHD (1920 x 1080) IPS eDP Anti-glare",
+      "Operating System": "Windows 11 Pro Genuine",
+      "Port Selection": "2x USB 3.1, 1x USB Type-C Thunderbolt, 1x HDMI, RJ-45",
+      "Battery Health": "87% Capacity",
+      "Cosmetic Condition": "Grade A (Excellent structural condition)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 52
+  },
+  {
+    "id": "asus-rog-g14",
+    "name": "ASUS ROG Zephyrus G14 Gaming Rig",
+    "brand": "ASUS",
+    "category": "Laptop",
+    "image": "assets/images/asus-rog.jpg",
+    "images": [
+      "assets/images/asus-rog.jpg",
+      "assets/images/hero-laptop.jpg"
+    ],
+    "price": 54999,
+    "originalPrice": 89990,
+    "processor": "AMD Ryzen 7 4800HS",
+    "ram": 16,
+    "storage": 1000,
+    "storageType": "NVMe SSD",
+    "gpu": "NVIDIA GeForce GTX 1650 Ti (4GB)",
+    "screenSize": 14,
+    "operatingSystem": "Windows 11",
+    "condition": "Excellent",
+    "rating": 4.8,
+    "reviewCount": 48,
+    "stock": 3,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "Compact 14-inch gaming and 3D rendering powerhouse. Armed with 8 Zen 2 cores, 16 threads, dedicated NVIDIA graphics, and high-refresh 120Hz IPS display panel.",
+    "specifications": {
+      "Brand & Model": "ASUS ROG Zephyrus G14 GA401",
+      "Processor": "AMD Ryzen 7 4800HS (8 Cores, 16 Threads, up to 4.20 GHz)",
+      "Installed Memory": "16GB DDR4 3200MHz Dual-Channel",
+      "Storage Drive": "1TB M.2 PCIe NVMe SSD",
+      "Graphics": "NVIDIA GeForce GTX 1650 Ti 4GB GDDR6 VRAM",
+      "Display Panel": "14.0-inch 120Hz Full HD (1920 x 1080) 100% sRGB",
+      "Operating System": "Windows 11 Home 64-Bit",
+      "Port Selection": "2x USB 3.2 Type-C, 2x USB 3.2 Type-A, 1x HDMI 2.0b",
+      "Battery Health": "86% Capacity",
+      "Cosmetic Condition": "Grade A+ (Tested thermals & clean fans)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 39
+  },
+  {
+    "id": "lenovo-t480",
+    "name": "Lenovo ThinkPad T480 Dual Battery Edition",
+    "brand": "Lenovo",
+    "category": "Laptop",
+    "image": "assets/images/lenovo-t14.jpg",
+    "images": [
+      "assets/images/lenovo-t14.jpg"
+    ],
+    "price": 18999,
+    "originalPrice": 38999,
+    "processor": "Intel Core i5-8250U",
+    "ram": 8,
+    "storage": 256,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel UHD Graphics 620",
+    "screenSize": 14,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Good",
+    "rating": 4.7,
+    "reviewCount": 145,
+    "stock": 15,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "A technician and coder favourite. Highly modular, dual-battery Bridge system, hot-swappable external pack, and comfortable 1.8mm key travel keyboard.",
+    "specifications": {
+      "Brand & Model": "Lenovo ThinkPad T480",
+      "Processor": "Intel Core i5-8250U (Quad Core, up to 3.40 GHz)",
+      "Installed Memory": "8GB DDR4 (Dual Slot, Expandable to 32GB)",
+      "Storage Drive": "256GB PCIe NVMe SSD",
+      "Graphics": "Intel UHD Graphics 620",
+      "Display Panel": "14.0-inch FHD (1920 x 1080) IPS Matte",
+      "Operating System": "Windows 11 Pro Genuine",
+      "Port Selection": "2x USB 3.1, 1x Type-C, 1x Thunderbolt 3, HDMI, SD Card, RJ-45",
+      "Battery Health": "Both internal & external batteries certified 82%+",
+      "Cosmetic Condition": "Grade A (Solid hinge and clean keyboard)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 51
+  },
+  {
+    "id": "dell-precision-5540",
+    "name": "Dell Precision 5540 Mobile Workstation",
+    "brand": "Dell",
+    "category": "Laptop",
+    "image": "assets/images/dell-latitude.jpg",
+    "images": [
+      "assets/images/dell-latitude.jpg"
+    ],
+    "price": 57999,
+    "originalPrice": 119999,
+    "processor": "Intel Core i7-9750H (6 Cores)",
+    "ram": 32,
+    "storage": 1000,
+    "storageType": "NVMe SSD",
+    "gpu": "NVIDIA Quadro T1000 (4GB VRAM)",
+    "screenSize": 15.6,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Excellent",
+    "rating": 4.9,
+    "reviewCount": 34,
+    "stock": 2,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "ISV-certified workstation designed for AutoCAD, Premiere Pro, and architectural simulation. Thin-bezel InfinityEdge display in an anodised CNC chassis.",
+    "specifications": {
+      "Brand & Model": "Dell Precision 5540 Workstation",
+      "Processor": "Intel Core i7-9750H (6 Cores, 12 Threads, up to 4.50 GHz)",
+      "Installed Memory": "32GB DDR4 2666MHz (Dual Channel)",
+      "Storage Drive": "1TB M.2 PCIe NVMe High-Speed SSD",
+      "Graphics": "NVIDIA Quadro T1000 with 4GB GDDR5 Dedicated VRAM",
+      "Display Panel": "15.6-inch UltraSharp FHD (1920 x 1080) 100% sRGB",
+      "Operating System": "Windows 11 Pro for Workstations",
+      "Port Selection": "2x USB 3.1 Gen 1, 1x Thunderbolt 3, 1x HDMI 2.0, SD Card",
+      "Battery Health": "89% Capacity (97Wh high-capacity battery)",
+      "Cosmetic Condition": "Grade A+ (Premium condition)",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 52
+  },
+  {
+    "id": "hp-prodesk-600-g4",
+    "name": "HP ProDesk 600 G4 Micro-Tower PC",
+    "brand": "HP",
+    "category": "Desktop",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 23999,
+    "originalPrice": 42999,
+    "processor": "Intel Core i5-8500 (6 Cores)",
+    "ram": 16,
+    "storage": 512,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel UHD Graphics 630",
+    "screenSize": 0,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Good",
+    "rating": 4.6,
+    "reviewCount": 31,
+    "stock": 6,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "Robust desktop PC engineered for quiet, reliable, continuous office deployment. Expandable PCIe slots for low-profile graphics cards or additional drive bays.",
+    "specifications": {
+      "Brand & Model": "HP ProDesk 600 G4 Micro-Tower",
+      "Processor": "Intel Core i5-8500 (6 Cores, 6 Threads, 3.00 GHz base up to 4.10 GHz)",
+      "Installed Memory": "16GB DDR4 2666MHz (Expandable to 64GB)",
+      "Storage Drive": "512GB M.2 NVMe SSD + Extra 1TB 7200RPM HDD bay available",
+      "Graphics": "Intel UHD Graphics 630",
+      "Power Supply": "HP 80 PLUS Platinum certified 250W PSU",
+      "Operating System": "Windows 11 Pro Genuine",
+      "Port Selection": "6x USB 3.1, 4x USB 2.0, 1x USB-C, 2x DisplayPort, VGA, RJ-45",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 44
+  },
+  {
+    "id": "dell-optiplex-7070-sff",
+    "name": "Dell OptiPlex 7070 Small Form Factor",
+    "brand": "Dell",
+    "category": "Desktop",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 27999,
+    "originalPrice": 51999,
+    "processor": "Intel Core i7-9700 (8 Cores)",
+    "ram": 16,
+    "storage": 512,
+    "storageType": "NVMe SSD",
+    "gpu": "Intel UHD Graphics 630",
+    "screenSize": 0,
+    "operatingSystem": "Windows 11 Pro",
+    "condition": "Excellent",
+    "rating": 4.8,
+    "reviewCount": 22,
+    "stock": 5,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "Small form factor desktop loaded with an 8-core Core i7 processor. Consumes minimal desk real estate while handling heavy multitasking and spreadsheets.",
+    "specifications": {
+      "Brand & Model": "Dell OptiPlex 7070 SFF",
+      "Processor": "Intel Core i7-9700 (8 Cores, 8 Threads, up to 4.70 GHz)",
+      "Installed Memory": "16GB DDR4 2666MHz",
+      "Storage Drive": "512GB NVMe M.2 SSD",
+      "Graphics": "Intel UHD 630 (Dual DisplayPort output)",
+      "Power Supply": "Dell High-efficiency Bronze Certified PSU",
+      "Operating System": "Windows 11 Pro",
+      "Warranty Coverage": "6 Months Written Hardware Replacement Warranty"
+    },
+    "discount": 46
+  },
+  {
+    "id": "samsung-980-pro-1tb",
+    "name": "Samsung 980 PRO 1TB PCIe 4.0 NVMe SSD",
+    "brand": "Samsung",
+    "category": "SSD",
+    "image": "assets/images/hero-laptop.jpg",
+    "images": [
+      "assets/images/hero-laptop.jpg"
+    ],
+    "price": 7499,
+    "originalPrice": 11999,
+    "processor": "—",
+    "ram": 0,
+    "storage": 1000,
+    "storageType": "NVMe SSD",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.9,
+    "reviewCount": 110,
+    "stock": 14,
+    "warranty": "3 Years Manufacturer Warranty",
+    "isNew": true,
+    "featured": true,
+    "description": "Ultra-high performance Gen4 NVMe solid-state drive delivering read speeds up to 7,000 MB/s. Compatible with modern laptops, desktop motherboards, and PS5.",
+    "specifications": {
+      "Form Factor": "M.2 2280 PCIe 4.0 x4, NVMe 1.3c",
+      "Sequential Read Speed": "Up to 7,000 MB/s",
+      "Sequential Write Speed": "Up to 5,000 MB/s",
+      "Controller": "Samsung Elpis Custom Controller",
+      "NAND Flash": "Samsung V-NAND 3-bit MLC",
+      "Warranty Coverage": "3 Years Brand Warranty with Invoice"
+    },
+    "discount": 38
+  },
+  {
+    "id": "crucial-ram-16-ddr4",
+    "name": "Crucial 16GB DDR4 3200MHz Laptop RAM",
+    "brand": "Crucial",
+    "category": "RAM",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 2699,
+    "originalPrice": 3999,
+    "processor": "—",
+    "ram": 16,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.8,
+    "reviewCount": 88,
+    "stock": 25,
+    "warranty": "Lifetime Limited Warranty",
+    "isNew": true,
+    "featured": false,
+    "description": "Tested SODIMM 260-pin laptop memory upgrade. Immediate performance boost for sluggish laptops running Windows 10 or Windows 11. Plug-and-play installation.",
+    "specifications": {
+      "Capacity": "16GB SODIMM Single Module",
+      "Memory Technology": "DDR4 SDRAM 3200MHz (PC4-25600)",
+      "Form Factor": "260-Pin Laptop SODIMM",
+      "Voltage": "1.2V Low Power Consumption",
+      "Compatibility": "Compatible with Dell, HP, Lenovo, ASUS, Acer laptops",
+      "Warranty Coverage": "Lifetime Limited Brand Warranty"
+    },
+    "discount": 33
+  },
+  {
+    "id": "corsair-vengeance-32-ddr5",
+    "name": "Corsair Vengeance 32GB (2x16GB) DDR5 5600MHz RAM",
+    "brand": "Corsair",
+    "category": "RAM",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 8499,
+    "originalPrice": 12499,
+    "processor": "—",
+    "ram": 32,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.9,
+    "reviewCount": 42,
+    "stock": 8,
+    "warranty": "Lifetime Limited Warranty",
+    "isNew": true,
+    "featured": false,
+    "description": "Next-generation DDR5 desktop memory kit with Intel XMP 3.0 and AMD EXPO support. Solid aluminium heat spreader for low operating temperatures.",
+    "specifications": {
+      "Capacity": "32GB Kit (2 x 16GB)",
+      "Speed": "DDR5 5600MHz (PC5-44800)",
+      "Form Factor": "288-Pin Desktop DIMM",
+      "Heat Spreader": "Pure Anodised Aluminium Heat Spreader",
+      "Warranty Coverage": "Lifetime Brand Warranty"
+    },
+    "discount": 32
+  },
+  {
+    "id": "seagate-barracuda-2tb-hdd",
+    "name": "Seagate BarraCuda 2TB 3.5-inch Internal HDD",
+    "brand": "Seagate",
+    "category": "HDD",
+    "image": "assets/images/hero-laptop.jpg",
+    "images": [
+      "assets/images/hero-laptop.jpg"
+    ],
+    "price": 3899,
+    "originalPrice": 5499,
+    "processor": "—",
+    "ram": 0,
+    "storage": 2000,
+    "storageType": "HDD",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.6,
+    "reviewCount": 76,
+    "stock": 18,
+    "warranty": "2 Years Brand Warranty",
+    "isNew": true,
+    "featured": false,
+    "description": "Dependable, cost-effective high-capacity hard disk drive for desktop systems, backup enclosures, and local media servers. 7200 RPM rotational speed with 256MB cache.",
+    "specifications": {
+      "Capacity": "2TB (2,000 GB)",
+      "Interface": "SATA 6.0 Gb/s",
+      "Rotational Speed": "7200 RPM",
+      "Cache Buffer": "256MB Cache",
+      "Form Factor": "3.5-inch Internal Desktop",
+      "Warranty Coverage": "2 Years Seagate Authorized Warranty"
+    },
+    "discount": 29
+  },
+  {
+    "id": "nvidia-rtx-3060-12gb",
+    "name": "Zotac Gaming GeForce RTX 3060 Twin Edge 12GB",
+    "brand": "Zotac",
+    "category": "Graphics Card",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 21999,
+    "originalPrice": 32999,
+    "processor": "—",
+    "ram": 0,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "GeForce RTX 3060 (12GB GDDR6)",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "Excellent",
+    "rating": 4.8,
+    "reviewCount": 39,
+    "stock": 4,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": true,
+    "description": "Tested and cleaned dual-fan graphics card featuring 12GB of GDDR6 memory. Ray Tracing Cores, DLSS AI acceleration, and support for up to 4 simultaneous 4K displays.",
+    "specifications": {
+      "GPU Model": "NVIDIA GeForce RTX 3060 (GA106)",
+      "CUDA Cores": "3584 CUDA Cores",
+      "Video Memory": "12GB GDDR6 (192-bit bus)",
+      "Output Connectors": "3x DisplayPort 1.4a, 1x HDMI 2.1",
+      "Power Requirement": "170W (Requires 1x 8-Pin PCIe Power)",
+      "Thermal Design": "IceStorm 2.0 Dual 90mm Blade Cooling",
+      "Warranty Coverage": "6 Months Tested Hardware Warranty"
+    },
+    "discount": 33
+  },
+  {
+    "id": "dell-p2419h-monitor",
+    "name": "Dell P2419H 24-inch Full HD IPS Monitor",
+    "brand": "Dell",
+    "category": "Monitor",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 8999,
+    "originalPrice": 15999,
+    "processor": "—",
+    "ram": 0,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 24,
+    "operatingSystem": "—",
+    "condition": "Excellent",
+    "rating": 4.8,
+    "reviewCount": 46,
+    "stock": 5,
+    "warranty": "6 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "Ergonomic business monitor with a 3-sided ultrathin bezel, flicker-free ComfortView technology, and a 4-way adjustable stand (Height, Pivot 90°, Swivel, Tilt).",
+    "specifications": {
+      "Screen Size": "23.8-inch Diagonal IPS Panel",
+      "Resolution": "Full HD (1920 x 1080) at 60Hz",
+      "Aspect Ratio": "16:9 Widescreen",
+      "Contrast Ratio": "1000:1 (Typical)",
+      "Inputs": "1x HDMI 1.4, 1x DisplayPort 1.2, 1x VGA, 4x USB 3.0 Hub",
+      "Ergonomics": "Height adjustable (130mm), 90-degree pivot, tilt, swivel",
+      "Warranty Coverage": "6 Months Hardware Replacement Warranty"
+    },
+    "discount": 44
+  },
+  {
+    "id": "hp-laserjet-m404dn",
+    "name": "HP LaserJet Pro M404dn Duplex Laser Printer",
+    "brand": "HP",
+    "category": "Printer",
+    "image": "assets/images/corporate-laptops.jpg",
+    "images": [
+      "assets/images/corporate-laptops.jpg"
+    ],
+    "price": 14499,
+    "originalPrice": 24999,
+    "processor": "—",
+    "ram": 0,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "Good",
+    "rating": 4.7,
+    "reviewCount": 29,
+    "stock": 4,
+    "warranty": "3 Months Replacement",
+    "isNew": false,
+    "featured": false,
+    "description": "Tested monochrome office laser printer with high-speed automatic 2-sided duplex printing, Gigabit Ethernet networking, and 38 pages per minute throughput.",
+    "specifications": {
+      "Printing Technology": "Laser Monochromatic",
+      "Print Speed": "Up to 38 pages per minute (ppm)",
+      "Duplexing": "Automatic Two-Sided Printing",
+      "Connectivity": "Hi-Speed USB 2.0, Gigabit Ethernet 10/100/1000T",
+      "Cartridge Type": "HP 76A / 76X High Yield Black Toner",
+      "Duty Cycle": "Up to 80,000 pages monthly",
+      "Warranty Coverage": "3 Months Parts & Roller Service Warranty"
+    },
+    "discount": 42
+  },
+  {
+    "id": "hp-65w-charger-orig",
+    "name": "HP 65W Smart AC Adapter (Original)",
+    "brand": "HP",
+    "category": "Charger",
+    "image": "assets/images/hp-elitebook.jpg",
+    "images": [
+      "assets/images/hp-elitebook.jpg"
+    ],
+    "price": 1399,
+    "originalPrice": 2499,
+    "processor": "—",
+    "ram": 0,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.8,
+    "reviewCount": 65,
+    "stock": 20,
+    "warranty": "6 Months Replacement",
+    "isNew": true,
+    "featured": false,
+    "description": "Genuine OEM power adapter for HP EliteBook, ProBook, and Pavilion laptops. Engineered with surge protection and certified copper core power cord.",
+    "specifications": {
+      "Power Output": "65W (19.5V - 3.33A)",
+      "Connector Tip": "4.5mm Blue Tip with Center Pin",
+      "Safety Certifications": "Over-voltage, Short-circuit, Thermal cut-off protection",
+      "Power Cord": "3-Pin Bureau of Indian Standards (BIS) certified cord included",
+      "Warranty Coverage": "6 Months Replacement Warranty"
+    },
+    "discount": 44
+  },
+  {
+    "id": "lenovo-65w-type-c-orig",
+    "name": "Lenovo 65W Standard Type-C USB-PD Adapter",
+    "brand": "Lenovo",
+    "category": "Charger",
+    "image": "assets/images/lenovo-t14.jpg",
+    "images": [
+      "assets/images/lenovo-t14.jpg"
+    ],
+    "price": 1699,
+    "originalPrice": 2899,
+    "processor": "—",
+    "ram": 0,
+    "storage": 0,
+    "storageType": "—",
+    "gpu": "—",
+    "screenSize": 0,
+    "operatingSystem": "—",
+    "condition": "New",
+    "rating": 4.9,
+    "reviewCount": 78,
+    "stock": 18,
+    "warranty": "6 Months Replacement",
+    "isNew": true,
+    "featured": false,
+    "description": "Universal USB-C Power Delivery 3.0 charger for ThinkPads, MacBooks, Dell Latitudes, and modern ultrabooks. Supports 5V, 9V, 15V, and 20V fast smart charging.",
+    "specifications": {
+      "Power Delivery": "65W USB-PD (20V/3.25A, 15V/3A, 9V/2A, 5V/2A)",
+      "Connector": "Reversible USB Type-C",
+      "Compatibility": "Lenovo ThinkPad, MacBook Air/Pro, Dell XPS, HP Spectre",
+      "Warranty Coverage": "6 Months Replacement Warranty"
+    },
+    "discount": 41
+  }
+];
+
+export const repairServices: RepairService[] = [
+  {
+    "id": "laptop-repair",
+    "name": "Laptop Repair",
+    "device": "Laptop",
+    "icon": "laptop",
+    "description": "Complete diagnosis, power failure troubleshooting, and chip-level motherboard restoration.",
+    "time": "Same Day / 24h",
+    "popular": true
+  },
+  {
+    "id": "desktop-repair",
+    "name": "Desktop Repair",
+    "device": "Desktop",
+    "icon": "desktop_windows",
+    "description": "Boot failure diagnosis, PSU voltage checks, RAM faults, and hardware component testing.",
+    "time": "Same Day",
+    "popular": true
+  },
+  {
+    "id": "printer-repair",
+    "name": "Printer Repair",
+    "device": "Printer",
+    "icon": "print",
+    "description": "Paper jam clearance, cartridge head unclogging, gear repairs, and logic board maintenance.",
+    "time": "24–48 Hours",
+    "popular": false
+  },
+  {
+    "id": "screen-replacement",
+    "name": "Screen Replacement",
+    "device": "Laptop",
+    "icon": "monitor",
+    "description": "Cracked, flickering, or vertical line panel replacements using Grade A OEM IPS screens.",
+    "time": "2–4 Hours",
+    "popular": true
+  },
+  {
+    "id": "keyboard-repair",
+    "name": "Keyboard Repair",
+    "device": "Laptop",
+    "icon": "keyboard",
+    "description": "Sticky, missing keys, water damaged keyboard matrix, and backlit ribbon replacements.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "battery-replacement",
+    "name": "Battery Replacement",
+    "device": "Laptop",
+    "icon": "battery_full",
+    "description": "Swollen, rapidly draining, or unrecognised battery swaps with certified OEM replacements.",
+    "time": "1–2 Hours",
+    "popular": true
+  },
+  {
+    "id": "charging-port-repair",
+    "name": "Charging Port Repair",
+    "device": "Laptop",
+    "icon": "power",
+    "description": "Loose DC jacks, damaged Type-C charging ports, and power pin soldering.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "motherboard-repair",
+    "name": "Motherboard Repair",
+    "device": "Laptop",
+    "icon": "memory",
+    "description": "Precision BGA rework, blown capacitor replacements, short-circuit diagnostics, and BIOS flashing.",
+    "time": "2–3 Days",
+    "popular": true
+  },
+  {
+    "id": "heating-problem",
+    "name": "Heating Problem",
+    "device": "Laptop",
+    "icon": "device_thermostat",
+    "description": "Thermal throttle overhaul, old paste cleanout, and application of high-conductivity Arctic MX-4.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "fan-repair",
+    "name": "Fan Repair",
+    "device": "Laptop",
+    "icon": "mode_fan",
+    "description": "Noisy, rattling, or seized cooling fan cleaning, bearing lubrication, and blade replacement.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "hinge-repair",
+    "name": "Hinge Repair",
+    "device": "Laptop",
+    "icon": "construction",
+    "description": "Broken internal brass screw mounts, separated plastic bezels, and stiff hinge lubrication.",
+    "time": "24 Hours",
+    "popular": false
+  },
+  {
+    "id": "ram-upgrade",
+    "name": "RAM Upgrade",
+    "device": "Laptop",
+    "icon": "developer_board",
+    "description": "Instant speed upgrade with compatible 8GB, 16GB, or 32GB DDR4 / DDR5 modules with memory testing.",
+    "time": "30 Minutes",
+    "popular": true
+  },
+  {
+    "id": "ssd-upgrade",
+    "name": "SSD Upgrade",
+    "device": "Laptop",
+    "icon": "hard_drive",
+    "description": "Replace sluggish mechanical hard disks with lightning-fast NVMe SSDs with complete OS migration.",
+    "time": "1–2 Hours",
+    "popular": true
+  },
+  {
+    "id": "hard-drive-repair",
+    "name": "Hard Drive Repair",
+    "device": "Storage Drive",
+    "icon": "hard_disk",
+    "description": "Clicking, undetected mechanical HDD analysis and bad sector reallocation.",
+    "time": "1–2 Days",
+    "popular": false
+  },
+  {
+    "id": "ssd-diagnosis",
+    "name": "SSD Diagnosis",
+    "device": "Storage Drive",
+    "icon": "speed",
+    "description": "Controller health check, SMART log analysis, firmware recovery, and read-only lockdown fixes.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "data-recovery",
+    "name": "Data Recovery",
+    "device": "Storage Drive",
+    "icon": "cloud_download",
+    "description": "Clean-room recovery from accidentally formatted, dead, clicking, or corrupted storage media.",
+    "time": "2–5 Days",
+    "popular": true
+  },
+  {
+    "id": "windows-installation",
+    "name": "Windows Installation",
+    "device": "Laptop",
+    "icon": "window",
+    "description": "Clean licensed Windows 11 Pro / 10 installation, chipset drivers, and official OEM updates.",
+    "time": "1–2 Hours",
+    "popular": false
+  },
+  {
+    "id": "software-troubleshooting",
+    "name": "Software Troubleshooting",
+    "device": "Laptop",
+    "icon": "terminal",
+    "description": "Blue Screen of Death (BSOD) fixes, driver conflicts, bootloops, and software errors.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "virus-malware-cleanup",
+    "name": "Virus / Malware Cleanup",
+    "device": "Laptop",
+    "icon": "security",
+    "description": "Deep rootkit removal, adware cleanup, browser hijacking resolution, and endpoint hardening.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "slow-computer-diagnosis",
+    "name": "Slow Computer Diagnosis",
+    "device": "Laptop",
+    "icon": "troubleshoot",
+    "description": "Complete 40-point hardware & OS health inspection to identify bottlenecks and speed up systems.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "wi-fi-repair",
+    "name": "Wi-Fi Repair",
+    "device": "Network",
+    "icon": "wifi",
+    "description": "Fix frequent disconnects, unrecognised WLAN cards, antenna cable faults, and Wi-Fi 6 upgrades.",
+    "time": "Same Day",
+    "popular": false
+  },
+  {
+    "id": "lan-networking",
+    "name": "LAN / Networking",
+    "device": "Network",
+    "icon": "lan",
+    "description": "Office network cabling, switch configurations, shared NAS access, and printer network mapping.",
+    "time": "Scheduled",
+    "popular": false
+  },
+  {
+    "id": "smps-repair",
+    "name": "SMPS Repair",
+    "device": "Desktop",
+    "icon": "electrical_services",
+    "description": "Desktop power supply diagnosis, short-circuit fixing, and reliable wattage replacement units.",
+    "time": "24 Hours",
+    "popular": false
+  },
+  {
+    "id": "gpu-issues",
+    "name": "GPU Issues",
+    "device": "Desktop",
+    "icon": "videogame_asset",
+    "description": "Graphics artifacting, driver crashes under load, fan replacements, and GPU thermal re-padding.",
+    "time": "1–3 Days",
+    "popular": false
+  }
+];
+
+export const valuationConfig: ValuationConfig = {
+  "basePrices": {
+    "Laptop": 32000,
+    "Desktop": 24000,
+    "Monitor": 7500,
+    "Printer": 6500,
+    "SSD": 3000,
+    "HDD": 2000,
+    "RAM": 2200,
+    "GPU": 14000,
+    "Processor": 8500,
+    "Motherboard": 6500
+  },
+  "brandMultipliers": {
+    "Apple": 1.45,
+    "Dell": 1.08,
+    "Lenovo": 1.1,
+    "HP": 1.02,
+    "ASUS": 1.05,
+    "Acer": 0.9,
+    "MSI": 1.12,
+    "Samsung": 1.05,
+    "Crucial": 1,
+    "Zotac": 1.02,
+    "Other": 0.82
+  },
+  "processorMultipliers": {
+    "Apple M-series (M1/M2/M3)": 1.45,
+    "Core i7 / Ryzen 7 (High End)": 1.25,
+    "Core i5 / Ryzen 5 (Mainstream)": 1,
+    "Core i3 / Ryzen 3 (Entry)": 0.75,
+    "Intel Core i9 / Ryzen 9": 1.5,
+    "Intel Xeon / Workstation": 1.3,
+    "Other / Older Dual-Core": 0.5
+  },
+  "ramMultipliers": {
+    "4GB": 0.8,
+    "8GB": 1,
+    "16GB": 1.18,
+    "32GB+": 1.35
+  },
+  "storageMultipliers": {
+    "128GB": 0.8,
+    "256GB": 0.95,
+    "512GB": 1.1,
+    "1TB+": 1.25
+  },
+  "storageTypeMultipliers": {
+    "NVMe SSD": 1.1,
+    "SATA SSD": 1,
+    "SSD + HDD": 1.15,
+    "HDD Only": 0.75,
+    "Not applicable": 1
+  },
+  "yearMultipliers": {
+    "2025-2026": 1,
+    "2023-2024": 0.84,
+    "2021-2022": 0.65,
+    "2019-2020": 0.45,
+    "Before 2019": 0.28
+  },
+  "conditionMultipliers": {
+    "Excellent": 1,
+    "Good": 0.86,
+    "Fair": 0.68,
+    "Poor": 0.45,
+    "Damaged": 0.22
+  },
+  "componentRules": {
+    "SSD": {
+      "capacity": {
+        "128GB": 0.6,
+        "256GB": 0.85,
+        "512GB": 1.1,
+        "1TB+": 1.45
+      },
+      "interface": {
+        "NVMe": 1.15,
+        "SATA": 0.9
+      },
+      "health": {
+        "90–100%": 1,
+        "70–89%": 0.75,
+        "Below 70%": 0.4
+      }
+    },
+    "HDD": {
+      "capacity": {
+        "500GB": 0.6,
+        "1TB": 0.9,
+        "2TB+": 1.3
+      },
+      "badSectors": {
+        "No bad sectors": 1,
+        "Minor bad sectors": 0.5,
+        "Clicking/Dead": 0.15
+      }
+    },
+    "RAM": {
+      "capacity": {
+        "4GB": 0.6,
+        "8GB": 0.9,
+        "16GB": 1.25,
+        "32GB+": 1.6
+      },
+      "generation": {
+        "DDR5": 1.3,
+        "DDR4": 1,
+        "DDR3": 0.6
+      }
+    },
+    "GPU": {
+      "vram": {
+        "2GB": 0.5,
+        "4GB": 0.8,
+        "6GB/8GB": 1.15,
+        "10GB+": 1.5
+      }
+    }
+  }
+};
