@@ -7,7 +7,14 @@
  * preflight is needed.
  */
 import type {
+  AdminCredentials,
+  AdminOverview,
+  AdminRequestKind,
   ApiErrorBody,
+  Buyer,
+  BuyerCredentials,
+  BuyerDashboard,
+  Invoice,
   Listing,
   ListingListResponse,
   ListingOrder,
@@ -20,6 +27,7 @@ import type {
   RepairService,
   SearchHit,
   Serviceability,
+  AdminAccount,
   TrackedRequest,
   ValuationConfig,
   ValuationResult,
@@ -207,4 +215,66 @@ export const api = {
       `/api/marketplace/orders/${encodeURIComponent(id)}/status`,
       { method: 'PATCH', body: JSON.stringify(payload) },
     ),
+
+  // ---- Buyer accounts ----
+
+  /** Registers a new buyer or signs an existing one in. */
+  buyerAuth: (payload: BuyerCredentials & { name?: string; email?: string; city?: string }) =>
+    request<{ buyer: Buyer }>('/api/buyer/auth', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  buyerDashboard: (creds: BuyerCredentials) =>
+    request<BuyerDashboard>('/api/buyer/dashboard', {
+      method: 'POST',
+      body: JSON.stringify(creds),
+    }),
+
+  // ---- Invoices ----
+
+  invoice: (id: string, phone: string) =>
+    request<{ invoice: Invoice }>(`/api/invoices/${encodeURIComponent(id)}${toQuery({ phone })}`),
+
+  // ---- Super admin ----
+
+  adminAuth: (creds: AdminCredentials) =>
+    request<{ admin: AdminAccount }>('/api/admin/auth', {
+      method: 'POST',
+      body: JSON.stringify(creds),
+    }),
+
+  adminOverview: (creds: AdminCredentials) =>
+    request<AdminOverview>('/api/admin/overview', {
+      method: 'POST',
+      body: JSON.stringify(creds),
+    }),
+
+  adminSetListingStatus: (id: string, payload: AdminCredentials & { status: string }) =>
+    request<{ id: string; status: string }>(
+      `/api/admin/listings/${encodeURIComponent(id)}/status`,
+      { method: 'PATCH', body: JSON.stringify(payload) },
+    ),
+
+  adminDeleteListing: (id: string, creds: AdminCredentials) =>
+    request<{ id: string; deleted: boolean }>(
+      `/api/admin/listings/${encodeURIComponent(id)}/delete`,
+      { method: 'POST', body: JSON.stringify(creds) },
+    ),
+
+  adminSetRequestStatus: (
+    kind: AdminRequestKind,
+    id: string,
+    payload: AdminCredentials & { status: number },
+  ) =>
+    request<{ id: string; kind: string; status: number; statusLabel: string }>(
+      `/api/admin/requests/${kind}/${encodeURIComponent(id)}/status`,
+      { method: 'PATCH', body: JSON.stringify(payload) },
+    ),
+
+  adminInvoice: (id: string, creds: AdminCredentials) =>
+    request<{ invoice: Invoice }>(`/api/admin/invoices/${encodeURIComponent(id)}`, {
+      method: 'POST',
+      body: JSON.stringify(creds),
+    }),
 };

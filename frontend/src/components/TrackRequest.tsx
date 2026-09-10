@@ -181,9 +181,9 @@ export function TrackRequest() {
                         </td>
                       </tr>
                       <tr>
-                        <td style={cellKey}>Provisional Estimate</td>
-                        <td style={{ ...cellValue, color: 'var(--primary)', fontWeight: 700 }}>
-                          {money(Number(result.device.estimate ?? 0))}
+                        <td style={cellKey}>Your Quote</td>
+                        <td style={cellValue}>
+                          We will notify you on your WhatsApp within 1&ndash;2 working days.
                         </td>
                       </tr>
                     </>

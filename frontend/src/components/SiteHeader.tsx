@@ -30,7 +30,7 @@ const SHOP_CATEGORIES: Array<MegaLink | 'divider'> = [
   'divider',
   { href: '/marketplace', icon: 'storefront', label: 'Marketplace (Private Sellers)' },
   { href: '/marketplace/sell', icon: 'sell', label: 'Sell Your Own Item' },
-  { href: '/marketplace/purchases', icon: 'receipt_long', label: 'My Purchases' },
+  { href: '/account', icon: 'account_circle', label: 'My Account' },
   { href: '/parts', icon: 'memory', label: 'Computer Parts' },
   { href: '/repair', icon: 'handyman', label: 'Repair Services' },
   { href: '/sell', icon: 'currency_rupee', label: 'Sell Your Device' },
@@ -80,7 +80,7 @@ const MOBILE_LINKS = [
   { href: '/repair', icon: 'handyman', label: 'Book Computer Repair' },
   { href: '/marketplace', icon: 'storefront', label: 'Marketplace' },
   { href: '/marketplace/sell', icon: 'sell', label: 'Sell Your Own Item' },
-  { href: '/marketplace/purchases', icon: 'receipt_long', label: 'My Purchases' },
+  { href: '/account', icon: 'account_circle', label: 'My Account' },
   { href: '/parts', icon: 'memory', label: 'Computer Parts & SSD' },
   { href: '/contact?type=corporate', icon: 'business', label: 'Corporate Bulk Deals' },
   { href: '/wishlist', icon: 'favorite', label: 'Saved Wishlist' },
@@ -370,11 +370,11 @@ export function SiteHeader() {
               </div>
               <span className="action-label">Cart</span>
             </Link>
-            <Link className="header-action-item" href="/contact?action=signin" title="Sign In">
+            <Link className="header-action-item" href="/account" title="My account">
               <div className="action-icon-wrap">
                 <span className="icon">person_outline</span>
               </div>
-              <span className="action-label">Sign In</span>
+              <span className="action-label">Account</span>
             </Link>
           </div>
         </div>

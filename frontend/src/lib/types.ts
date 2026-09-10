@@ -223,3 +223,163 @@ export interface MarketplaceMeta {
   conditions: string[];
   timeline: string[];
 }
+
+// ---------------------------------------------------------------------------
+// Buyer accounts
+// ---------------------------------------------------------------------------
+
+export interface Buyer {
+  phone: string;
+  name: string;
+  email: string | null;
+  city: string | null;
+  createdAt: string;
+}
+
+export interface BuyerCredentials {
+  phone: string;
+  pin: string;
+}
+
+/** A marketplace deal as the buyer sees it. */
+export interface BuyerDeal {
+  id: string;
+  status: number;
+  statusLabel: string;
+  timeline: string[];
+  offerPrice: number | null;
+  message: string | null;
+  createdAt: string;
+  listing: {
+    id: string;
+    title: string;
+    category: string;
+    brand: string | null;
+    model: string | null;
+    condition: string;
+    price: number;
+    images: string[];
+    city: string | null;
+    status: string;
+  };
+  /** Released only once the seller confirms the deal. */
+  seller: { name: string; phone: string; city: string | null } | null;
+}
+
+export interface BuyerOrder {
+  id: string;
+  status: number;
+  statusLabel: string;
+  timeline: string[];
+  items: Array<{ name: string; qty: number; price: number }>;
+  subtotal: number;
+  deliveryFee: number;
+  total: number;
+  customer: Record<string, string>;
+  createdAt: string;
+}
+
+export interface BuyerServiceRequest {
+  id: string;
+  status: number;
+  statusLabel: string;
+  timeline: string[];
+  createdAt: string;
+  estimate?: number;
+  device?: Record<string, unknown>;
+  details?: Record<string, unknown>;
+}
+
+export interface BuyerDashboard {
+  buyer: Buyer;
+  deals: BuyerDeal[];
+  orders: BuyerOrder[];
+  sellRequests: BuyerServiceRequest[];
+  repairRequests: BuyerServiceRequest[];
+}
+
+// ---------------------------------------------------------------------------
+// Invoices
+// ---------------------------------------------------------------------------
+
+export interface Invoice {
+  invoiceNo: string;
+  kind: 'shop' | 'marketplace';
+  orderId: string;
+  issuedAt: string;
+  status: number;
+  billedTo: Record<string, string>;
+  items: Array<{
+    name: string;
+    qty: number;
+    price: number;
+    listPrice?: number;
+    condition?: string;
+    category?: string;
+  }>;
+  subtotal: number;
+  deliveryFee: number;
+  total: number;
+  seller: { name: string; phone: string; city: string | null };
+}
+
+// ---------------------------------------------------------------------------
+// Super admin
+// ---------------------------------------------------------------------------
+
+export interface AdminAccount {
+  username: string;
+  name: string;
+  role: string;
+  createdAt: string;
+}
+
+export interface AdminCredentials {
+  username: string;
+  password: string;
+}
+
+export interface AdminStats {
+  sellers: number;
+  buyers: number;
+  listings: number;
+  liveListings: number;
+  deals: number;
+  shopOrders: number;
+  sellRequests: number;
+  repairRequests: number;
+  messages: number;
+  gmv: number;
+}
+
+export interface AdminOverview {
+  stats: AdminStats;
+  sellers: Array<{
+    phone: string; name: string; email: string | null; city: string | null;
+    createdAt: string; listings: number;
+  }>;
+  buyers: Array<{
+    phone: string; name: string; email: string | null; city: string | null;
+    createdAt: string; deals: number; orders: number;
+  }>;
+  listings: Array<{
+    id: string; title: string; category: string; brand: string | null;
+    condition: string; price: number; status: string; views: number;
+    city: string | null; images: string[]; createdAt: string;
+    sellerName: string; sellerPhone: string;
+  }>;
+  deals: Array<{
+    id: string; status: number; statusLabel: string; offerPrice: number | null;
+    message: string | null; createdAt: string;
+    buyerName: string; buyerPhone: string; buyerCity: string | null;
+    listingId: string; listingTitle: string; listingPrice: number;
+    sellerName: string; sellerPhone: string;
+  }>;
+  orders: Array<Record<string, any>>;
+  sellRequests: Array<Record<string, any>>;
+  repairRequests: Array<Record<string, any>>;
+  messages: Array<Record<string, any>>;
+  timelines: Record<string, string[]>;
+}
+
+export type AdminRequestKind = 'deal' | 'order' | 'sell' | 'repair';

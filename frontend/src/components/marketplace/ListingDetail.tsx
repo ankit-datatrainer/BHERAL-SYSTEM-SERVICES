@@ -9,10 +9,16 @@
  * phone directory.
  */
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api, ApiError } from '@/lib/api';
 import { formatDate, money, whatsappUrl } from '@/lib/format';
-import { categoryMeta, listingImage, LISTING_STATUS_BADGE, rememberBuyerReference } from '@/lib/marketplace';
+import {
+  categoryMeta,
+  listingImage,
+  LISTING_STATUS_BADGE,
+  readBuyerSession,
+  rememberBuyerReference,
+} from '@/lib/marketplace';
 import type { Listing } from '@/lib/types';
 import { useStore } from '../StoreProvider';
 import { ListingCard } from './ListingCard';
@@ -38,6 +44,31 @@ export function ListingDetail({ listing, similar }: { listing: Listing; similar:
   const { toast } = useStore();
   const [activeImage, setActiveImage] = useState(0);
   const [form, setForm] = useState(EMPTY_BUYER);
+  const [signedIn, setSignedIn] = useState(false);
+
+  /**
+   * Prefill from the buyer's session so a signed-in buyer does not retype
+   * their details. sessionStorage is only readable after mount.
+   */
+  useEffect(() => {
+    const session = readBuyerSession();
+    if (!session) return;
+    setSignedIn(true);
+    setForm((f) => (f.buyerPhone ? f : { ...f, buyerPhone: session.phone }));
+    api
+      .buyerDashboard(session)
+      .then(({ buyer }) =>
+        setForm((f) => ({
+          ...f,
+          buyerName: f.buyerName || buyer.name,
+          buyerEmail: f.buyerEmail || buyer.email || '',
+          buyerCity: f.buyerCity || buyer.city || '',
+        })),
+      )
+      .catch(() => {
+        /* not signed in any more — they just fill the form in by hand */
+      });
+  }, []);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
@@ -262,6 +293,22 @@ export function ListingDetail({ listing, similar }: { listing: Listing; similar:
                         We pass your details to the seller. Their contact number is shared with you as
                         soon as they accept.
                       </p>
+
+                      <div className={`dash-note${signedIn ? ' dash-note--good' : ''}`}>
+                        {signedIn ? (
+                          <span>
+                            <span className="icon">verified_user</span> Signed in — this request will
+                            appear in <Link className="text-link" href="/account">your account</Link>{' '}
+                            straight away.
+                          </span>
+                        ) : (
+                          <span>
+                            <span className="icon">info</span>{' '}
+                            <Link className="text-link" href="/account">Create an account</Link> with this
+                            number to keep every request and invoice in one place.
+                          </span>
+                        )}
+                      </div>
 
                       <div className="form-grid">
                         <BuyerField label="Your Name *" error={errors.buyerName}>

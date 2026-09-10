@@ -146,6 +146,9 @@ export function CheckoutForm() {
             <Link className="btn btn-primary btn-lg" href={`/track?id=${confirmation.id}&phone=${confirmation.phone}`}>
               <span className="icon">local_shipping</span> Track This Order
             </Link>
+            <Link className="btn btn-secondary btn-lg" href={`/invoice/${confirmation.id}?phone=${confirmation.phone}`}>
+              <span className="icon">description</span> View Invoice
+            </Link>
             <Link className="btn btn-secondary btn-lg" href="/">
               <span className="icon">home</span> Return Home
             </Link>

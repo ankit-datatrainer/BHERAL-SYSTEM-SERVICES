@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { CatalogBrowser } from '@/components/CatalogBrowser';
+import { SellerListingsStrip } from '@/components/marketplace/SellerListingsStrip';
 
 export const metadata: Metadata = {
   title: 'Buy Refurbished Laptops in Delhi NCR',
@@ -24,6 +25,12 @@ export default function BuyPage() {
           </Suspense>
         </div>
       </section>
+
+      <SellerListingsStrip
+        eyebrow="Direct From Owners"
+        title="Also Listed by Private Sellers"
+        description="Machines put up for sale by their owners across Delhi NCR — often cheaper than certified stock, sold as-is."
+      />
     </>
   );
 }

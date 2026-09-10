@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { api } from '@/lib/api';
 import { money, whatsappUrl, PHONE_DISPLAY, imageUrl } from '@/lib/format';
 import { ProductCard } from '@/components/ProductCard';
+import { SellerListingsStrip } from '@/components/marketplace/SellerListingsStrip';
 import { HeroSection } from '@/components/home/HeroSection';
 import { ShopByCategory } from '@/components/home/ShopByCategory';
 import { FaqAccordion } from '@/components/home/FaqAccordion';
@@ -15,7 +16,7 @@ export const dynamic = 'force-dynamic';
 
 const JOURNEY_CARDS = [
   { href: '/buy', icon: 'laptop_mac', badge: 'FROM ₹14,999', badgeClass: 'badge-blue', title: 'Buy Refurbished Laptop', body: 'Dell Latitude, ThinkPads & MacBooks tested with 50-point diagnostic checks and Grade A guarantee.', cta: 'Browse 120+ Laptops →' },
-  { href: '/sell', icon: 'currency_rupee', badge: 'INSTANT VALUATION', badgeClass: 'badge-green', title: 'Sell Used Laptop', body: 'Liquidate your old or dead notebook for the highest salvage valuation with instant UPI at your doorstep.', cta: 'Calculate Instant Quote →', green: true },
+  { href: '/sell', icon: 'currency_rupee', badge: 'WHATSAPP QUOTE', badgeClass: 'badge-green', title: 'Sell Used Laptop', body: 'Tell us about your old or dead notebook and we send a firm price on WhatsApp, then pay by UPI at your doorstep.', cta: 'Get My Quote →', green: true },
   { href: '/repair', icon: 'handyman', badge: 'SAME-DAY PICKUP', badgeClass: 'badge-blue', title: 'Laptop Repair Lab', body: 'Cracked screens, water damage, motherboard BGA chips, keyboard swaps, and thermal overhauls.', cta: 'Book Repair Session →' },
   { href: '/parts?category=Desktop', icon: 'desktop_windows', badge: 'WORKSTATIONS', badgeClass: 'badge-blue', title: 'Desktop & Gaming PC', body: 'Custom rig tuning, PSU short troubleshooting, GPU thermal repasting, and enterprise server maintenance.', cta: 'Diagnose Desktop →' },
   { href: '/parts', icon: 'memory', badge: 'GENUINE OEM', badgeClass: 'badge-blue', title: 'Computer Parts & SSD', body: 'NVMe SSDs, DDR4/DDR5 RAM sticks, dedicated graphics cards, genuine batteries, and high-wattage chargers.', cta: 'Explore Spares →' },
@@ -58,7 +59,7 @@ const WHY_US = [
 const SELL_STEPS = [
   { title: 'Select Device & Model', body: 'Choose your exact brand, configuration, and storage specifications.' },
   { title: 'Share Current Condition', body: 'Answer clear functional questions on screen, battery, and physical wear.' },
-  { title: 'Instant Provisional Estimate', body: 'See an algorithmic valuation range before scheduling free inspection.' },
+  { title: 'Quote on WhatsApp', body: 'Our team reviews your device and sends a firm price within 1-2 working days.' },
   { title: 'Doorstep Verification & Payment', body: 'Technician verifies hardware and transfers instant cash/UPI on the spot.' },
 ];
 
@@ -212,6 +213,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <SellerListingsStrip />
 
       {/* 7. Why us */}
       <section className="section-sm">

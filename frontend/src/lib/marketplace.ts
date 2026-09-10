@@ -4,7 +4,7 @@
  * photo of its own.
  */
 import { STORAGE_KEYS, readJSON, removeKey, writeJSON } from './storage';
-import type { SellerCredentials } from './types';
+import type { AdminCredentials, BuyerCredentials, SellerCredentials } from './types';
 
 export interface CategoryMeta {
   /** Material Symbols glyph. */
@@ -214,3 +214,49 @@ export function readBuyerReferences(): Array<{ id: string; phone: string }> {
 export function clearBuyerReferences(): void {
   removeKey(STORAGE_KEYS.recentRequests);
 }
+
+/**
+ * Buyer and admin sessions.
+ *
+ * Held in sessionStorage for the same reason the seller's PIN is: a password
+ * should not outlive the browser session, and it is only ever sent to our own
+ * API over the same origin.
+ */
+const BUYER_KEY = 'bss_buyer_session';
+const ADMIN_KEY = 'bss_admin_session';
+
+function readSession<T>(key: string): T | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.sessionStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(key: string, value: unknown): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    /* storage blocked - they sign in again on reload */
+  }
+}
+
+function clearSession(key: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch {
+    /* ignore */
+  }
+}
+
+export const readBuyerSession = () => readSession<BuyerCredentials>(BUYER_KEY);
+export const writeBuyerSession = (creds: BuyerCredentials) => writeSession(BUYER_KEY, creds);
+export const clearBuyerSession = () => clearSession(BUYER_KEY);
+
+export const readAdminSession = () => readSession<AdminCredentials>(ADMIN_KEY);
+export const writeAdminSession = (creds: AdminCredentials) => writeSession(ADMIN_KEY, creds);
+export const clearAdminSession = () => clearSession(ADMIN_KEY);

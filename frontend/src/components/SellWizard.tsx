@@ -11,14 +11,13 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { api, ApiError } from '@/lib/api';
-import { money, whatsappUrl } from '@/lib/format';
+import { whatsappUrl } from '@/lib/format';
 import { STORAGE_KEYS, readJSON, removeKey, writeJSON } from '@/lib/storage';
-import type { ValuationResult } from '@/lib/types';
 import { useStore } from './StoreProvider';
 import { Reveal } from './Reveal';
 
-const LAPTOP_STEPS = ['Category & Brand', 'Model & Config', 'Functional Checks', 'Cosmetics & Spares', 'Instant Valuation', 'Doorstep Pickup'];
-const PART_STEPS = ['Category & Brand', 'Component Details', 'Condition & Health', 'Instant Valuation', 'Doorstep Pickup'];
+const LAPTOP_STEPS = ['Category & Brand', 'Model & Config', 'Functional Checks', 'Cosmetics & Spares', 'Review Summary', 'Doorstep Pickup'];
+const PART_STEPS = ['Category & Brand', 'Component Details', 'Condition & Health', 'Review Summary', 'Doorstep Pickup'];
 
 const DEVICE_CATEGORIES = [
   { value: 'Laptop', icon: 'laptop' }, { value: 'Desktop', icon: 'desktop_windows' },
@@ -112,7 +111,7 @@ const defaultState = (category: string): WizardState => ({
 const tomorrow = () => new Date(Date.now() + 86400000).toISOString().split('T')[0];
 
 interface Confirmation {
-  id: string; estimate: number; brand: string; model: string;
+  id: string; brand: string; model: string;
   date: string; time: string; address: string; phone: string;
 }
 
@@ -123,7 +122,6 @@ export function SellWizard() {
 
   const [state, setState] = useState<WizardState>(() => defaultState(initialCategory));
   const [step, setStep] = useState(0);
-  const [valuation, setValuation] = useState<ValuationResult | null>(null);
   const [pickup, setPickup] = useState({
     name: '', phone: '', whatsapp: '', email: '',
     address: '', area: '', city: 'Delhi', pincode: '',
@@ -173,18 +171,6 @@ export function SellWizard() {
     [state],
   );
 
-  // Debounced live estimate.
-  useEffect(() => {
-    let cancelled = false;
-    const timer = setTimeout(() => {
-      api
-        .estimate(devicePayload)
-        .then((res) => !cancelled && setValuation(res))
-        .catch(() => !cancelled && setValuation(null));
-    }, 250);
-    return () => { cancelled = true; clearTimeout(timer); };
-  }, [devicePayload]);
-
   const set = useCallback(<K extends keyof WizardState>(key: K, value: WizardState[K]) => {
     setState((s) => ({ ...s, [key]: value }));
   }, []);
@@ -218,7 +204,6 @@ export function SellWizard() {
       const result = await api.createSellRequest({ device: devicePayload, customer: pickup });
       setConfirmation({
         id: result.id,
-        estimate: result.valuation.estimate,
         brand: state.brand,
         model: state.model || state.partModel || state.category,
         date: pickup.preferredDate,
@@ -264,7 +249,6 @@ export function SellWizard() {
               </div>
               <div style={{ fontSize: 13, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                 <div><strong>Device:</strong> {confirmation.brand} {confirmation.model}</div>
-                <div><strong>Provisional Estimate:</strong> {money(confirmation.estimate)} (subject to inspection)</div>
                 <div><strong>Pickup Scheduled:</strong> {confirmation.date} ({confirmation.time})</div>
                 <div><strong>Pickup Address:</strong> {confirmation.address}</div>
               </div>
@@ -276,7 +260,7 @@ export function SellWizard() {
               </Link>
               <Link className="btn btn-secondary btn-lg" href="/"><span className="icon">home</span> Return Home</Link>
               <a className="btn btn-green btn-lg" target="_blank" rel="noopener noreferrer"
-                 href={whatsappUrl(`Hi Bheral Systems, I scheduled selling request ${confirmation.id} for my ${confirmation.brand} ${confirmation.model}. Provisional value: ${money(confirmation.estimate)}. Please confirm the technician slot.`)}>
+                 href={whatsappUrl(`Hi Bheral Systems, I scheduled selling request ${confirmation.id} for my ${confirmation.brand} ${confirmation.model}. Please share my quote and confirm the technician slot.`)}>
                 <span className="icon">chat</span> WhatsApp Selling Desk
               </a>
             </div>
@@ -307,14 +291,14 @@ export function SellWizard() {
               ))}
             </ol>
 
-            {valuation && (
-              <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--emerald-soft)', border: '1px solid var(--emerald-border)', borderRadius: 'var(--radius-md)' }}>
-                <small style={{ display: 'block', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--emerald-text)', fontWeight: 700 }}>
-                  Live Estimate
-                </small>
-                <strong style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>{money(valuation.estimate)}</strong>
-              </div>
-            )}
+            <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--emerald-soft)', border: '1px solid var(--emerald-border)', borderRadius: 'var(--radius-md)' }}>
+              <small style={{ display: 'block', fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--emerald-text)', fontWeight: 700 }}>
+                Your quote
+              </small>
+              <strong style={{ fontSize: 13.5, color: 'var(--navy)', display: 'block', marginTop: '0.3rem', lineHeight: 1.5 }}>
+                We will notify you on your WhatsApp within 1&ndash;2 working days.
+              </strong>
+            </div>
 
             <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--surface-container-low)', borderRadius: 'var(--radius-DEFAULT)', fontSize: 12, color: 'var(--on-surface-variant)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -453,7 +437,7 @@ export function SellWizard() {
               <>
                 <h2 style={{ fontSize: '1.6rem', marginBottom: '0.5rem' }}>Functional Condition Questions</h2>
                 <p style={{ color: 'var(--on-surface-variant)', marginBottom: '1.5rem' }}>
-                  Answer accurately so your doorstep evaluation matches this estimate.
+                  Answer accurately so the quote we send you matches the device we collect.
                 </p>
                 <div className="question-list">
                   {QUESTIONS.map((q) => (
@@ -527,24 +511,21 @@ export function SellWizard() {
 
             {step === valuationStepIndex && (
               <>
-                <span className="eyebrow green">Instant Algorithmic Valuation</span>
-                <h2 style={{ fontSize: '1.6rem', marginBottom: '0.5rem' }}>Provisional Estimated Value</h2>
+                <span className="eyebrow green">Almost done</span>
+                <h2 style={{ fontSize: '1.6rem', marginBottom: '0.5rem' }}>Review your device details</h2>
                 <p style={{ color: 'var(--on-surface-variant)', marginBottom: '1.5rem' }}>
-                  Calculated from Delhi NCR wholesale re-commerce indices and your declared specifications.
+                  Check everything below is right. Our team reviews each device individually before quoting.
                 </p>
 
-                <div className="estimate" style={{ textAlign: 'center', padding: '2.5rem 1.5rem', background: 'var(--surface-container-low)', border: '2px solid var(--emerald)', borderRadius: 'var(--radius-xl)', marginBottom: '2rem' }}>
-                  <span style={{ fontSize: 13, textTransform: 'uppercase', color: 'var(--tertiary)', fontWeight: 700, letterSpacing: 1 }}>Estimated Payout Value</span>
-                  <div className="estimate-value" style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', margin: '0.5rem 0' }}>
-                    {valuation ? money(valuation.estimate) : '…'}
-                  </div>
-                  {valuation && (
-                    <p style={{ fontSize: 14, color: 'var(--on-surface-variant)', marginBottom: '1rem' }}>
-                      Estimated Range: <strong>{money(valuation.minRange)} – {money(valuation.maxRange)}</strong> (Spot UPI / Cash)
+                <div className="quote-promise">
+                  <span className="icon">chat</span>
+                  <div>
+                    <strong>We will notify you on your WhatsApp in 1&ndash;2 working days.</strong>
+                    <p>
+                      A specialist checks your configuration against current Delhi NCR market rates and
+                      sends you a firm price on WhatsApp. No obligation &mdash; accept it and we schedule
+                      a free doorstep pickup, or simply ignore it.
                     </p>
-                  )}
-                  <div style={{ background: 'var(--surface-container-lowest)', padding: '0.75rem 1rem', borderRadius: 'var(--radius-DEFAULT)', display: 'inline-block', fontSize: 12, color: 'var(--navy)', fontWeight: 600 }}>
-                    ⚠️ Final value is subject to physical inspection by our visiting technician.
                   </div>
                 </div>
 
@@ -552,7 +533,7 @@ export function SellWizard() {
                   <div className="highlight-spec"><small>Item</small><strong>{state.brand} {state.model || state.partModel || state.category}</strong></div>
                   <div className="highlight-spec"><small>Declared Condition</small><strong>{state.cosmeticCondition}</strong></div>
                   <div className="highlight-spec"><small>Storage / RAM</small><strong>{state.storage || state.capacity || '—'} / {state.ram || '—'}</strong></div>
-                  <div className="highlight-spec"><small>Payment Method</small><strong>Instant UPI / Spot Cash</strong></div>
+                  <div className="highlight-spec"><small>Quote Delivery</small><strong>WhatsApp, 1&ndash;2 working days</strong></div>
                 </div>
               </>
             )}
@@ -561,7 +542,7 @@ export function SellWizard() {
               <>
                 <h2 style={{ fontSize: '1.6rem', marginBottom: '0.5rem' }}>Schedule Doorstep Inspection &amp; Pickup</h2>
                 <p style={{ color: 'var(--on-surface-variant)', marginBottom: '1.5rem' }}>
-                  Our Delhi technician will inspect the device, confirm the final valuation and transfer instant cash/UPI.
+                  Once you accept the quote we send on WhatsApp, our Delhi technician collects the device and pays you on the spot.
                 </p>
                 <div className="form-grid">
                   <PickupField label="Full Name *" error={errors['customer.name']}>

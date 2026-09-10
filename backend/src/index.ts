@@ -12,6 +12,7 @@ import { pingDatabase } from './supabase.js';
 import { catalogRouter } from './routes/catalog.js';
 import { requestsRouter } from './routes/requests.js';
 import { marketplaceRouter } from './routes/marketplace.js';
+import { portalsRouter } from './routes/portals.js';
 import { errorHandler, notFoundHandler } from './middleware/errors.js';
 
 const app = express();
@@ -25,7 +26,7 @@ app.use(morgan(env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(
   cors({
     origin: env.corsOrigins.includes('*') ? true : env.corsOrigins,
-    methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   }),
 );
 
@@ -44,6 +45,7 @@ app.get('/api/health', async (_req, res) => {
 app.use('/api', catalogRouter);
 app.use('/api', requestsRouter);
 app.use('/api', marketplaceRouter);
+app.use('/api', portalsRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

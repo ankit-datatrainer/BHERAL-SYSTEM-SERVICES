@@ -181,7 +181,10 @@ Validation is Zod-based; a 400 carries
 | `/marketplace`  | Client    | Buyer portal — browse listings from private sellers |
 | `/marketplace/[id]` | Server + client | Listing detail, buy or make an offer     |
 | `/marketplace/sell` | Client | Seller dashboard — overview, listings, requests, new listing |
-| `/marketplace/purchases` | Client | Buyer dashboard — every request made from this browser |
+| `/marketplace/purchases` | Redirect | Kept working; now points at `/account` |
+| `/account`      | Client    | Buyer dashboard — deals, store orders, sell & repair jobs |
+| `/admin`        | Client    | Super-admin console — listings, deals, orders, people, enquiries |
+| `/invoice/[id]` | Server + client | Printable invoice; `?phone=` is the credential |
 | `/track`        | Client    | Deep-linkable `?id=&phone=`; handles all four request types |
 | `/contact`      | Client    | `?type=` preselects the enquiry type              |
 | `/warranty`, `/privacy`, `/terms` | Static | Policy pages                        |
@@ -204,11 +207,11 @@ Marketplace items carry no Bheral warranty, and the listing page says so.
 
 ### Dashboards
 
-Both marketplace dashboards share one design system in
+All three dashboards share one design system in
 `frontend/src/styles/dashboard.css` and the primitives in
 `components/marketplace/DashboardUI.tsx` (stat cards, panels, status pills,
-deal stepper, empty states), so the seller and buyer views read as one
-product rather than two bolted-on admin screens.
+deal stepper, empty states, tables), so the buyer, seller and admin views read
+as one product rather than bolted-on admin screens.
 
 The shell is a sticky sidebar plus content on laptops, and collapses to a
 horizontal segmented nav with 2-up stat cards on tablets and phones.
@@ -235,6 +238,55 @@ change and after client-rendered lists settle. Everything is disabled under
 `prefers-reduced-motion`.
 
 ---
+
+## Portals & accounts
+
+Three signed-in surfaces, all sharing one dashboard design system
+(`frontend/src/styles/dashboard.css`).
+
+| Portal | Route | Credential |
+| --- | --- | --- |
+| Buyer | `/account` | mobile number + PIN |
+| Seller | `/marketplace/sell` | mobile number + PIN |
+| Super admin | `/admin` | username + password |
+
+Every credential is verified inside Postgres by a `SECURITY DEFINER` function
+using pgcrypto, so the API process never handles a password hash and the anon
+key cannot reach another account's data. There is no client-side "am I an
+admin?" check to bypass — each request re-authenticates.
+
+### Applying the schema
+
+`backend/schema.sql` is the base schema; `backend/sql/portals.sql` adds buyer
+accounts, admin accounts and invoices. Run each in the Supabase SQL editor
+(Dashboard → SQL Editor → New query → paste → Run). `portals.sql` finishes with
+`NOTIFY pgrst, 'reload schema'` so PostgREST picks up the new functions
+immediately — without it the API answers *"Could not find the function … in the
+schema cache"*.
+
+`portals.sql` also seeds the demo accounts below. **Change these before this
+goes anywhere near production.**
+
+| Role | ID | Password |
+| --- | --- | --- |
+| Super admin | `superadmin` | `Bheral@2026` |
+| Buyer | `9000000002` | `2468` |
+| Seller | `9000000001` | `1234` |
+
+### Invoices
+
+`/invoice/<reference>?phone=<10 digits>` renders a printable invoice for a shop
+order, or for a marketplace deal once the seller has confirmed it (before that
+the function raises `NOT_CONFIRMED` — there is no sale yet). The reference plus
+the phone number is the credential, the same rule the tracking page uses.
+Invoices are linked from the checkout confirmation, both dashboards and the
+admin console. Print styles hide the site chrome, so "Print" gives a clean PDF.
+
+### Seller listings on the main site
+
+`SellerListingsStrip` reads the same public `active` listings the marketplace
+does and renders them on the home page and `/buy`. A seller publishing an item
+is all it takes for it to appear — no approval step, no copy step.
 
 ## Scripts
 

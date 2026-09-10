@@ -776,6 +776,12 @@ function BuyerRequests({
               <Link className="btn btn-secondary btn-small" href={`/marketplace/${o.listingId}`}>
                 <span className="icon" style={{ fontSize: 16 }}>visibility</span> View Listing
               </Link>
+              {/* The invoice only exists once the deal is confirmed. */}
+              {o.status >= 2 && (
+                <Link className="btn btn-secondary btn-small" href={`/invoice/${o.id}?phone=${o.buyerPhone}`}>
+                  <span className="icon" style={{ fontSize: 16 }}>description</span> Invoice
+                </Link>
+              )}
             </div>
 
             {o.status < 2 && (

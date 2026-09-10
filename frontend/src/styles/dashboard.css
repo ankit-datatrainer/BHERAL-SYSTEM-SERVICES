@@ -993,3 +993,424 @@
     order: 2;
   }
 }
+
+/* =============================================================================
+   Portal additions: summary tiles, inline notes, and the admin console
+   ========================================================================== */
+
+/* Clickable summary tile — used on the buyer overview to jump between tabs. */
+.dash-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 1rem 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-container-lowest);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.25s ease, transform 0.35s var(--ease-out-expo);
+}
+
+.dash-tile:hover {
+  border-color: var(--primary-fixed-dim);
+  transform: translateY(-2px);
+}
+
+.dash-tile .icon {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.dash-tile strong {
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.dash-tile small {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+}
+
+/* Inline status note inside a request card. */
+.dash-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-container-low);
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.dash-note--good {
+  background: var(--emerald-soft);
+  border-color: var(--emerald-border);
+}
+
+.dash-note strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.dash-note--good strong {
+  color: var(--emerald-text);
+}
+
+.dash-note span {
+  color: var(--on-surface);
+}
+
+.dash-note .icon {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* -----------------------------------------------------------------------------
+   Admin console tables
+   -------------------------------------------------------------------------- */
+
+/* The wrapper scrolls, never the page — wide tables must not push the body. */
+.dash-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dash-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.dash-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  background: var(--surface-container-low);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.dash-table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.dash-table tbody tr:hover {
+  background: var(--surface-container-lowest);
+}
+
+.dash-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dash-table .mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.dash-table__title {
+  font-weight: 650;
+  color: var(--navy);
+  display: block;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-table__sub {
+  display: block;
+  font-size: 11.5px;
+  color: var(--on-surface-variant);
+}
+
+.dash-table__actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Compact select used for inline status changes. */
+.dash-select {
+  padding: 0.35rem 0.5rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-lowest);
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--on-surface);
+  max-width: 190px;
+}
+
+.dash-select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* Search / filter bar above a table. */
+.dash-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dash-toolbar input,
+.dash-toolbar select {
+  padding: 0.5rem 0.7rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-lowest);
+  font: inherit;
+  font-size: 13px;
+  color: var(--on-surface);
+}
+
+.dash-toolbar input {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .dash-tile strong { font-size: 1.25rem; }
+  .dash-toolbar input { flex-basis: 100%; }
+  .dash-select { max-width: 150px; }
+}
+
+/* =============================================================================
+   Invoice
+   ========================================================================== */
+.invoice-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.invoice {
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.invoice__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--navy);
+}
+
+.invoice__badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--primary-container);
+  color: var(--on-primary-container, var(--navy));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.invoice__no {
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+  margin: 0.5rem 0 0.25rem;
+  color: var(--navy);
+}
+
+.invoice__meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.invoice__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: right;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.invoice__brand strong {
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.invoice__parties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.invoice__parties h2 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin: 0 0 0.5rem;
+}
+
+.invoice__parties div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 13.5px;
+  color: var(--on-surface-variant);
+}
+
+.invoice__parties strong {
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.invoice__table {
+  min-width: 480px;
+}
+
+.invoice__totals {
+  margin-left: auto;
+  margin-top: 1.25rem;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 14px;
+}
+
+.invoice__totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: var(--on-surface-variant);
+}
+
+.invoice__grand {
+  padding-top: 0.6rem;
+  border-top: 1.5px solid var(--border);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy) !important;
+}
+
+.invoice__foot {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+.invoice__thanks {
+  margin-bottom: 0;
+  font-weight: 650;
+  color: var(--navy);
+}
+
+@media (max-width: 767px) {
+  .invoice { padding: 1.35rem; }
+  .invoice__head { flex-direction: column; }
+  .invoice__brand { text-align: left; }
+  .invoice__no { font-size: 1.4rem; }
+  .invoice__totals { max-width: none; }
+}
+
+/* Print: just the invoice, edge to edge. */
+@media print {
+  .no-print,
+  .site-header,
+  .site-footer,
+  .page-hero,
+  .aw-progress,
+  .aw-grain,
+  .aw-cursor,
+  .toast-stack { display: none !important; }
+
+  body { background: #fff; }
+
+  .section { padding: 0 !important; }
+
+  .invoice {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  /* Reveal animations leave elements at opacity 0 if print fires early. */
+  [data-aw-reveal],
+  [data-aw-stagger],
+  [data-aw-stagger] > * { opacity: 1 !important; transform: none !important; }
+
+  .dash-table-wrap { overflow: visible !important; }
+  .dash-table { min-width: 0 !important; }
+}
+
+/* Quote promise shown in place of an on-screen valuation. */
+.quote-promise {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--emerald);
+  border-radius: var(--radius-xl);
+  background: var(--emerald-soft);
+}
+
+.quote-promise .icon {
+  font-size: 30px;
+  color: var(--emerald-text);
+  flex: 0 0 auto;
+}
+
+.quote-promise strong {
+  display: block;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.quote-promise p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--on-surface-variant);
+}
+
+@media (max-width: 575px) {
+  .quote-promise { flex-direction: column; gap: 0.6rem; padding: 1.15rem; }
+  .quote-promise strong { font-size: 1rem; }
+}
