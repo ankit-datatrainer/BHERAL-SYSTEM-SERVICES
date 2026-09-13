@@ -530,10 +530,22 @@ export function SellWizard() {
                 </div>
 
                 <div className="highlight-specs">
-                  <div className="highlight-spec"><small>Item</small><strong>{state.brand} {state.model || state.partModel || state.category}</strong></div>
-                  <div className="highlight-spec"><small>Declared Condition</small><strong>{state.cosmeticCondition}</strong></div>
-                  <div className="highlight-spec"><small>Storage / RAM</small><strong>{state.storage || state.capacity || '—'} / {state.ram || '—'}</strong></div>
-                  <div className="highlight-spec"><small>Quote Delivery</small><strong>WhatsApp, 1&ndash;2 working days</strong></div>
+                  <div className="highlight-spec">
+                    <small>Item</small>
+                    <strong>{state.brand} {state.model || state.partModel || state.category}</strong>
+                  </div>
+                  <div className="highlight-spec">
+                    <small>Declared Condition</small>
+                    <strong>{state.cosmeticCondition}</strong>
+                  </div>
+                  <div className="highlight-spec">
+                    <small>Storage / RAM</small>
+                    <strong>{state.storage || state.capacity || '—'} / {state.ram || '—'}</strong>
+                  </div>
+                  <div className="highlight-spec">
+                    <small>Quote Delivery</small>
+                    <strong>WhatsApp, 1&ndash;2 working days</strong>
+                  </div>
                 </div>
               </>
             )}

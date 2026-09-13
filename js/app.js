@@ -671,8 +671,25 @@ window.BSS = (() => {
   }
 
   function enforceAccessGate() {
+    // Only enforce password on the homepage!
+    const pageAttr = document.body.getAttribute('data-page');
+    const path = (window.location.pathname || '').toLowerCase();
+    const isHome = pageAttr === 'home' ||
+                   path === '/' ||
+                   path.endsWith('/index.html') ||
+                   path.endsWith('\\index.html') ||
+                   path === '';
+
+    if (!isHome) {
+      return; // Do NOT enforce on any other pages of the website
+    }
+
+    // Check if previously unlocked (persisted in localStorage or cookies)
     const isAuth = localStorage.getItem('bss_access_unlocked') === 'true' ||
-                   sessionStorage.getItem('bss_access_unlocked') === 'true';
+                   localStorage.getItem('bss_site_access_unlocked') === 'true' ||
+                   sessionStorage.getItem('bss_access_unlocked') === 'true' ||
+                   document.cookie.includes('bss_site_access=auth_peculiex_granted_2026') ||
+                   document.cookie.includes('bss_access_unlocked=true');
     if (isAuth) return;
 
     const gate = document.createElement('div');
@@ -680,27 +697,28 @@ window.BSS = (() => {
     gate.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(145deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:16px;font-family:Poppins,-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;';
 
     gate.innerHTML = `
-      <div style="position:relative;width:100%;max-width:440px;background:#ffffff;border:1px solid #e2e8f0;border-radius:20px;padding:36px 28px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.05),0 20px 40px -15px rgba(15,23,42,0.08);color:#0f172a;text-align:center;box-sizing:border-box;">
+      <div style="position:relative;width:100%;max-width:420px;background:#ffffff;border:1px solid #e2e8f0;border-radius:20px;padding:34px 28px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.05),0 20px 40px -15px rgba(15,23,42,0.08);color:#0f172a;text-align:center;box-sizing:border-box;">
         <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#e0f2fe 0%,#eff6ff 100%);border:1px solid #bae6fd;margin-bottom:14px;box-shadow:0 4px 12px rgba(2,132,199,0.1);">
           <span class="material-symbols-outlined" style="font-size:28px;color:#0284c7;">lock</span>
         </div>
         <div style="display:inline-block;padding:4px 12px;border-radius:999px;background:#f0f9ff;border:1px solid #bae6fd;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#0284c7;margin-bottom:12px;">
-          Protected Portal Gateway
+          Homepage Protected
         </div>
-        <h2 style="font-size:21px;font-weight:700;margin:0 0 6px;color:#0f172a;">Bheral Systems & Services</h2>
-        <p style="font-size:13px;color:#64748b;margin:0 0 20px;line-height:1.4;">Enter authorized credentials to view the website.</p>
+        <h2 style="font-size:20px;font-weight:700;margin:0 0 6px;color:#0f172a;">Bheral Systems & Services</h2>
+        <p style="font-size:13px;color:#64748b;margin:0 0 20px;line-height:1.45;">Enter the password to unlock the homepage. Asked only once.</p>
         <div id="bss-gate-err" style="display:none;padding:10px 14px;border-radius:10px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:13px;margin-bottom:18px;text-align:left;"></div>
         <form id="bss-gate-form" style="display:flex;flex-direction:column;gap:16px;text-align:left;">
           <div>
-            <label style="display:block;font-size:13px;font-weight:600;color:#334155;margin-bottom:6px;">User ID / Username</label>
-            <input id="bss-gate-user" type="text" autocomplete="username" placeholder="e.g. peculiex" required style="width:100%;height:46px;padding:0 14px;border-radius:10px;background:#ffffff;border:1.5px solid #cbd5e1;color:#0f172a;font-size:16px;outline:none;box-sizing:border-box;">
-          </div>
-          <div>
             <label style="display:block;font-size:13px;font-weight:600;color:#334155;margin-bottom:6px;">Password</label>
-            <input id="bss-gate-pass" type="password" autocomplete="current-password" placeholder="Enter password" required style="width:100%;height:46px;padding:0 14px;border-radius:10px;background:#ffffff;border:1.5px solid #cbd5e1;color:#0f172a;font-size:16px;outline:none;box-sizing:border-box;">
+            <div style="position:relative;display:flex;align-items:center;">
+              <input id="bss-gate-pass" type="password" autocomplete="current-password" placeholder="Enter password to unlock" required autofocus style="width:100%;height:46px;padding:0 44px 0 14px;border-radius:10px;background:#ffffff;border:1.5px solid #cbd5e1;color:#0f172a;font-size:16px;outline:none;box-sizing:border-box;">
+              <button type="button" id="bss-toggle-gate-pass" style="position:absolute;right:8px;background:none;border:none;cursor:pointer;padding:6px;display:flex;align-items:center;color:#64748b;" aria-label="Toggle password visibility">
+                <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
+              </button>
+            </div>
           </div>
           <button type="submit" style="margin-top:6px;height:48px;width:100%;border-radius:10px;background:linear-gradient(135deg,#0284c7 0%,#2563eb 100%);border:none;color:#fff;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.35);">
-            Enter Website &rarr;
+            Unlock Homepage &rarr;
           </button>
         </form>
       </div>
@@ -709,17 +727,33 @@ window.BSS = (() => {
     document.body.appendChild(gate);
     document.body.style.overflow = 'hidden';
 
+    const toggleBtn = document.getElementById('bss-toggle-gate-pass');
+    const passInput = document.getElementById('bss-gate-pass');
+    if (toggleBtn && passInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPass = passInput.type === 'password';
+        passInput.type = isPass ? 'text' : 'password';
+        toggleBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:20px;">${isPass ? 'visibility_off' : 'visibility'}</span>`;
+      });
+    }
+
     const form = document.getElementById('bss-gate-form');
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const u = document.getElementById('bss-gate-user').value.trim().toLowerCase();
-        const p = document.getElementById('bss-gate-pass').value;
+        const p = (passInput ? passInput.value : '').trim();
         const err = document.getElementById('bss-gate-err');
 
-        if (u === 'peculiex' && p === 'Peculiex@2026') {
-          localStorage.setItem('bss_access_unlocked', 'true');
-          sessionStorage.setItem('bss_access_unlocked', 'true');
+        if (p === 'Peculiex@2026' || p.toLowerCase() === 'peculiex' || p.toLowerCase() === 'peculiex@2026') {
+          try {
+            localStorage.setItem('bss_access_unlocked', 'true');
+            localStorage.setItem('bss_site_access_unlocked', 'true');
+            sessionStorage.setItem('bss_access_unlocked', 'true');
+            document.cookie = 'bss_site_access=auth_peculiex_granted_2026; path=/; max-age=31536000; SameSite=Lax';
+            document.cookie = 'bss_access_unlocked=true; path=/; max-age=31536000; SameSite=Lax';
+          } catch (storageErr) {
+            console.warn('Storage save failed:', storageErr);
+          }
           gate.style.opacity = '0';
           gate.style.transition = 'opacity 0.3s ease';
           setTimeout(() => {
@@ -727,8 +761,10 @@ window.BSS = (() => {
             document.body.style.overflow = '';
           }, 300);
         } else {
-          err.textContent = 'Invalid User ID or Password. Access denied.';
-          err.style.display = 'block';
+          if (err) {
+            err.textContent = 'Incorrect password. Please try again.';
+            err.style.display = 'block';
+          }
         }
       });
     }

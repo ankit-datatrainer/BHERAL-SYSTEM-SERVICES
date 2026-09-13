@@ -10,6 +10,7 @@ import '@/styles/login.css';
 import { StoreProvider } from '@/components/StoreProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
+import { CartDrawer } from '@/components/CartDrawer';
 import { MotionLayer } from '@/components/MotionLayer';
 
 export const metadata: Metadata = {
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
           <SiteFooter />
+          <CartDrawer />
         </StoreProvider>
       </body>
     </html>

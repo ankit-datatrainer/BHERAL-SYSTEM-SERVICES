@@ -38,6 +38,10 @@ interface StoreValue {
   /** False until localStorage has been read, so SSR and first paint agree. */
   hydrated: boolean;
   cartCount: number;
+  cartDrawerOpen: boolean;
+  openCartDrawer: () => void;
+  closeCartDrawer: () => void;
+  toggleCartDrawer: () => void;
   addToCart: (id: string, qty?: number) => void;
   setQty: (id: string, qty: number) => void;
   removeFromCart: (id: string) => void;
@@ -55,6 +59,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartLine[]>([]);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const toastId = useRef(0);
 
@@ -73,6 +78,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (hydrated) writeJSON(STORAGE_KEYS.wishlist, wishlist);
   }, [wishlist, hydrated]);
 
+  const openCartDrawer = useCallback(() => setCartDrawerOpen(true), []);
+  const closeCartDrawer = useCallback(() => setCartDrawerOpen(false), []);
+  const toggleCartDrawer = useCallback(() => setCartDrawerOpen((prev) => !prev), []);
+
   const toast = useCallback((message: string, kind: ToastKind = 'info') => {
     const id = (toastId.current += 1);
     setToasts((prev) => [...prev, { id, message, kind }]);
@@ -90,9 +99,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         }
         return [...prev, { id, qty: Math.min(MAX_QTY, qty) }];
       });
-      toast('Added to your cart!', 'success');
+      // Automatically show the right-side cart drawer instead of toast
+      setCartDrawerOpen(true);
     },
-    [toast],
+    [],
   );
 
   const setQty = useCallback((id: string, qty: number) => {
@@ -135,6 +145,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       wishlist,
       hydrated,
       cartCount: cart.reduce((sum, line) => sum + line.qty, 0),
+      cartDrawerOpen,
+      openCartDrawer,
+      closeCartDrawer,
+      toggleCartDrawer,
       addToCart,
       setQty,
       removeFromCart,
@@ -143,7 +157,22 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       isWished,
       toast,
     }),
-    [cart, wishlist, hydrated, addToCart, setQty, removeFromCart, clearCart, toggleWishlist, isWished, toast],
+    [
+      cart,
+      wishlist,
+      hydrated,
+      cartDrawerOpen,
+      openCartDrawer,
+      closeCartDrawer,
+      toggleCartDrawer,
+      addToCart,
+      setQty,
+      removeFromCart,
+      clearCart,
+      toggleWishlist,
+      isWished,
+      toast,
+    ],
   );
 
   return (

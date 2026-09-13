@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { imageUrl, money, whatsappUrl } from '@/lib/format';
 import type { Product } from '@/lib/types';
 import { useStore } from './StoreProvider';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 const BRAND_LOGOS_MAP: Record<string, { src: string; height: number }> = {
   Apple: { src: '/assets/images/brands/apple.svg', height: 20 },
@@ -95,10 +96,16 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
 
         <div className="highlight-specs" style={{ marginBottom: '1.5rem' }}>
           {product.processor && product.processor !== '—' && (
-            <div className="highlight-spec"><small>Processor</small><strong>{product.processor}</strong></div>
+            <div className="highlight-spec">
+              <small>Processor</small>
+              <strong>{product.processor}</strong>
+            </div>
           )}
           {product.ram > 0 && (
-            <div className="highlight-spec"><small>Installed Memory</small><strong>{product.ram}GB RAM</strong></div>
+            <div className="highlight-spec">
+              <small>Installed Memory</small>
+              <strong>{product.ram}GB RAM</strong>
+            </div>
           )}
           {product.storage > 0 && (
             <div className="highlight-spec">
@@ -107,7 +114,10 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
             </div>
           )}
           {product.operatingSystem && product.operatingSystem !== '—' && (
-            <div className="highlight-spec"><small>Operating System</small><strong>{product.operatingSystem}</strong></div>
+            <div className="highlight-spec">
+              <small>Operating System</small>
+              <strong>{product.operatingSystem}</strong>
+            </div>
           )}
         </div>
 
@@ -143,22 +153,31 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="icon">chat</span> Ask on WhatsApp
+            <WhatsAppIcon size={18} color="#ffffff" /> Ask on WhatsApp
           </a>
         </div>
 
         <div className="hero-features" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginTop: 0 }}>
           <div className="mini-trust">
             <span className="icon" style={{ color: 'var(--primary)' }}>shield_with_heart</span>
-            <span><strong>{product.warranty}</strong><small>Written hardware guarantee</small></span>
+            <span>
+              <strong>{product.warranty}</strong>
+              <small>Written hardware guarantee</small>
+            </span>
           </div>
           <div className="mini-trust">
             <span className="icon" style={{ color: 'var(--emerald-text)' }}>local_shipping</span>
-            <span><strong>Free Delhi NCR Delivery</strong><small>Doorstep, insured handover</small></span>
+            <span>
+              <strong>Free Delhi NCR Delivery</strong>
+              <small>Doorstep, insured handover</small>
+            </span>
           </div>
           <div className="mini-trust">
             <span className="icon" style={{ color: 'var(--navy)' }}>receipt_long</span>
-            <span><strong>GST Invoice</strong><small>Available for business buyers</small></span>
+            <span>
+              <strong>GST Invoice</strong>
+              <small>Available for business buyers</small>
+            </span>
           </div>
           <div className="mini-trust">
             <span className="icon" style={{ color: 'var(--primary)' }}>handyman</span>

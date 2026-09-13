@@ -21,8 +21,7 @@ export function HeroSection() {
           <div className="hero-mockup-left">
             <div className="hero-pill-badge">NEW ARRIVAL</div>
             <h1 className="hero-mockup-headline">
-              Powerful Laptops.<br />
-              <span className="text-primary-gradient">Limitless Possibilities.</span>
+              Buy, Repair, <span className="text-primary-gradient">Sell.</span>
             </h1>
             <p className="hero-mockup-sub">
               From performance to portability, find the perfect laptop that fits your life and fuels your passion.
@@ -84,7 +83,7 @@ export function HeroSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imageUrl('assets/images/hero-laptops-showcase.png')}
-                alt="Powerful Laptops - Limitless Possibilities"
+                alt="Buy, Repair, Sell - Bheral Systems & Services"
                 className="hero-main-laptop"
               />
             </div>

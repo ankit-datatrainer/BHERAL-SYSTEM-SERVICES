@@ -386,11 +386,17 @@ export function ListingDetail({ listing, similar }: { listing: Listing; similar:
               <div className="hero-features" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginTop: 0 }}>
                 <div className="mini-trust">
                   <span className="icon" style={{ color: 'var(--primary)' }}>verified_user</span>
-                  <span><strong>Meet safely</strong><small>Inspect before you pay</small></span>
+                  <span>
+                    <strong>Meet safely</strong>
+                    <small>Inspect before you pay</small>
+                  </span>
                 </div>
                 <div className="mini-trust">
                   <span className="icon" style={{ color: 'var(--emerald-text)' }}>storefront</span>
-                  <span><strong>Free inspection</strong><small>Bring it to our Rohini bench</small></span>
+                  <span>
+                    <strong>Free inspection</strong>
+                    <small>Bring it to our Rohini bench</small>
+                  </span>
                 </div>
                 <div className="mini-trust">
                   <span className="icon" style={{ color: 'var(--navy)' }}>handyman</span>

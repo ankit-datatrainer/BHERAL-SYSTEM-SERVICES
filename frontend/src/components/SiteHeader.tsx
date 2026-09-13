@@ -12,6 +12,7 @@ import { api } from '@/lib/api';
 import { imageUrl, money, PHONE_DISPLAY } from '@/lib/format';
 import type { SearchHit } from '@/lib/types';
 import { useStore } from './StoreProvider';
+import { WhatsAppBadgeIcon } from './WhatsAppIcon';
 
 interface MegaLink {
   href: string;
@@ -135,7 +136,7 @@ function MegaMenu({ title, href, links }: { title: string; href: string; links: 
 export function SiteHeader() {
   const router = useRouter();
   const pathname = usePathname();
-  const { cartCount, wishlist, hydrated } = useStore();
+  const { cartCount, wishlist, hydrated, openCartDrawer } = useStore();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
@@ -261,8 +262,19 @@ export function SiteHeader() {
               </span>
             </div>
             <div className="utility-right">
+              <a
+                href="https://wa.me/919654779949?text=Hi%20Bheral%20Systems,%20I%20need%20assistance%20with%20a%20laptop%20order%20/%20repair."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="utility-item utility-whatsapp"
+                title="Chat with WhatsApp Support (+91 96547 79949)"
+              >
+                <WhatsAppBadgeIcon size={15} />
+                <span>WhatsApp: {PHONE_DISPLAY}</span>
+              </a>
+              <span className="utility-sep">|</span>
               <a href="tel:+919654779949" className="utility-item">
-                <span className="icon" style={{ fontSize: 15 }}>call</span> {PHONE_DISPLAY}
+                <span className="icon" style={{ fontSize: 15 }}>call</span> Call
               </a>
               <span className="utility-sep">|</span>
               <Link href="/track" className="utility-item">Track Order</Link>
@@ -367,7 +379,15 @@ export function SiteHeader() {
               </div>
               <span className="action-label">Wishlist</span>
             </Link>
-            <Link className="header-action-item" href="/cart" title="View cart">
+            <Link
+              className="header-action-item"
+              href="/cart"
+              title="View cart"
+              onClick={(e) => {
+                e.preventDefault();
+                openCartDrawer();
+              }}
+            >
               <div className="action-icon-wrap">
                 <span className="icon">shopping_cart</span>
                 <span className="count cart-count">{hydrated ? cartCount : 0}</span>
@@ -379,12 +399,6 @@ export function SiteHeader() {
                 <span className="icon">person_outline</span>
               </div>
               <span className="action-label">Account</span>
-            </Link>
-            <Link className="header-action-item" href="/logout" title="Lock Website (Sign Out)">
-              <div className="action-icon-wrap">
-                <span className="icon">lock</span>
-              </div>
-              <span className="action-label">Lock</span>
             </Link>
           </div>
         </div>
@@ -462,12 +476,39 @@ export function SiteHeader() {
           </button>
         </div>
         <nav className="mobile-nav">
-          {MOBILE_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className={isActive(l.href) ? 'active' : ''}>
-              <span className="icon">{l.icon}</span> {l.label}
-            </Link>
-          ))}
+          {MOBILE_LINKS.map((l) =>
+            l.href === '/cart' ? (
+              <a
+                key={l.href}
+                href="/cart"
+                className={isActive('/cart') ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setDrawerOpen(false);
+                  openCartDrawer();
+                }}
+              >
+                <span className="icon">{l.icon}</span> {l.label}
+              </a>
+            ) : (
+              <Link key={l.href} href={l.href} className={isActive(l.href) ? 'active' : ''}>
+                <span className="icon">{l.icon}</span> {l.label}
+              </Link>
+            ),
+          )}
         </nav>
+        <div style={{ padding: '1rem', borderTop: '1px solid var(--border)' }}>
+          <a
+            href="https://wa.me/919654779949?text=Hi%20Bheral%20Systems,%20I%20need%20assistance."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-green btn-block"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+          >
+            <WhatsAppBadgeIcon size={18} />
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
       </aside>
     </>
   );

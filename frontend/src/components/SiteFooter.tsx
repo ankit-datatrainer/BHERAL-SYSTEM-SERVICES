@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PHONE_DISPLAY, whatsappUrl } from '@/lib/format';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 /** Route-aware opening line for the WhatsApp deep link. */
 const CONTEXT_MESSAGES: Array<[string, string]> = [
@@ -138,7 +139,7 @@ export function SiteFooter() {
         aria-label="Chat on WhatsApp with Bheral Systems"
       >
         <span className="whatsapp-pulse" />
-        <span className="icon">chat</span>
+        <WhatsAppIcon size={20} color="#ffffff" />
         <span>WhatsApp Support</span>
       </a>
 

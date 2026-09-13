@@ -280,7 +280,10 @@ export default async function HomePage() {
               {SELL_STEPS.map((s, i) => (
                 <li key={s.title}>
                   <span className="step-num">{i + 1}</span>
-                  <span><strong>{s.title}</strong><small>{s.body}</small></span>
+                  <span>
+                    <strong>{s.title}</strong>
+                    <small>{s.body}</small>
+                  </span>
                 </li>
               ))}
             </ol>
@@ -294,7 +297,10 @@ export default async function HomePage() {
               {REPAIR_STEPS.map((s, i) => (
                 <li key={s.title}>
                   <span className="step-num">{i + 1}</span>
-                  <span><strong>{s.title}</strong><small>{s.body}</small></span>
+                  <span>
+                    <strong>{s.title}</strong>
+                    <small>{s.body}</small>
+                  </span>
                 </li>
               ))}
             </ol>
@@ -318,7 +324,10 @@ export default async function HomePage() {
             {COMPONENTS.map((c) => (
               <Link className="component-pill" href={`/parts?category=${encodeURIComponent(c.cat)}`} key={c.title}>
                 <span className="icon">{c.icon}</span>
-                <span><strong>{c.title}</strong><small>{c.sub}</small></span>
+                <span>
+                  <strong>{c.title}</strong>
+                  <small>{c.sub}</small>
+                </span>
               </Link>
             ))}
           </div>

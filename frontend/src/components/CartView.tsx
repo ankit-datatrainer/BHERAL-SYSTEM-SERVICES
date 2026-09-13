@@ -14,49 +14,7 @@ import type { Product } from '@/lib/types';
 import { useStore } from './StoreProvider';
 import { ProductCard } from './ProductCard';
 import { Reveal } from './Reveal';
-
-/** Resolves a list of product ids to full products. */
-function useProducts(ids: string[]) {
-  const [products, setProducts] = useState<Record<string, Product>>({});
-  const [loading, setLoading] = useState(true);
-  const key = ids.slice().sort().join(',');
-
-  useEffect(() => {
-    if (!key) {
-      setProducts({});
-      setLoading(false);
-      return;
-    }
-
-    let cancelled = false;
-    setLoading(true);
-
-    // One request per id keeps this simple and they run in parallel.
-    Promise.all(
-      key.split(',').map((id) =>
-        api
-          .product(id)
-          .then((r) => r.product)
-          .catch(() => null),
-      ),
-    )
-      .then((results) => {
-        if (cancelled) return;
-        const map: Record<string, Product> = {};
-        for (const p of results) if (p) map[p.id] = p;
-        setProducts(map);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [key]);
-
-  return { products, loading };
-}
+import { useProducts } from '@/lib/useProducts';
 
 function EmptyState({ icon, title, body, cta }: { icon: string; title: string; body: string; cta: { href: string; label: string } }) {
   return (

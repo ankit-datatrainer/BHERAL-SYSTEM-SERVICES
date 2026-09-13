@@ -8,7 +8,6 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const returnUrl = searchParams.get('returnUrl') || '/';
 
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,15 +18,8 @@ function LoginForm() {
     e.preventDefault();
     setError(null);
 
-    if (!username.trim()) {
-      setError('Please enter your User ID.');
-      setShake(true);
-      setTimeout(() => setShake(false), 500);
-      return;
-    }
-
-    if (!password) {
-      setError('Please enter your Password.');
+    if (!password.trim()) {
+      setError('Please enter the password.');
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return;
@@ -39,21 +31,32 @@ function LoginForm() {
       const res = await fetch('/api/auth/access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ password: password.trim() }),
       });
 
       const data = await res.json();
 
       if (res.ok && data.success) {
-        router.push(returnUrl);
-        router.refresh();
+        // Redundantly persist in client-side document.cookie and localStorage
+        // so it NEVER asks again when opening the same homepage
+        try {
+          document.cookie = 'bss_site_access=auth_peculiex_granted_2026; path=/; max-age=31536000; SameSite=Lax';
+          document.cookie = 'bss_access_unlocked=true; path=/; max-age=31536000; SameSite=Lax';
+          localStorage.setItem('bss_site_access_unlocked', 'true');
+          localStorage.setItem('bss_access_unlocked', 'true');
+        } catch {
+          // ignore storage error
+        }
+
+        // Hard browser navigation ensures the new cookie is immediately attached to HTTP headers
+        window.location.href = returnUrl;
       } else {
-        setError(data.error || 'Invalid credentials. Access denied.');
+        setError(data.error || 'Incorrect password. Please try again.');
         setShake(true);
         setTimeout(() => setShake(false), 500);
       }
     } catch {
-      setError('Network error. Unable to reach security gateway.');
+      setError('Network error. Unable to verify password.');
       setShake(true);
       setTimeout(() => setShake(false), 500);
     } finally {
@@ -76,12 +79,12 @@ function LoginForm() {
 
           <div className="bss-pill-badge">
             <span className="bss-pulse-dot" />
-            Protected Portal Gateway
+            Homepage Protection
           </div>
 
           <h1 className="bss-title">Bheral Systems & Services</h1>
           <p className="bss-subtitle">
-            Enter your authorized credentials to access and explore the platform.
+            Enter the password to unlock the homepage. This is asked only one time.
           </p>
         </div>
 
@@ -93,28 +96,8 @@ function LoginForm() {
           </div>
         )}
 
-        {/* Login Form */}
+        {/* Password Only Form */}
         <form onSubmit={handleSubmit} className="bss-form">
-          {/* User ID Field */}
-          <div className="bss-field-group">
-            <label htmlFor="username" className="bss-label">
-              User ID / Username
-            </label>
-            <div className="bss-input-wrap">
-              <span className="material-symbols-outlined bss-input-icon">person</span>
-              <input
-                id="username"
-                type="text"
-                autoComplete="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="e.g. peculiex"
-                className="bss-input"
-                suppressHydrationWarning
-              />
-            </div>
-          </div>
-
           {/* Password Field */}
           <div className="bss-field-group">
             <label htmlFor="password" className="bss-label">
@@ -128,8 +111,9 @@ function LoginForm() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder="Enter password to unlock"
                 className="bss-input bss-input-pass"
+                autoFocus
                 suppressHydrationWarning
               />
               <button
@@ -151,11 +135,11 @@ function LoginForm() {
             {loading ? (
               <>
                 <div className="bss-spinner" />
-                <span>Verifying Credentials...</span>
+                <span>Verifying Password...</span>
               </>
             ) : (
               <>
-                <span>Enter Website</span>
+                <span>Unlock Homepage</span>
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
                   arrow_forward
                 </span>
@@ -170,7 +154,7 @@ function LoginForm() {
             <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#059669' }}>
               verified_user
             </span>
-            <span>Secure Access Control</span>
+            <span>Asked only one time • Access remembered</span>
           </div>
           <span className="bss-footer-version">Bheral Systems v1.0</span>
         </div>
