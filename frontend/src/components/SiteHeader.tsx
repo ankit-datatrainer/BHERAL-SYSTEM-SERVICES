@@ -241,6 +241,10 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href.split('?')[0]);
 
+  if (pathname === '/login') {
+    return null;
+  }
+
   return (
     <>
       <header className="site-header">
@@ -375,6 +379,12 @@ export function SiteHeader() {
                 <span className="icon">person_outline</span>
               </div>
               <span className="action-label">Account</span>
+            </Link>
+            <Link className="header-action-item" href="/logout" title="Lock Website (Sign Out)">
+              <div className="action-icon-wrap">
+                <span className="icon">lock</span>
+              </div>
+              <span className="action-label">Lock</span>
             </Link>
           </div>
         </div>

@@ -670,7 +670,74 @@ window.BSS = (() => {
     });
   }
 
-  document.addEventListener('DOMContentLoaded', mountShell);
+  function enforceAccessGate() {
+    const isAuth = localStorage.getItem('bss_access_unlocked') === 'true' ||
+                   sessionStorage.getItem('bss_access_unlocked') === 'true';
+    if (isAuth) return;
+
+    const gate = document.createElement('div');
+    gate.id = 'bss-access-gate-overlay';
+    gate.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(ellipse at 50% -20%, #1e293b 0%, #090d16 60%, #030712 100%);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:Poppins,sans-serif;box-sizing:border-box;';
+
+    gate.innerHTML = `
+      <div style="position:relative;width:100%;max-width:440px;background:rgba(15,23,42,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:36px 30px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.8), 0 0 40px -10px rgba(14,165,233,0.25);color:#fff;text-align:center;box-sizing:border-box;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,rgba(14,165,233,0.2) 0%,rgba(99,102,241,0.2) 100%);border:1px solid rgba(14,165,233,0.3);margin-bottom:16px;">
+          <span class="material-symbols-outlined" style="font-size:32px;color:#38bdf8;">lock</span>
+        </div>
+        <div style="display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#38bdf8;margin-bottom:12px;">
+          Protected Portal Gateway
+        </div>
+        <h2 style="font-size:22px;font-weight:700;margin:0 0 8px;color:#fff;">Bheral Systems & Services</h2>
+        <p style="font-size:13px;color:#94a3b8;margin:0 0 24px;line-height:1.4;">Enter authorized credentials to view the website.</p>
+        <div id="bss-gate-err" style="display:none;padding:10px 14px;border-radius:10px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;font-size:13px;margin-bottom:18px;text-align:left;"></div>
+        <form id="bss-gate-form" style="display:flex;flex-direction:column;gap:16px;text-align:left;">
+          <div>
+            <label style="display:block;font-size:12px;font-weight:500;color:#cbd5e1;margin-bottom:6px;">User ID / Username</label>
+            <input id="bss-gate-user" type="text" autocomplete="username" placeholder="e.g. peculiex" required style="width:100%;height:46px;padding:0 14px;border-radius:10px;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:14px;outline:none;box-sizing:border-box;">
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:500;color:#cbd5e1;margin-bottom:6px;">Password</label>
+            <input id="bss-gate-pass" type="password" autocomplete="current-password" placeholder="Enter password" required style="width:100%;height:46px;padding:0 14px;border-radius:10px;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:14px;outline:none;box-sizing:border-box;">
+          </div>
+          <button type="submit" style="margin-top:8px;height:48px;width:100%;border-radius:10px;background:linear-gradient(135deg,#0284c7 0%,#2563eb 50%,#4f46e5 100%);border:none;color:#fff;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px -4px rgba(37,99,235,0.5);">
+            Enter Website &rarr;
+          </button>
+        </form>
+      </div>
+    `;
+
+    document.body.appendChild(gate);
+    document.body.style.overflow = 'hidden';
+
+    const form = document.getElementById('bss-gate-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const u = document.getElementById('bss-gate-user').value.trim().toLowerCase();
+        const p = document.getElementById('bss-gate-pass').value;
+        const err = document.getElementById('bss-gate-err');
+
+        if (u === 'peculiex' && p === 'Peculiex@2026') {
+          localStorage.setItem('bss_access_unlocked', 'true');
+          sessionStorage.setItem('bss_access_unlocked', 'true');
+          gate.style.opacity = '0';
+          gate.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => {
+            gate.remove();
+            document.body.style.overflow = '';
+          }, 300);
+        } else {
+          err.textContent = 'Invalid User ID or Password. Access denied.';
+          err.style.display = 'block';
+        }
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    mountShell();
+    enforceAccessGate();
+  });
 
   return {
     keys,

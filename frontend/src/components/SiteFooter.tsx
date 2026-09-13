@@ -72,6 +72,10 @@ export function SiteFooter() {
 
   const isActive = (p: string) => (p === '/' ? pathname === '/' : pathname.startsWith(p));
 
+  if (pathname === '/login') {
+    return null;
+  }
+
   return (
     <>
       <footer className="site-footer">
