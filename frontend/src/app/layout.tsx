@@ -5,6 +5,7 @@ import '@/styles/style.css';
 import '@/styles/responsive.css';
 import '@/styles/award.css';
 import '@/styles/dashboard.css';
+import '@/styles/login.css';
 
 import { StoreProvider } from '@/components/StoreProvider';
 import { SiteHeader } from '@/components/SiteHeader';
